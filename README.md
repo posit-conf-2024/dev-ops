@@ -3,7 +3,7 @@ DevOps for Data Scientists
 
 ### posit::conf(2024)
 
-by INSTRUCTOR_NAME
+by Rika Gorn
 
 -----
 
