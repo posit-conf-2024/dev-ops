@@ -19,7 +19,7 @@ In this course you will learn the key principles of Dev-Ops including collaborat
 
 Please note that this course is not prescriptive around Dev-Ops tools which are constantly growing and changing. Given that, the exact tools that will be used in this course (e.g. Jenkins, Azure Devops, etc) are subject to change.
 
-Course examples will be provided in both R and Python. Participants are encouraged to see the programming language of their choice.
+Course examples will be provided in both R and Python. In addition, some sections and exercises will utilize bash scripting, YAML, and the command line. Participants are encouraged to use the programming language of their choice.
 
 ## Audience
 
@@ -31,17 +31,29 @@ This course is for you if you:
 
 -   Want to get hands-on experience using CI/CD tools and other Dev-Ops workflows.
 
+The course will [**not cover**]{.underline} the following:
+
+-   How to become a Dev-Ops engineer
+
+-   In-depth security or networking practices
+
+-   Cloud-specific tools (especially pay-walled ones)
+
+-   How to write R or Python code
+
 ## Prework
 
-You must complete [this](https://forms.gle/itiKuHkukvYNszMr6) questionnaire prior to the start of the workshop.
+1.  You must complete [this](https://forms.gle/itiKuHkukvYNszMr6) questionnaire prior to the start of the workshop.
 
-Create the following accounts ahead of time, if you do not have one:
+2.  Create the following accounts ahead of time, if you do not have one:
 
 -   [Github](https://github.com)
 
 -   [Discord](https://discord.com/)
 
 -   [Docker Hub](https://hub.docker.com/)
+
+## Laptop Setup
 
 We will provide a server-based development & deployment environment during the workshop, however, you also have the option to work locally on your laptop. If this is your preference, please come to the workshop with the following:
 
