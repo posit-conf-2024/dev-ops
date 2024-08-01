@@ -1,0 +1,264 @@
+---
+title: "Dev-Ops for Data Scientists"
+subtitle: "<br>Wifi: Posit Conf 2024 <br>Password: conf2024"
+format: 
+  revealjs:
+    slide-number: true
+    footer: <https://github.com/posit-conf-2024/dev-ops>
+    preview-links: auto
+    incremental: true
+    theme: [default, styles.scss]
+    width: 1600
+    height: 920
+knitr:
+    opts_chunk: 
+        echo: true
+        collapse: true
+---
+
+
+::: section-title-dark
+Introduction
+:::
+
+## Logistics {.content-light}
+
+🛜 WiFi credentials:
+
+-   Network: `Posit Conf 2024`
+
+-   Password: `conf2024`
+
+-   Important locations:
+
+    -   **Bathrooms**: There are gender-neutral bathroom on levels 3, 4, 5, 6 & 7.
+    -   **Meditation/prayer room**: 503 (available Mon & Tues 7am - 7pm, and Wed 7am - 5pm)
+    -   **Mothers room**: 509 (same timings as above)
+
+## Logistics {.content-light}
+
+-   Participants who do not wish to be photographed have [red lanyards]{style="color:red;"}; please note everyone's lanyard colors before taking a photo and respect their choices.
+-   The Code of Conduct and COVID policies can be found at <https://posit.co/code-of-conduct/>. Please review them carefully. You can report Code of Conduct violations in person, by email, or by phone. Please see the policy linked above for contact information.
+
+## Code of Conduct {.content-light}
+
+-   Everyone who comes to learn and enjoy the experience should feel welcome at posit::conf. Posit is committed to providing a professional, friendly and safe environment for all participants at its events, regardless of gender, sexual orientation, disability, race, ethnicity, religion, national origin or other protected class.
+
+-   This code of conduct outlines the expectations for all participants, including attendees, sponsors, speakers, vendors, media, exhibitors, and volunteers. Posit will actively enforce this code of conduct throughout posit::conf.
+
+::: {style="text-align: center; font-size: 200%; color: #EE6331"}
+https://posit.co/code-of-conduct/
+:::
+
+## Meet the Team!
+
+
+
+## Meet your Neighbor!
+
+
+
+## Agenda
+
+| Time | Activity |
+|:---|:---|
+| 9:00 - 10:30 | Section 1: Workshop Introduction & Logistics <br> Main principles of Dev-Ops <br> Common workflows |
+| 10:30 - 11:00 | *Coffee break* ☕ |
+| 11:00 - 12:30 | Section 2: Development & Pre-production <br> Writing & testing code <br> Environment management <br> Dependencies & Packages <br> Version Control |
+| 12:30 - 1:30 | *Lunch break* 🥪 |
+| 1:30 - 3:00 | Section 3: Production & Automation <br> CI/CD <br> Automation <br> Orchestration & Containerization|
+| 3:00 - 3:30 | *Coffee break* ☕ |
+| 3:30 - 5:00 | Section 4: Post-production <br> Security & Authentication <br> Optimization & Performance <br> Working with other teams |
+
+## The Sticky Situation
+
+::::::: {.columns .center}
+:::: {.column width="50%"}
+::: {style="background: #FB629A; width: 400px; height: 400px; margin: 50px; box-shadow: 0 18px 18px -9px lightgray; margin-left: auto; margin-right: auto;"}
+:::
+
+"I'm lost / need help"
+::::
+
+:::: {.column width="50%"}
+::: {style="background: #83D2F3; width: 400px; height: 400px; margin: 50px; box-shadow: 0 18px 18px -9px lightgray; margin-left: auto; margin-right: auto;"}
+:::
+
+"I'm done and ready to move along"
+::::
+
+<br><br>
+
+### 👨‍💻Put your sticky note on the back of your laptop screen 👩‍💻
+:::::::
+
+## Workshop approach
+
+We will use an [**end-to-end real-world project**]{.positgreen} to demonstrate workflows and best practices using [**open source packages**]{.positteal} and [**Posit professional tools**]{.positteal}.
+
+::: fragment
+<h2><br> Conventions</h2>
+
+|  |  |
+|----|----|
+| 🧰 | Add this to your toolbox. |
+| 📣 | I will stand on my soapbox and profess this until I am blue in the face. |
+| {{< bi sign-turn-right-fill color=orange >}} | Detour warning. We could get really into this, but there's not time today. |
+
+: {tbl-colwidths="\[5,95\]"}
+:::
+
+## Asking Questions
+
+**Discord** - `#devops`
+
+:::::::: columns
+::: {.column width="50%"}
+<br> <br> <br>
+
+👉 **Submit questions and respond to polls here**
+
+![](assets/images/01/discord-logo-blue.png){width="100%" fig-align="center"}
+:::
+
+:::::: {.column width="50%"}
+<br>
+
+::: {.absolute style="background: #cca2b2; width: 400px; height: 300px; padding: 40px; box-shadow: 0 18px 18px -9px lightgray; margin-left: auto; margin-right: auto;" top="300" left="800"}
+<h3>You are always welcome to raise your hand! 🙋</h3>
+:::
+
+:::: fragment
+::: {.absolute style="background: #A6CFD5; width: 400px; height: 300px; padding: 40px; box-shadow: 0 18px 18px -9px lightgray; margin-left: auto; margin-right: auto;" top="320" left="820"}
+<h3>Go to Discord now and tell us what you're excited about!</h3>
+:::
+::::
+::::::
+::::::::
+
+
+
+## Project Objective
+
+-   Provide ~~users~~ **travelers** with a self-service tool that predicts the likelihood of a ferry departure delay.
+
+<h2><br>Project Requirements</h2>
+
+-   🤖 Automate the pipeline
+-   ⚠️ Receive alerts if there are issues in the pipeline
+-   🔄 Project is easy to maintain and iterate upon
+-   {{< bi share color=#2D8400 >}} Work is reusable by other teams, even if they don't use R (Lookin' at you ![](https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png){height="50" style="vertical-align:middle"})
+
+## Project Overview
+
+![](slide_resources/ds-workflows-r-2024.jpg){fig-align="center"}
+
+##  {.brackets-dark-teal}
+
+::: section-title-dark
+Get Your Environment Set Up
+:::
+
+## Your Tools
+
+![](slide_resources/PST-overview.jpg){fig-align="center"}
+
+## Access Your Tools {.content-light}
+
+[Visit 🧚 <https://ferryland.posit.team> 🧚 to access:]{.large}
+
+-   Workbench: <https://dev.ferryland.posit.team>
+-   Connect: <https://pub.ferryland.posit.team>
+-   Package Manager: <https://pkg.ferryland.posit.team>
+
+![](slide_resources/ferryland_landing.png)
+
+## Connect Setup // Step 1
+
+Visit: <https://pub.ferryland.posit.team>
+
+::::: columns
+::: {.column width="60%"}
+![](slide_resources/connect_sign_up_1.png){height="500"}
+:::
+
+::: {.column width="40%"}
+![](slide_resources/connect_sign_up_2.png){height="500"}
+:::
+:::::
+
+::: smaller
+Make sure you have a GitHub account!
+:::
+
+## Connect Setup // Step 2
+
+:::::: columns
+::: {.column width="33%"}
+![](slide_resources/connect_sign_up_3.png){height="650"}
+:::
+
+::: {.column width="33%"}
+![](slide_resources/connect_sign_up_4.png){height="650"}
+:::
+
+::: {.column width="33%"}
+![](slide_resources/connect_sign_up_5.png){height="650"}
+:::
+::::::
+
+## Workbench Setup // Step 1
+
+Visit: <https://dev.ferryland.posit.team>
+
+You do **NOT** need to re-authenticate with GitHub!
+
+![](slide_resources/workbench_login_1.png){fig-align="center" width="466"}
+
+![](slide_resources/workbench_login_2.png)
+
+## Workbench Setup // Step 2
+
+::::: columns
+::: {.column .smaller width="50%"}
+1.  Click `New Session`
+2.  Start a RStudio Pro session
+3.  Create a new project from a version control repository
+4.  Select **Git**
+5.  Add the workshops GitHub Repo URL –\> <https://github.com/posit-conf-2024/ds-workflows-r.git>
+6.  Call the project directory `ds-workflows-r`
+7.  Leave everything else as default. Select `Create Project`.
+:::
+
+::: {.column width="50%"}
+![](slide_resources/workbench_newproject.png){fig-align="center"}
+:::
+:::::
+
+## Workbench Setup // Step 2
+
+![](slide_resources/workbench_rstudio_home.png)
+
+## Project Navigation
+
+-   📁 `materials` : Contains the project files that we/you will work through during the workshop.
+
+    -   💡 Within each directory, there is a `.Rproj` file. Open the folder's project file to work on that portion of the materials.
+
+-   📁 `slides` : Quarto slides for the workshop, broken up by section.
+
+-   📁 `website` : Source material for the workshop website. Rendered slides are hosted here for your reference.
+
+## Saving your work 💾 {.content-light}
+
+-   All source material can be found on the GitHub page: `https://github.com/posit-conf-2024/ds-workflows-r`
+-   The environment we're working on will stay on for a few days after conf...but that's it!
+-   If you would like to save your work, we recommend:
+    -   Exporting any source code to your local machine.
+    -   Fork the project to a personal GitHub Repo.
+
+##  {.brackets-green}
+
+::: section-title-dark
+Let's Get to Work!
+:::
