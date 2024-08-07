@@ -2,3 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
+.Renviron
+.env
+.python-version
+.DS_Store
+
+/.quarto/
