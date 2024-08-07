@@ -1,0 +1,53 @@
+---
+title: "Dev-Ops for Data Scientists"
+subtitle: "Getting to Production"
+format: 
+  revealjs:
+    slide-number: true
+    footer: <https://github.com/posit-conf-2024/dev-ops>
+    preview-links: auto
+    incremental: true
+    theme: [default, styles.scss]
+    width: 1600
+    height: 920
+execute: 
+  eval: false
+---
+
+## Data Science in Production
+
+<br> <iframe src="https://giphy.com/embed/4oMoIbIQrvCjm" width="480" height="369" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+## Data Science in Production
+
+-   add picture of fastapi with penguin data and shiny application on top deployed
+
+## Production "State"
+
+<br>
+
+What are some questions that we should ask once our code is ready for production?
+
+<br>
+
+-   Where is it deployed?
+
+-   Is it secure and accessible?
+
+-   Does it scale?
+
+-   Is it tested?
+
+## Data architecture and auth
+
+## Choosing the right presentation layer
+
+-   [Alex's flow chart](https://do4ds.com/chapters/sec1/1-2-proj-arch.html)
+
+## Choosing a REST API
+
+![](images/what_is_rest_api.png)
+
+::: notes
+application programming interface clients to communicate with a server. Rest API is a kind of web-service which stores and retrieves necessary data. It provides great flexibility to developers since it does not need any dependent code libraries to access the web-services. Amongst the many protocols supported by REST, the most common one is HTTP. When a request is sent from the client using a HTTPRequest, a corresponding response is sent from the server using HTTPResponse.
+:::

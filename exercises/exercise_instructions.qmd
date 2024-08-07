@@ -1,0 +1,818 @@
+---
+title: Introduction
+subtitle: Set up environment
+format: html
+execute: 
+  eval: false
+editor: 
+    markdown: 
+      canonical: true
+      wrap: 72
+---
+
+# Activity 1
+
+## Fork repository
+
+Fork the Posit Conf 2024 Dev-Ops workshop Github
+[repository](https://github.com/posit-conf-2024/dev-ops) onto your local
+machine as a reference guide.
+
+![](images/forkrepo.png)
+
+Grab the https url of your forked repo and `git clone` it somewhere on
+your computer. You will be using this repo primarily for resources and
+instructions.
+
+## Open a code editor
+
+Throughout this workshop we will be writing code in both R and Python.
+We will be starting with a python model so you will need to use an IDE
+with a Python interpretor.
+
+Open up a vscode session in your [Workbench environment]{.underline} or
+a local python code editor of your choice. If using your local machine
+make sure that you have Python
+[installed](https://www.python.org/downloads/) and on
+[PATH](https://realpython.com/add-python-to-path/). This is a [good
+article](https://chendaniely.github.io/python_setup/) on best practices
+for setting up Python using Pyenv.
+
+## Initialize a new git repository
+
+Open your vscode terminal (Control + dash for quick open) and create a
+folder where you'll be saving all of your classwork for this workshop.
+Call it something like`devops_classwork`. See the code example below for
+changing into my Desktop directory, creating a folder, and then changing
+the directory into that folder.
+
+```         
+cd /Users/rikagorn/Desktop
+mkdir devops_classwork
+cd devops_classword
+```
+
+Initialize git in your folder.
+
+```         
+git init
+git config --global user.name "Your Name"
+git config --global user.email "youremail@yourdomain.com"
+git config --global init.defaultBranch main
+```
+
+## Create some code content
+
+We will be creating three different files. Copy the code from the
+Dev-ops repo.
+
+1\. `README.md` - a markdown file used for documentation
+
+2\. `model_pthon.py` - a python file with a linear regression model
+
+3\. `r_eda.R` - an R file with some exploratory data analysis
+
+## Add and commit your code locally
+
+```         
+git add README.md
+git add model_python.py
+git add r_eda.r
+git status
+git commit -m "model and readme added"
+```
+
+## Push local repo to remote github repo
+
+Create a remote repository on github.com and call it something like
+`devops-classwork`.
+
+Go back to your local repo and add the remote upstream github repo.
+
+```         
+git remote add origin https://github.com/Rikagx/devops-classwork.git
+git branch -M main
+git push -u origin main
+```
+
+## Create a branch and merge new file
+
+```         
+git checkout -b yourname/small-edits
+touch .gitignore # this creates a file called .gitignore
+```
+
+Add these [python specific
+files](https://github.com/github/gitignore/blob/main/Python.gitignore)
+and these [r specific
+files](https://github.com/github/gitignore/blob/main/R.gitignore) to
+your .gitignore file
+
+```         
+git add .gitignore
+git commit "added .gitignore"
+git push origin yourname/small-edits
+git checkout main
+git merge yourname/small-edits
+git push
+```
+
+# Activity 2
+
+## Create a virtual environment
+
+Create a new branch for the following exercises:
+
+`git checkout -b yourname/venv-renv`
+
+::: panel-tabset
+### R
+
+Open the r_eda.R file that you created above.
+
+Install `renv` with `install.packages("renv")`
+
+```{r}
+# library path without renv initialized.
+.libPaths()
+lapply(.libPaths(), list.files)
+
+renv::init()
+
+# library path with renv initialized.
+.libPaths()
+lapply(.libPaths(), list.files)
+
+```
+
+### Python
+
+Open the model_python.py file that you created above. Type 'python' into
+your terminal to start an executable. You should see like the below
+output:
+
+Python 3.12.0 (main, Jun 12 2024, 14:00:16) \[Clang 15.0.0
+(clang-1500.3.9.4)\] on darwin Type "help", "copyright", "credits" or
+"license" for more information.
+
+\>\>\> \[Type the below code here\]
+
+\>\>\> exit()
+
+```{python}
+# library path without venv initialized
+import sys
+print(sys.path)
+```
+
+```{bash}
+# run in your bash terminal
+pip list
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip setuptools wheel
+pip list
+```
+
+```{python}
+# library path with venv initialized
+import sys
+print(sys.path)
+```
+:::
+
+## Snapshot your code
+
+::: panel-tabset
+### R
+
+Take a look at the renv.lock file before and after you snapshot your
+code. Install the following packages:
+
+`install.packages(c("palmerpenguins", "dplyr", "ggplot2"))`.
+
+Feel free to run your R code which is reproduced below and see the
+output of your analysis.
+
+```{r}
+library(palmerpenguins)
+library(dplyr)
+library(ggplot2)
+
+df <- palmerpenguins::penguins
+
+table1 <- df %>%
+  group_by(species, sex) %>%
+  summarise(
+    across(
+      where(is.numeric), 
+      \(x) mean(x, na.rm = TRUE)
+      )
+    ) %>%
+  knitr::kable()
+
+## Penguin Size vs Mass by Species
+
+
+plot <- df %>%
+  ggplot(aes(x = bill_length_mm, y = body_mass_g, color = species)) +
+  geom_point() + 
+  geom_smooth(method = "lm")
+```
+
+Snapshot your code with `renv::snapshot()`.
+
+### Python
+
+```{bash}
+# run in your bash terminal
+python -m pip install --upgrade pip setuptools wheel
+pip install palmerpenguins
+pip install duckdb
+pip install scikit-learn
+```
+
+Run your model_python.py in the terminal with `python model_python.py`.
+The model code is reproduced below with some additional print
+statements.
+
+```{python}
+import duckdb
+from palmerpenguins import penguins
+from pandas import get_dummies
+from sklearn.linear_model import LinearRegression
+
+con = duckdb.connect("my-db.duckdb")
+df = penguins.load_penguins()
+df = con.execute("SELECT * FROM df").fetchdf().dropna()
+con.close()
+
+df.head(3)
+
+X = get_dummies(df[["bill_length_mm", "species", "sex"]], drop_first=True)
+y = df["body_mass_g"]
+
+model = LinearRegression().fit(X, y)
+
+print(f"R^2 {model.score(X,y)}")
+print(f"Intercept {model.intercept_}")
+print(f"Columns {X.columns}")
+print(f"Coefficients {model.coef_}")
+
+```
+
+Freeze your pip installed packages in a requirements.txt file. You
+should do this every time you install additional packages or modules.
+
+```{bash}
+# run in bash terminal
+
+pip list > requirements.txt
+pip list
+
+```
+:::
+
+## Add, commit, push your code
+
+```         
+# run in your bash terminal
+
+git add readme.md
+git add r_eda.r
+git add model_python.py
+git commit -m "creating virtual environments"
+git push origin yourname/venv-renv
+git checkout main
+git merge yourname/venv-renv
+git push
+```
+
+# Activity 3
+
+## Create github actions
+
+Go to `Actions` in your github repository and enable github actions.
+
+![](images/actions.png)
+
+Github action MUST be created as a .yaml file in the following directory
+structure:
+
+```         
+mkdir .github
+cd .github/
+mkdir workflows
+cd workflows/
+touch .yaml
+```
+
+Copy the
+\[following(https://docs.github.com/en/actions/writing-workflows/quickstart)\]
+into your yaml file and then add, commit, and push your code to main.
+You can try pushing from a branch or straight from main.
+
+```{yaml}
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+```
+
+Visit the Actions tab of your repo to see if the Action succeeded.
+
+![](images/GHAdash.png)
+
+# Activity 4
+
+## Pre-commit hooks
+
+```{bash}
+# run in your bash terminal
+pip install pre-commit
+pip install black
+```
+
+Create a file called .pre-commit.config.yaml and add the following
+
+```{bash}
+repos:
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 23.10.1
+    hooks:
+    - id: black
+    language_version: python3.12
+```
+
+```{bash}
+# run in your bash terminal
+pre-commit install
+```
+
+Stage and commit your code and fix any errors that the hooks identify.
+Try adding some other hooks that look interesting:
+
+-   https://lorenzwalthert.github.io/precommit/articles/available-hooks.html
+-   https://github.com/pre-commit/pre-commit-hooks
+
+# Activity 5
+
+## Docker Run
+
+The basic docker run command takes this form:
+
+`docker run [OPTIONS] [IMAGE:TAG] [COMMAND] [ARG...]`
+
+In the below exercise we will practice running docker containers with
+different options or “flags.”
+
+1.  Currently we have no docker images downloaded. Confirm this with
+    `docker image ls -a.`
+
+2.  Pull down a Dockerhub linux image. Confirm that the image is
+    downloaded with the ls command. `docker pull ubuntu`
+    `docker image ls -a`
+
+3.  Run an interactive container with the bash shell attached. Run a few
+    linux commands to explore your environment and then exit the
+    container.
+
+```{bash}
+sudo docker run -it ubuntu bash
+ls
+whoami
+hostname
+```
+
+Exit the container with Ctrl+D or exit. This docker command runs the
+container in the foreground so you are unable to access the command
+prompt for your original alpine server. For this reason interactive mode
+is often used for development and testing.
+
+Run the container in detached mode and then list all your containers and
+check your processes. Stop the container using its name or ID.
+
+```{bash}
+docker run -d ubuntu
+docker container ls -a
+docker ps -a 
+docker container stop [name_of_container]
+
+```
+
+You should see that the ubuntu container was created and then exited.
+The container ID is shown with an exited status and the command line is
+still accessible.
+
+Detached containers run in the background, so the container keeps
+running until the application process exits (which is what happened
+here), or you stop the container. For this reason detached mode is often
+used for production purposes.
+
+# Activity 6
+
+## Debugging Containers
+
+The docker exec command is very similar to the docker run -it command.
+Both are very helpful for debugging containers as they allow you to jump
+inside your container instance. The exec command needs a running
+container to execute any command, whereas the -it flag starts a
+container and places you into a terminal in interactive mode. Use the
+docker exec command to execute a bash command in a running container.
+This can be used to execute any command within a running container.
+
+Be careful not use docker exec to change your container as once it is
+deleted you will lose any changes you’ve made!
+
+docker exec requires two arguments - the container and the command you
+want to run.
+
+docker exec \[OPTIONS\] CONTAINER \[COMMAND\] \[ARG...\] Use docker run
+-it to jump into an ubuntu container. `docker run -it ubuntu` `exit` Use
+docker exec to run commands in a container
+
+```         
+docker container ls -a # to get a container ID of a running container
+docker exec -it CONTAINER_ID bash
+exit
+docker exec CONTAINER_ID ls
+```
+
+Lets run a detached MySQL container and then check out some logs. The
+database requires a password to work. In production you should never
+pass credentials directly in your command but we will do it for testing
+purposes. (The forward slashes below allow you to use a new line for
+your code)
+
+```         
+ docker container run -d --name mydb \
+ -e MYSQL_ROOT_PASSWORD=my-secret-pw \ 
+ mysql
+ 
+docker container logs mydb
+```
+
+### Mapping Ports
+
+Pull two versions of the same image
+
+```         
+docker pull httpd:alpine
+docker pull httpd:latest
+# Inspect ports.
+docker inspect  httpd:latest
+docker inspect  httpd:alpine
+# Map two different host ports to the same application port for the two containers.
+docker run -d -p 3456:80 --name httpd-latest httpd:latest
+docker run -d -p 80:80 --name httpd-alpine httpd:alpine
+docker ps
+```
+
+### Mounting Data
+
+In order to get data in or out of a container, you need to mount a
+shared volume (directory) between the container and host with the -v
+flag. You specify a host directory and a container directory separated
+by :. Anything in the volume will be available to both the host and the
+container at the file paths specified.
+
+Stop your running containers with docker stop and return to your
+original command prompt. Create a text file.
+
+```         
+# create a text file
+touch test.txt 
+
+ # redirect string to the file
+echo "this is a test file" > test.txt
+
+# confirm that the echo command worked and gets its directory path
+cat test.txt 
+pwd
+
+# mount a shared volume to a folder in the container called "data"
+docker run -it -d -v /root:/data ubuntu 
+docker exec -it CONTAINER_ID bash
+
+# see what folders are in the container
+ls 
+
+# move to the newly created data directory
+cd data 
+
+# confirm that the text file is there
+ls 
+```
+
+## Create a FastAPI using our penguin model
+
+::: callout-note
+This code was tested using Python 3.11.4.
+:::
+
+Create and activate a virtual environment.
+
+```         
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip setuptools wheel
+```
+
+Create 3 files
+
+`model.py` - our linear regression model file
+
+```         
+"""
+This script creates a linear regression model
+to predict the body mass of palmer penguins
+given their sex, species, and bill length in mm
+
+"""
+import joblib
+import duckdb
+from palmerpenguins import penguins
+from pandas import get_dummies
+from sklearn.linear_model import LinearRegression
+
+con = duckdb.connect("my-db.duckdb")
+df = penguins.load_penguins()
+df = con.execute("SELECT * FROM df").fetchdf().dropna()
+con.close()
+
+df.head(3)
+
+X = get_dummies(df[["bill_length_mm", "species", "sex"]], drop_first=True)
+y = df["body_mass_g"]
+
+model = LinearRegression().fit(X, y)
+joblib.dump(model, 'penguin_model.joblib')
+```
+
+`main.py` - our prediction fastapi
+
+```         
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import joblib
+import pandas as pd
+
+# Load the model
+model = joblib.load('penguin_model.joblib')
+
+# Initialize FastAPI app
+app = FastAPI()
+
+# Define the request body
+class PenguinFeatures(BaseModel):
+    species: str
+    sex: str
+    bill_length_mm: float
+
+# Define the endpoint for prediction
+@app.post("/predict")
+def predict(features: PenguinFeatures):
+    # Map species and sex to the appropriate format used in training
+    species_map = {"Adelie": 0, "Chinstrap": 1, "Gentoo": 2}
+    sex_map = {"male": 0, "female": 1}
+
+    try:
+        species = species_map[features.species]
+        sex = sex_map[features.sex]
+    except KeyError:
+        raise HTTPException(status_code=400, detail="Invalid species or sex")
+
+    # Prepare the input data for the model
+    input_data = pd.DataFrame([{
+        "bill_length_mm": features.bill_length_mm,
+        "species_Chinstrap": 1 if features.species == "Chinstrap" else 0,
+        "species_Gentoo": 1 if features.species == "Gentoo" else 0,
+        "sex_male": 1 if features.sex == "male" else 0,
+    }])
+
+    # Make prediction
+    prediction = model.predict(input_data)[0]
+
+    # Return the prediction
+    return {"body_mass_g": prediction}
+```
+
+`requirements.txt` - package requirements
+
+```         
+annotated-types==0.7.0
+anyio==4.4.0
+click==8.1.7
+duckdb==1.0.0
+fastapi==0.112.0
+h11==0.14.0
+idna==3.7
+joblib==1.4.2
+numpy==2.0.1
+palmerpenguins==0.1.4
+pandas==2.2.2
+pydantic==2.8.2
+pydantic_core==2.20.1
+PyJWT==2.9.0
+python-dateutil==2.9.0.post0
+pytz==2024.1
+rsconnect_python==1.24.0
+scikit-learn==1.5.1
+scipy==1.14.0
+semver==2.13.0
+six==1.16.0
+sniffio==1.3.1
+starlette==0.37.2
+threadpoolctl==3.5.0
+typing_extensions==4.12.2
+tzdata==2024.1
+uvicorn==0.30.5
+```
+
+Install our requirements file
+
+```         
+pip install -r requirements.txt
+```
+
+Login to your server environment and click on the Connect widget.
+
+![](images/connect-widget.png)
+
+Start the Automated Stock report jumpstart example. Click through until
+you get to Step 5 and then copy the url. This is the url for your
+Connect server. Close out of the jumpstart example.
+
+![](images/server-url.png)
+
+Click on your name \> API Keys tab. Create an API key and note it down
+somewhere safe.
+
+![](images/api-tab.png)
+
+Jump back to your vscode virtual environment and add your server url and
+api key to the rsconnect-python CLI.
+
+To add a server, you need the following:
+
+1.  Your server URL
+2.  Your API key. See the [API
+    Keys](https://docs.posit.co/connect/user/api-keys/) section.
+3.  A nickname for the server that you provide
+
+```         
+pip install rsconnect-python
+rsconnect add \
+    --server https://my.connect.server/ \
+    --name myServer \
+    --api-key $CONNECT_API_KEY
+```
+
+Deploy our FastAPI to the Connect server.
+
+```         
+rsconnect deploy fastapi \
+    -n myServer \
+    --entrypoint main:app \
+    ./
+```
+
+Test the API in your terminal
+
+```         
+curl -X 'POST' \
+  'https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "species": "Adelie",
+  "sex": "female",
+  "bill_length_mm": 40.0
+}'
+```
+
+Fix the authorization error by passing in your API key.
+
+```         
+export CONNECT_API_KEY=So4JUDFJ01mziHx2QudAw9iUJt2z0Ylj
+
+curl -X 'POST' \
+  'https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H "Authorization: Key ${CONNECT_API_KEY}" \
+  -d '{
+  "species": "Adelie",
+  "sex": "female",
+  "bill_length_mm": 40.0
+}'
+```
+
+## Create a Shiny UI for the prediction API
+
+Open an Rstudio IDE session and create a shiny app file called `app.R`.
+Add your API key to your .Renviron file. You can do this easily using
+the usethis package: `usethis::edit_r_environ()`.
+
+app.R
+
+```         
+library(shiny)
+library(httr2)
+
+# Correct API URL
+api_url <- "https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict"
+
+ui <- fluidPage(
+  titlePanel("Penguin Mass Predictor"),
+  
+  # Model input values
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput(
+        "bill_length",
+        "Bill Length (mm)",
+        min = 30,
+        max = 60,
+        value = 45,
+        step = 0.1
+      ),
+      selectInput(
+        "sex",
+        "Sex",
+        c("male", "female") # Ensure values match what FastAPI expects
+      ),
+      selectInput(
+        "species",
+        "Species",
+        c("Adelie", "Chinstrap", "Gentoo")
+      ),
+      # Get model predictions
+      actionButton(
+        "predict",
+        "Predict"
+      )
+    ),
+    
+    mainPanel(
+      h2("Penguin Parameters"),
+      verbatimTextOutput("vals"),
+      h2("Predicted Penguin Mass (g)"),
+      textOutput("pred")
+    )
+  )
+)
+
+server <- function(input, output) {
+  # Input params
+  vals <- reactive(
+    list(
+      bill_length_mm = input$bill_length,
+      species = input$species, # Send the species directly
+      sex = tolower(input$sex) # Ensure "male" and "female" are lowercase
+    )
+  )
+  
+  # Fetch prediction from API
+  pred <- eventReactive(
+    input$predict,
+    {
+      req <- httr2::request(api_url) |>
+        httr2::req_body_json(vals()) |>
+        httr2::req_headers(
+          "Content-Type" = "application/json",
+          "Authorization" = paste("Bearer", Sys.getenv("key")) # Add API key to headers
+        ) |>
+        httr2::req_perform()
+      
+      httr2::resp_body_json(req)
+    },
+    ignoreInit = TRUE
+  )
+  
+  
+  # Render to UI
+  output$pred <- renderText(pred()$body_mass_g)
+  output$vals <- renderPrint(vals())
+}
+
+# Run the application
+shinyApp(ui = ui, server = server)
+```
+
+Push-button deploy using the following instructions:
+https://docs.posit.co/connect/user/publishing-rstudio/

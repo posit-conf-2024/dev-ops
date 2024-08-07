@@ -1,0 +1,633 @@
+---
+title: "Dev-Ops for Data Scientists"
+subtitle: "Overview and Best Practices"
+format: 
+  revealjs:
+    slide-number: true
+    footer: <https://github.com/posit-conf-2024/dev-ops>
+    preview-links: auto
+    incremental: true
+    theme: [default, styles.scss]
+    width: 1600
+    height: 920
+execute: 
+  eval: false
+---
+
+## What is Devops? {.bigger}
+
+<br> <br> <br> “DevOps is a set of cultural norms, practices, and supporting tooling to help make the process of developing and deploying software smoother and lower risk."
+
+::: footer
+Definition credit:Alex Gold, https://www.do4ds.com
+:::
+
+##  {auto-animate="true"}
+
+::: {style="margin-top: 200px; font-size: 3em; color: blue;"}
+Developing and Deploying Software
+:::
+
+## First...a very brief history lesson
+
+![](assets/images/02/history.png)
+
+## Software Development Life Cycle
+
+1.  Planning
+2.  Analysis
+3.  Design
+4.  Implementation
+5.  Testing and Integration
+6.  Maintenance
+
+## Waterfall Model
+
+![](assets/images/02/waterfallsldc.png)
+
+## Agile Model
+
+![](assets/images/02/mobius.png)
+
+##  {auto-animate="true"}
+
+::: {style="margin-top: 200px; font-size: 3em; color: blue;"}
+Smoother and lower risk
+:::
+
+## Problems DevOps tries to solve
+
+![](assets/images/02/PROBLEMS.png)
+
+##  {auto-animate="true"}
+
+::: {style="margin-top: 200px; font-size: 3em; color: blue;"}
+Cultural Norms
+:::
+
+## Instilling a sense of ...
+
+-   collaboration
+-   communication
+-   transparency
+-   continuous feedback
+-   shared responsibility
+
+##  {auto-animate="true"}
+
+::: {style="margin-top: 200px; font-size: 3em; color: blue;"}
+Practices and supporting tooling
+:::
+
+## Proliferation of tools
+
+![](assets/images/02/ecosystem.png)
+
+## Best Practices \> Tools
+
+![](assets/images/02/toolsbestpractice.jpg)
+
+## Version Control & Collaboration
+
+![](assets/images/02/versioncontrol.png)
+
+## Your turn {.smaller transition="slide-in"}
+
+::: {.callout-note icon="false"}
+## Activity 1: Git workflow + branching
+
+-   initialize git locally
+-   add content and merge
+-   create a branch and add content
+-   merge branch into main
+:::
+
+<br> <br> <br> Activity 1 Instructions
+
+## Environment Management & Reproducibility
+
+## Reproducing your environment
+
+<br>
+
+What are the layers that need to be reproduced across your dev, test, and prod environments?
+
+<br>
+
+What's your most difficult reproducibility challenge?
+
+## Layers of reproducibility
+
+![](assets/images/02/layerstoreproduce.png)
+
+::: notes
+-   code - scripts, configs, applications
+-   Packages
+-   System - r and python depend on underlying system software - for example, spatial analysis packages, or anything that requires Java - rJava
+-   OS
+-   Hardware - processors Intel chip, silicon chip
+:::
+
+## Packages vs. Libraries vs. Repositories
+
+<br>
+
+**Package** - contains code, functions, data, and documentation.
+
+<br>
+
+**Library** - is a directory where packages are installed.
+
+<br>
+
+**Repository** - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.
+
+::: notes
+packages - Can be be distributed as SOURCE (a directory with all package components), [BINARIES](https://solutions.posit.co/envs-pkgs/environments/repositories/index.html#binary-packages) (contains files in OS-specific format) or as a BUNDLE (compressed file containing package components, similar to source).
+
+library - You can have user-level or project-level libraries. Run `.libPaths()` to see yours. To use a package in has to be installed in a library with `install.packages()` and then loaded into memory with `library(x)` .
+
+repo - others include pypi, bioconducter, private repos
+:::
+
+## Managing Environments
+
+![](assets/images/02/repromap.png)
+
+## Virtual Environments
+
+![](assets/images/02/snapshotrestore.png)
+
+::: panel-tabset
+### R
+
+```{r}
+install.packages("renv")
+renv::init()
+renv::snapshot()
+```
+
+### Python
+
+```{Python}
+python -m venv .venv
+source .venv/bin/activate
+pip freeze > requirements.txt
+```
+:::
+
+## Your turn {.smaller transition="slide-in"}
+
+::: {.callout-note icon="false"}
+## Activity 2: Create R & Python virtual environments
+
+-   Create renv virtual env
+-   Run EDA in R env and snapshot
+-   Create python venv virtual env
+-   Run linear regression model in python env
+-   Snapshot python requirements file
+-   Push code to main in your repo
+:::
+
+<br> <br> <br> Activity 2 Instructions
+
+## Continuous Integration & Delivery
+
+![](assets/images/02/cicd2.png)
+
+## Defining Production
+
+## Building environments for CI/CD
+
+<br>
+
++---------------------------------+-------------------------------------------------------------+------------------------------+
+| Development                     | Testing                                                     | Production                   |
++=================================+=============================================================+==============================+
+| -   Exploratory                 | -   as similar to prod as possible                          | -   automatic CD             |
+|                                 |                                                             |                              |
+| -   Often local machine         | -   unit & integration testing                              | -   isolated from dev & test |
+|                                 |                                                             |                              |
+| -   Access to R/Python Packages | -   data validation                                         | -   created with code        |
+|                                 |                                                             |                              |
+|                                 | -   "sandbox" with data that's as close to real as possible |                              |
++---------------------------------+-------------------------------------------------------------+------------------------------+
+## Shipping to Production
+
+![](assets/images/02/shippingextremes.png)
+
+::: footer
+from https://blog.pragmaticengineer.com/shipping-to-production/ written and illustrated by Gergely Orosz
+:::
+
+## Importance of Testing
+
+![](assets/images/02/bsod.jpeg)
+
+-   data and model validating
+-   unit test
+-   integration tests
+-   end-to-end tests
+-   canary testing
+
+## Add testing slide with code examples
+
+## Github Actions for CI/CD
+
+![](assets/images/02/ghdeploy.png){fig-align="left" width="250"}
+
+![](assets/images/02/ghjobssteps.png){fig-align="right" width="250"}
+
+## Open source ecosystem of actions
+
+-   [Github Official Actions](https://www.github.com/actions)
+
+-   [RLib Actions](https://www.github.com/r-lib/actions)
+
+::: notes
+Workflows can include tests, markdown renders, shell scripts, cron jobs, or deployments. They can be as simple or as complicated as you need. Open-source community provides a ton of examples of actions.
+:::
+
+## GHA Syntax
+
+``` yaml
+# Optional - The name of the workflow as it will appear in the "Actions" tab of the GitHub repository. 
+
+name: learn-github-actions
+
+# Specifies the trigger for this workflow. This example uses the `push` event, so a workflow run is triggered every time someone pushes a change to the repository or merges a pull request.  
+on: [push]
+
+# Groups together all the jobs that run in the `learn-github-actions` workflow.
+jobs:
+
+# Defines a job named `check-bats-version`. Bats refers to Bash Automated Testing. 
+  check-bats-version:
+
+# Configures the job to run on the latest version of an Ubuntu Linux runner. This means that the job will execute on a fresh virtual machine hosted by GitHub. 
+    runs-on: ubuntu-latest
+
+# Groups together all the steps that run in the `check-bats-version` job. Each item nested under this section is a separate action or shell script.
+    steps:
+
+# The `uses` keyword specifies that this step will run `v4` of the `actions/checkout` action. This is an action that checks out your repository onto the runner, allowing you to run scripts or other actions against your code (such as build and test tools). You should use the checkout action any time your workflow will use the repository's code.
+      - uses: actions/checkout@v4
+
+# This step uses the `actions/setup-node@v4` action to install the specified version of the Node.js. (This example uses version 20.) 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+# The `run` keyword tells the job to execute a command on the runner. In this case, you are using `npm` to install the `bats` software testing package.
+      - run: npm install -g bats
+
+# Finally, you'll run the `bats` command with a parameter that outputs the software version.
+      - run: bats -v
+```
+
+## Power of YAML
+
+-   YAML Ain't Markup Language
+
+-   communication of data between people and computers
+
+-   human friendly
+
+-   configures files across many execution environments
+
+## YAML Syntax
+
+```         
+EmpRecord:  
+  emp01:
+    name: Michael
+    job: Manager
+    skills: 
+      - Improv
+      - Public speaking
+      - People management
+  emp02:
+    name: Dwight
+    job: Assistant to the Manager
+    skills: 
+      - Martial Arts
+      - Beets
+      - Sales
+```
+
+-   whitespace indentation denotes structure & hierarchy
+
+-   Colons separate keys and their values
+
+-   Dashes are used to denote a list
+
+## Your turn {.smaller transition="slide-in"}
+
+::: {.callout-note icon="false"}
+## Activity 3: Create Github Action
+
+```{yaml}
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+```
+:::
+
+<br> <br> <br> Activity 3 Instructions
+
+## Automation Tasks
+
+<br> <iframe src="https://giphy.com/embed/7XsFGzfP6WmC4" width="480" height="366" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+-   Provisioning Infrastructure
+-   Testing
+-   Monitoring
+-   Integration & deployment
+
+::: bigger
+Why should we automate the above tasks?
+:::
+
+## Pulumi Example
+
+![](assets/images/02/pulumiaws.png)
+
+```{bash}
+# Create directory and project folder
+mkdir my-virtual-machine && cd my-virtual-machine && pulumi new vm-aws-python
+
+# Create and configure a new stack
+pulumi stack init dev
+pulumi config set aws:region us-east-2
+
+# Preview and run the deployment
+pulumi up
+
+# Remove the app
+pulumi destroy
+pulumi stack rm
+
+```
+
+https://github.com/pulumi/examples/tree/master/aws-py-resources
+
+## Pre-commit hooks
+
+-   run before every commit
+-   configured in `.pre-commit-config.yaml`
+-   when should we NOT use a pre-commit hook?
+-   which tasks are useful to have in a pre-commit hook?
+
+::: {.callout-note icon="false"}
+Black: The uncompromising Python code formatter
+
+*By using Black, you agree to cede control over minutiae of hand-formatting. In return, Black gives you speed, determinism, and freedom from pycodestyle nagging about formatting. You will save time and mental energy for more important matters.*
+:::
+
+## Your turn {.smaller transition="slide-in"}
+
+::: {.callout-note icon="false"}
+## Activity 4: Build a pre-commit hook
+
+```{bash}
+# run in your bash terminal
+pip install pre-commit
+pip install black
+```
+
+Create a file called *.pre-commit.config.yaml* and add the following
+
+```{bash}
+repos:
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 23.10.1
+    hooks:
+    - id: black
+    language_version: python3.12
+```
+
+```{bash}
+# run in your bash terminal
+pre-commit install
+```
+:::
+
+<br> <br> <br> Activity 4 Instructions
+
+## Orchestration
+
+We want to observe...
+
+-   Operations
+
+-   Correctness
+
+-   Internal state
+
+-   Data Flow
+
+-   Errors
+
+::: {.callout-note icon="false"}
+*Observability is...a measure of how well you can understand and explain any state your system can get into, no matter how novel or bizarre \[...\] without needing to ship new code.*
+
+— Honeycomb.io
+:::
+
+## Logging
+
+-   recording execution of your code in a separate file
+-   like `print` statements but for production
+-   useful for long running processes
+-   when you can't simply stop the workflow
+
+## What to log
+
+-   functions/jobs/tests have executed correctly or incorrectly
+-   error messages
+-   inputs and output of a function or job
+-   where things have been saved
+
+## Log Levels
+
+Debug: detail on what the code was doing
+
+Info: something normal happened in the app
+
+Warn/Warning: an unexpected application issue that isn’t fatal
+
+Error: an issue that will make an operation not work, but that won’t crash your app.
+
+Critical: an error so big that the app itself shuts down.
+
+## Logging Examples
+
+<br>
+
+::: columns
+::: {.column width="50%"}
+```{python filename="app.py"}
+#| eval: false
+import logging
+
+# Configure the log object
+logging.basicConfig(
+    format='%(asctime)s - %(message)s',
+    level=logging.INFO
+)
+
+# Log app start
+logging.info("App Started")
+```
+:::
+
+::: {.column width="50%"}
+```{r filename="app.R"}
+#| eval: false
+# Configure the log object
+log <- log4r::logger()
+
+# Log app start
+log4r::info(log, "App Started")
+```
+:::
+:::
+
+## Monitoring
+
+**Prometheus** ![](assets/images/02/icons8-prometheus-48.png)
+
+-   OS monitoring toolkit
+
+-   official [Prometheus client](https://github.com/prometheus/client_python) in Python
+
+-   `{openmetrics}` package to register metrics from a Plumber API or Shiny app.
+
+**Grafana** ![](assets/images/02/icons8-grafana-48.png)
+
+-   GUI for Prometheus
+
+-   [Get Started with Grafana and Prometheus](https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/)
+
+## Containers & Orchestration
+
+![](assets/images/02/dockerk8s.png)
+
+-   **Consistency:** ensure that applications run the same way across different environments.
+-   **Isolation:** isolate applications and their dependencies, preventing conflicts.
+-   **Portability:** run on any system that supports container, reducing "it works on my machine" issues.
+
+## Benefits
+
+-   allows you to package up everything you need to reproduce an environment/application
+-   lightweight system without much overhead
+-   share containers with colleagues without requiring them to have to set up their own local machines
+-   quick testing and debugging
+-   allows you to easily version snapshots of your work
+-   scaling up with limited local compute
+-   Create isolated environments for different experiments.
+
+## Containerization with Docker
+
+-   Isolation of applications inside individual OS-based environments inside virtual machines or physical servers
+
+-   Super lightweight and fast to spin-up (much faster than a VM)
+
+-   Made up of individual layers so its really quick to build
+
+-   Can build isolated applications from their own image
+
+-   Containers are immutable and ephemeral
+
+![](assets/images/02/dockerfile-layers.png)
+
+## Orchestration with Kubernetes
+
+-   orchestrate multiple virtual machines or nodes to run in sync with each other
+
+-   a set of building blocks ("primitives") that integrate well with other deployment platforms and are "extensible" through the K8s API
+
+-    provides mechanisms to deploy, maintain and scale applications based on CPU, memory or custom metrics
+
+## Your turn {.smaller transition="slide-in"}
+
+::: {.callout-note icon="false"}
+## Activity 5: Run docker containers
+
+- Run interactively
+- Run in detached mode
+
+Instructions here
+:::
+
+![](assets/images/02/file-image-container.png)
+::: notes
+dockerfile - is a script of instructions for how to build an image
+
+image - everything you need to run an application - all the layers that build the environment, dependencies, libraries, files
+
+container - isolated instance of a running image. you can create, stop, start, restart, containers. When a container is removed/deleted any changes to its state that arent stored in some kind of persistent storage disappear. Called ephemeral container - Think of a container as a snapshot in time of a particular application.
+
+Missing piece - repository - for images, like dockerhub, container registry cloud services, private registries
+
+Build - Run - Push
+:::
+
+## Modes for running containers
+
++------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Mode                                                       | Run command       | Use case                                                                                                                                                                                                           |
++============================================================+===================+====================================================================================================================================================================================================================+
+| Detached                                                   | `docker run -d`   | This runs the container in the **background** so the container keeps running until the application process exits, or you stop the container. Detached mode is often used for production purposes.                  |
++------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Interactive + terminal                                     | `docker run -it`  | This runs the container in the **foreground** so you are unable to access the command prompt. Interactive mode is often used for development and testing.                                                          |
++------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Remove everything once the container is done with its task | `docker run --rm` | This mode is used on foreground containers that perform **short-term tasks** such as tests or database backups. Once it is removed anything you may have downloaded or created in the container is also destroyed. |
++------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+## Container Debugging
+
+<br>
+
+```{bash}         
+docker run -it -d ubuntu
+docker container ls -a 
+docker exec -it CONTAINER_ID bash
+
+docker container run -d --name mydb \
+ --name mydb \
+ -e MYSQL_ROOT_PASSWORD=my-secret-pw \ 
+ mysql
+ 
+ docker container logs mydb
+```
+
+## Your turn {.smaller transition="slide-in"}
+
+::: {.callout-note icon="false"}
+## Activity 6: Debug your containers
+
+- Use exec mode
+- Get container logs
+
+Instructions here
+:::
+
+
+
+

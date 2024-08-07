@@ -1,0 +1,16 @@
+---
+title: "Dev-Ops for Data Scientists"
+subtitle: "Post-Production"
+format: 
+  revealjs:
+    slide-number: true
+    footer: <https://github.com/posit-conf-2024/dev-ops>
+    preview-links: auto
+    incremental: true
+    theme: [default, styles.scss]
+    width: 1600
+    height: 920
+execute: 
+  eval: false
+---
+
