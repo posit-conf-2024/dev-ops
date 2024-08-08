@@ -1,7 +1,9 @@
 ---
 title: Devops for Data Scientists Workshop
 subtitle: Exercise Worksheet
-format: html
+format: 
+  html:
+    toc: true
 execute: 
   eval: false
 editor: 
@@ -410,7 +412,7 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
 ---
 
-Create a new branch, add, commit, and push your code to main.
+## Create a new branch, add, commit, and push your code to main.
 
 ``` bash
 git checkout -b {yourname}/action
@@ -446,7 +448,13 @@ repos:
     rev: 23.10.1
     hooks:
     - id: black
-    language_version: python3.12
+    language_version: python3.11.4
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    - id: check-yaml
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
 ---
 
 ```{bash}
@@ -454,7 +462,7 @@ repos:
 pre-commit install
 ```
 
-Stage and commit your code and fix any errors that the hooks identify.
+## Stage and commit your code and fix any errors that the hooks identify.
 
 ``` bash
 git checkout -b {yourname}/precommit
@@ -474,8 +482,8 @@ python file and see what was modified.
 
 ![](images/hooks.png)
 
-Try adding some other hooks that look interesting or read about the
-hooks and packages that you've been using:
+Find out a little more about the hooks and packages that you've been
+using:
 
 -   [R
     hooks](https://lorenzwalthert.github.io/precommit/articles/available-hooks.html)
@@ -514,6 +522,10 @@ different options or “flags.”
     container.
 
 ```{bash}
+ls
+whoami
+hostname
+
 sudo docker run -it ubuntu bash
 ls
 whoami
@@ -525,15 +537,11 @@ container in the foreground so you are unable to access the command
 prompt for your original alpine server. For this reason interactive mode
 is often used for development and testing.
 
-Run the container in detached mode and then list all your containers and
-check your processes. Stop the container using its name or ID.
+Run the container in detached mode and then list all your containers.
 
 ```{bash}
-docker run -d ubuntu
-docker container ls -a
-docker ps -a 
-docker container stop [name_of_container]
-
+sudo docker run -d ubuntu
+sudo docker container ls -a
 ```
 
 You should see that the ubuntu container was created and then exited.
@@ -542,36 +550,46 @@ still accessible.
 
 Detached containers run in the background, so the container keeps
 running until the application process exits (which is what happened
-here), or you stop the container. For this reason detached mode is often
-used for production purposes.
+here), or you stop the container. You can stop a container with
+`sudo docker container stop {name or ID of container}`. For this reason
+detached mode is often used for production purposes.
 
 # Activity 6
 
 ## Debugging Containers
 
-The docker exec command is very similar to the docker run -it command.
-Both are very helpful for debugging containers as they allow you to jump
-inside your container instance. The exec command needs a running
-container to execute any command, whereas the -it flag starts a
-container and places you into a terminal in interactive mode. Use the
-docker exec command to execute a bash command in a running container.
-This can be used to execute any command within a running container.
+The `docker exec` command is very similar to the docker run `-it`
+command. Both are very helpful for debugging containers as they allow
+you to jump inside your container instance.
 
-Be careful not use docker exec to change your container as once it is
-deleted you will lose any changes you’ve made!
+-   The exec command needs a running container to execute any command,
+    whereas the `-it` flag starts a container and places you into a
+    terminal in interactive mode.
 
-docker exec requires two arguments - the container and the command you
-want to run.
+-   Use the `docker exec` command to execute a bash command in a running
+    container. This can be used to execute any command within a running
+    container.
 
-docker exec \[OPTIONS\] CONTAINER \[COMMAND\] \[ARG...\] Use docker run
--it to jump into an ubuntu container. `docker run -it ubuntu` `exit` Use
-docker exec to run commands in a container
+::: callout-caution
+Be careful not to use `docker exec` to change your container as once it
+is deleted you will lose any changes you’ve made!
+
+Remember containers are ephemeral! For change you should change the
+dockerfile or image.
+:::
+
+`docker exec` requires two arguments - the container name and the
+command you want to run.
+
+docker exec \[OPTIONS\] CONTAINER \[COMMAND\] \[ARG...\]
 
 ```         
-docker container ls -a # to get a container ID of a running container
-docker exec -it CONTAINER_ID bash
+sudo docker run -d nginx
+sudo docker container ls -a #grab the nginx container ID that you just started
+sudo docker exec -it CONTAINER_ID bash
 exit
-docker exec CONTAINER_ID ls
+sudo docker exec CONTAINER_ID ls
+sudo docker container stop CONTAINER_ID
 ```
 
 Lets run a detached MySQL container and then check out some logs. The
@@ -581,19 +599,21 @@ purposes. (The forward slashes below allow you to use a new line for
 your code)
 
 ```         
- docker container run -d --name mydb \
+ sudo docker container run -d --name mydb \
  -e MYSQL_ROOT_PASSWORD=my-secret-pw \ 
  mysql
  
-docker container logs mydb
+sudo docker container logs mydb
+sudo docker container stop mydb
 ```
 
 # Activity 7
 
 ## Create a simple FastAPI
 
-In your vscode or Python editor create a file called app.py with the
-following code:
+In your vscode or Python editor create a file called
+[app.py](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/simple-app.py)
+with the following code:
 
 ```{python}
 from fastapi import FastAPI
@@ -607,9 +627,10 @@ def say_hello(name):
 
 ```
 
-Run the app with `uvicorn app:app --reload`. Click into the workbench
-icon on the left side of the screen and go to the proxied server link
-that shows up. This link should have an error 😥
+Run the app with `uvicorn app:app --reload` in the terminal. Click into
+the workbench icon on the left side of the screen and go to the proxied
+server link that shows up. This link should have an error that says
+`detail: not found`. 😥
 
 ![](images/vscodeserver.png)
 
@@ -619,7 +640,8 @@ It should work now!!!
 ![](images/sayhello.png)
 
 Add \`/docs#/ to the end of the initial url and click enter. It should
-bring you to the Swagger documentation!
+bring you to the Swagger documentation! You can also test the API from
+the Swagger docs as well.
 
 ![](images/swagger.png)
 
@@ -631,17 +653,27 @@ bring you to the Swagger documentation!
 This code was tested using Python 3.11.4.
 :::
 
-Create and activate a virtual environment.
+In your terminal run:
 
-```         
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip setuptools wheel
+``` bash
+pip install fastapi
+pip install pydantic
+pip install joblib
+pip install pandas
+pip install rsconnect-python
+pip freeze > requirements.txt
 ```
 
-Create 3 files
+Modify and run your
+[`model_python.py`](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/model_python_v2.py)
+:
 
-`model.py` - our linear regression model file
+-   Add this line to the beginning of your script: `import joblib`
+
+-   Add this line to the end of your
+    script:`joblib.dump(model, 'penguin_model.joblib')`
+
+-   Remove the print statements at the end of your script.
 
 ```         
 """
@@ -670,7 +702,11 @@ model = LinearRegression().fit(X, y)
 joblib.dump(model, 'penguin_model.joblib')
 ```
 
-`main.py` - our prediction fastapi
+Run your script again with `python model_python.py`
+
+Create a new file called
+[`main.py`](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/main.py).
+This will be our API script.
 
 ```         
 from fastapi import FastAPI, HTTPException
@@ -718,61 +754,25 @@ def predict(features: PenguinFeatures):
     return {"body_mass_g": prediction}
 ```
 
-`requirements.txt` - package requirements
+## Get the server url and API key for our Connect environment
 
-```         
-annotated-types==0.7.0
-anyio==4.4.0
-click==8.1.7
-duckdb==1.0.0
-fastapi==0.112.0
-h11==0.14.0
-idna==3.7
-joblib==1.4.2
-numpy==2.0.1
-palmerpenguins==0.1.4
-pandas==2.2.2
-pydantic==2.8.2
-pydantic_core==2.20.1
-PyJWT==2.9.0
-python-dateutil==2.9.0.post0
-pytz==2024.1
-rsconnect_python==1.24.0
-scikit-learn==1.5.1
-scipy==1.14.0
-semver==2.13.0
-six==1.16.0
-sniffio==1.3.1
-starlette==0.37.2
-threadpoolctl==3.5.0
-typing_extensions==4.12.2
-tzdata==2024.1
-uvicorn==0.30.5
-```
-
-Install our requirements file
-
-```         
-pip install -r requirements.txt
-```
-
-Login to your server environment and click on the Connect widget.
+-   Login to your server environment and click on the Connect widget.
 
 ![](images/connect-widget.png)
 
-Start the Automated Stock report jumpstart example. Click through until
-you get to Step 5 and then copy the url. This is the url for your
-Connect server. Close out of the jumpstart example.
+-   Start the Automated Stock report jumpstart example. Click through
+    until you get to Step 5 and then copy the url. This is the url for
+    your Connect server. Close out of the jumpstart example.
 
 ![](images/server-url.png)
 
-Click on your name \> API Keys tab. Create an API key and note it down
-somewhere safe.
+-   Click on your name \> API Keys tab. Create an API key and note it
+    down somewhere safe.
 
 ![](images/api-tab.png)
 
-Jump back to your vscode virtual environment and add your server url and
-api key to the rsconnect-python CLI.
+Jump back to your vscode terminal and add your server url and api key to
+the rsconnect-python CLI.
 
 To add a server, you need the following:
 
@@ -784,12 +784,12 @@ To add a server, you need the following:
 ```         
 pip install rsconnect-python
 rsconnect add \
-    --server https://my.connect.server/ \
+    --server {server url from step 5 jumpstart example} \
     --name myServer \
-    --api-key $CONNECT_API_KEY
+    --api-key {$CONNECT_API_KEY}
 ```
 
-Deploy our FastAPI to the Connect server.
+## Deploy our FastAPI to the Connect server
 
 ```         
 rsconnect deploy fastapi \
@@ -797,6 +797,11 @@ rsconnect deploy fastapi \
     --entrypoint main:app \
     ./
 ```
+
+Visit the App in your Connect homepage. To test out the predictions
+change the example values and click `Try it out` and then `Execute.`
+
+{ "species": "Adelie", "sex": "female", "bill_length_mm": 40.0 }
 
 # Activity 9
 
@@ -817,7 +822,7 @@ curl -X 'POST' \
 Fix the authorization error by passing in your API key.
 
 ```         
-export CONNECT_API_KEY=So4JUDFJ01mziHx2QudAw9iUJt2z0Ylj
+export CONNECT_API_KEY=xxxxx
 
 curl -X 'POST' \
   'https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict' \
@@ -835,17 +840,23 @@ curl -X 'POST' \
 
 ## Create a Shiny UI for the prediction API
 
-Open an Rstudio IDE session and create a shiny app file called `app.R`.
-Add your API key to your .Renviron file. You can do this easily using
-the usethis package: `usethis::edit_r_environ()`.
+-   Open an Rstudio IDE session and create a new project.
+-   Initialize with renv.
+-   Create a shiny app file called `app.R`.
+-   Add your API key to your .Renviron file. You can do this easily
+    using the usethis package: `usethis::edit_r_environ()`.
 
-app.R
+```{r}
 
-```         
+renv::init()
+usethis::edit_r_environ()
+
+key="xxxxxx"
+
 library(shiny)
 library(httr2)
 
-# Correct API URL
+# API URL
 api_url <- "https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict"
 
 ui <- fluidPage(
@@ -923,11 +934,33 @@ server <- function(input, output) {
 
 # Run the application
 shinyApp(ui = ui, server = server)
+
+
+
 ```
 
-Push-button deploy using the following instructions:
-https://docs.posit.co/connect/user/publishing-rstudio/
+## [Push-button deploy to Connect:](https://docs.posit.co/connect/user/publishing-rstudio/)
 
-# Activity 11: Optional
+Press on the little blue button in the middle of your IDE and follow the
+instructions to deploy to Connect.
 
-## Add logging to your Shiny App
+![](images/blueeye.png)
+
+-   Give your app a name
+
+-   Make sure you're only deploying the app.r file
+
+-   Click Deploy
+
+![](images/pushbuttondeploy.png)
+
+Your app should show an error when you press predict because the Connect
+server doesnt have your API key credentials. Check the app logs to
+confirm.
+
+![](images/logsapp.png)
+
+Add your key in the Connect app `vars` tab and press predict again. It
+should work!
+
+![](images/vars.png)

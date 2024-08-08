@@ -71,10 +71,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#activity-1" id="toc-activity-1" class="nav-link active" data-scroll-target="#activity-1">Activity 1</a>
+  <ul class="collapse">
+  <li><a href="#fork-repository" id="toc-fork-repository" class="nav-link" data-scroll-target="#fork-repository">Fork repository</a></li>
+  <li><a href="#open-a-code-editor-in-workbench" id="toc-open-a-code-editor-in-workbench" class="nav-link" data-scroll-target="#open-a-code-editor-in-workbench">Open a code editor in Workbench</a></li>
+  <li><a href="#initialize-a-new-git-repository" id="toc-initialize-a-new-git-repository" class="nav-link" data-scroll-target="#initialize-a-new-git-repository">Initialize a new git repository</a></li>
+  <li><a href="#create-some-code-content" id="toc-create-some-code-content" class="nav-link" data-scroll-target="#create-some-code-content">Create some code content</a></li>
+  <li><a href="#add-and-commit-your-code-locally" id="toc-add-and-commit-your-code-locally" class="nav-link" data-scroll-target="#add-and-commit-your-code-locally">Add and commit your code locally</a></li>
+  <li><a href="#push-local-repo-to-remote-github-repo" id="toc-push-local-repo-to-remote-github-repo" class="nav-link" data-scroll-target="#push-local-repo-to-remote-github-repo">Push local repo to remote github repo</a></li>
+  <li><a href="#create-a-branch-and-merge-new-file" id="toc-create-a-branch-and-merge-new-file" class="nav-link" data-scroll-target="#create-a-branch-and-merge-new-file">Create a branch and merge new file</a></li>
+  </ul></li>
+  <li><a href="#activity-2" id="toc-activity-2" class="nav-link" data-scroll-target="#activity-2">Activity 2</a>
+  <ul class="collapse">
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
+  <li><a href="#add-commit-push-your-code" id="toc-add-commit-push-your-code" class="nav-link" data-scroll-target="#add-commit-push-your-code">Add, commit, push your code</a></li>
+  </ul></li>
+  <li><a href="#activity-3" id="toc-activity-3" class="nav-link" data-scroll-target="#activity-3">Activity 3</a>
+  <ul class="collapse">
+  <li><a href="#create-github-actions" id="toc-create-github-actions" class="nav-link" data-scroll-target="#create-github-actions">Create github actions</a></li>
+  <li><a href="#create-a-new-branch-add-commit-and-push-your-code-to-main." id="toc-create-a-new-branch-add-commit-and-push-your-code-to-main." class="nav-link" data-scroll-target="#create-a-new-branch-add-commit-and-push-your-code-to-main.">Create a new branch, add, commit, and push your code to main.</a></li>
+  </ul></li>
+  <li><a href="#activity-4" id="toc-activity-4" class="nav-link" data-scroll-target="#activity-4">Activity 4</a>
+  <ul class="collapse">
+  <li><a href="#pre-commit-hooks" id="toc-pre-commit-hooks" class="nav-link" data-scroll-target="#pre-commit-hooks">Pre-commit hooks</a></li>
+  <li><a href="#stage-and-commit-your-code-and-fix-any-errors-that-the-hooks-identify." id="toc-stage-and-commit-your-code-and-fix-any-errors-that-the-hooks-identify." class="nav-link" data-scroll-target="#stage-and-commit-your-code-and-fix-any-errors-that-the-hooks-identify.">Stage and commit your code and fix any errors that the hooks identify.</a></li>
+  </ul></li>
+  <li><a href="#activity-5" id="toc-activity-5" class="nav-link" data-scroll-target="#activity-5">Activity 5</a>
+  <ul class="collapse">
+  <li><a href="#docker-run" id="toc-docker-run" class="nav-link" data-scroll-target="#docker-run">Docker Run</a></li>
+  </ul></li>
+  <li><a href="#activity-6" id="toc-activity-6" class="nav-link" data-scroll-target="#activity-6">Activity 6</a>
+  <ul class="collapse">
+  <li><a href="#debugging-containers" id="toc-debugging-containers" class="nav-link" data-scroll-target="#debugging-containers">Debugging Containers</a></li>
+  </ul></li>
+  <li><a href="#activity-7" id="toc-activity-7" class="nav-link" data-scroll-target="#activity-7">Activity 7</a>
+  <ul class="collapse">
+  <li><a href="#create-a-simple-fastapi" id="toc-create-a-simple-fastapi" class="nav-link" data-scroll-target="#create-a-simple-fastapi">Create a simple FastAPI</a></li>
+  </ul></li>
+  <li><a href="#activity-8" id="toc-activity-8" class="nav-link" data-scroll-target="#activity-8">Activity 8</a>
+  <ul class="collapse">
+  <li><a href="#create-a-fastapi-using-our-penguin-model" id="toc-create-a-fastapi-using-our-penguin-model" class="nav-link" data-scroll-target="#create-a-fastapi-using-our-penguin-model">Create a FastAPI using our penguin model</a></li>
+  <li><a href="#get-the-server-url-and-api-key-for-our-connect-environment" id="toc-get-the-server-url-and-api-key-for-our-connect-environment" class="nav-link" data-scroll-target="#get-the-server-url-and-api-key-for-our-connect-environment">Get the server url and API key for our Connect environment</a></li>
+  <li><a href="#deploy-our-fastapi-to-the-connect-server" id="toc-deploy-our-fastapi-to-the-connect-server" class="nav-link" data-scroll-target="#deploy-our-fastapi-to-the-connect-server">Deploy our FastAPI to the Connect server</a></li>
+  </ul></li>
+  <li><a href="#activity-9" id="toc-activity-9" class="nav-link" data-scroll-target="#activity-9">Activity 9</a>
+  <ul class="collapse">
+  <li><a href="#test-the-api-in-your-terminal" id="toc-test-the-api-in-your-terminal" class="nav-link" data-scroll-target="#test-the-api-in-your-terminal">Test the API in your terminal</a></li>
+  </ul></li>
+  <li><a href="#activity-10" id="toc-activity-10" class="nav-link" data-scroll-target="#activity-10">Activity 10</a>
+  <ul class="collapse">
+  <li><a href="#create-a-shiny-ui-for-the-prediction-api" id="toc-create-a-shiny-ui-for-the-prediction-api" class="nav-link" data-scroll-target="#create-a-shiny-ui-for-the-prediction-api">Create a Shiny UI for the prediction API</a></li>
+  <li><a href="#push-button-deploy-to-connect" id="toc-push-button-deploy-to-connect" class="nav-link" data-scroll-target="#push-button-deploy-to-connect">Push-button deploy to Connect:</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -377,7 +437,9 @@ git push</code></pre>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> workflows/</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> .yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Copy the [following(https://docs.github.com/en/actions/writing-workflows/quickstart)] into your yaml file.</p>
-<p>Create a new branch, add, commit, and push your code to main.</p>
+</section>
+<section id="create-a-new-branch-add-commit-and-push-your-code-to-main." class="level2">
+<h2 class="anchored" data-anchor-id="create-a-new-branch-add-commit-and-push-your-code-to-main.">Create a new branch, add, commit, and push your code to main.</h2>
 <div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> {yourname}/action</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add ~/devops_classwork/.github/workflows/.yaml</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"added an action"</span></span>
@@ -403,7 +465,9 @@ git push</code></pre>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run in your bash terminal</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pre-commit</span> install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Stage and commit your code and fix any errors that the hooks identify.</p>
+</section>
+<section id="stage-and-commit-your-code-and-fix-any-errors-that-the-hooks-identify." class="level2">
+<h2 class="anchored" data-anchor-id="stage-and-commit-your-code-and-fix-any-errors-that-the-hooks-identify.">Stage and commit your code and fix any errors that the hooks identify.</h2>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> {yourname}/precommit</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .pre-commit.config.yaml</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add model_python.py</span>
@@ -411,7 +475,7 @@ git push</code></pre>
 <p>You will see that parts of your commits have failed. The hook automatically “fixes” errors it finds. Keep adding and committing your files until your commits have all passed.</p>
 <p>If the <code>black</code> commit is skipped try calling it directly with <code>pre-commit run black -a</code>. You can also run a single file outside of the hook using <code>black model_python.py</code> as well. You can open the model python file and see what was modified.</p>
 <p><img src="images/hooks.png" class="img-fluid"></p>
-<p>Try adding some other hooks that look interesting or read about the hooks and packages that you’ve been using:</p>
+<p>Find out a little more about the hooks and packages that you’ve been using:</p>
 <ul>
 <li><a href="https://lorenzwalthert.github.io/precommit/articles/available-hooks.html">R hooks</a></li>
 <li><a href="https://github.com/pre-commit/pre-commit-hooks">Pre-commit hooks</a></li>
@@ -437,48 +501,70 @@ git push</code></pre>
 <li><p>Run an interactive container with the bash shell attached. Run a few linux commands to explore your environment and then exit the container.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> docker run <span class="at">-it</span> ubuntu bash</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> docker run <span class="at">-it</span> ubuntu bash</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Exit the container with Ctrl+D or exit. This docker command runs the container in the foreground so you are unable to access the command prompt for your original alpine server. For this reason interactive mode is often used for development and testing.</p>
-<p>Run the container in detached mode and then list all your containers and check your processes. Stop the container using its name or ID.</p>
+<p>Run the container in detached mode and then list all your containers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> ubuntu</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> container ls <span class="at">-a</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-a</span> </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> container stop <span class="pp">[</span><span class="ss">name_of_container</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> docker run <span class="at">-d</span> ubuntu</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> docker container ls <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You should see that the ubuntu container was created and then exited. The container ID is shown with an exited status and the command line is still accessible.</p>
-<p>Detached containers run in the background, so the container keeps running until the application process exits (which is what happened here), or you stop the container. For this reason detached mode is often used for production purposes.</p>
+<p>Detached containers run in the background, so the container keeps running until the application process exits (which is what happened here), or you stop the container. You can stop a container with <code>sudo docker container stop {name or ID of container}</code>. For this reason detached mode is often used for production purposes.</p>
 </section>
 </section>
 <section id="activity-6" class="level1">
 <h1>Activity 6</h1>
 <section id="debugging-containers" class="level2">
 <h2 class="anchored" data-anchor-id="debugging-containers">Debugging Containers</h2>
-<p>The docker exec command is very similar to the docker run -it command. Both are very helpful for debugging containers as they allow you to jump inside your container instance. The exec command needs a running container to execute any command, whereas the -it flag starts a container and places you into a terminal in interactive mode. Use the docker exec command to execute a bash command in a running container. This can be used to execute any command within a running container.</p>
-<p>Be careful not use docker exec to change your container as once it is deleted you will lose any changes you’ve made!</p>
-<p>docker exec requires two arguments - the container and the command you want to run.</p>
-<p>docker exec [OPTIONS] CONTAINER [COMMAND] [ARG…] Use docker run -it to jump into an ubuntu container. <code>docker run -it ubuntu</code> <code>exit</code> Use docker exec to run commands in a container</p>
-<pre><code>docker container ls -a # to get a container ID of a running container
-docker exec -it CONTAINER_ID bash
+<p>The <code>docker exec</code> command is very similar to the docker run <code>-it</code> command. Both are very helpful for debugging containers as they allow you to jump inside your container instance.</p>
+<ul>
+<li><p>The exec command needs a running container to execute any command, whereas the <code>-it</code> flag starts a container and places you into a terminal in interactive mode.</p></li>
+<li><p>Use the <code>docker exec</code> command to execute a bash command in a running container. This can be used to execute any command within a running container.</p></li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Be careful not to use <code>docker exec</code> to change your container as once it is deleted you will lose any changes you’ve made!</p>
+<p>Remember containers are ephemeral! For change you should change the dockerfile or image.</p>
+</div>
+</div>
+<p><code>docker exec</code> requires two arguments - the container name and the command you want to run.</p>
+<p>docker exec [OPTIONS] CONTAINER [COMMAND] [ARG…]</p>
+<pre><code>sudo docker run -d nginx
+sudo docker container ls -a #grab the nginx container ID that you just started
+sudo docker exec -it CONTAINER_ID bash
 exit
-docker exec CONTAINER_ID ls</code></pre>
+sudo docker exec CONTAINER_ID ls
+sudo docker container stop CONTAINER_ID</code></pre>
 <p>Lets run a detached MySQL container and then check out some logs. The database requires a password to work. In production you should never pass credentials directly in your command but we will do it for testing purposes. (The forward slashes below allow you to use a new line for your code)</p>
-<pre><code> docker container run -d --name mydb \
+<pre><code> sudo docker container run -d --name mydb \
  -e MYSQL_ROOT_PASSWORD=my-secret-pw \ 
  mysql
  
-docker container logs mydb</code></pre>
+sudo docker container logs mydb
+sudo docker container stop mydb</code></pre>
 </section>
 </section>
 <section id="activity-7" class="level1">
 <h1>Activity 7</h1>
 <section id="create-a-simple-fastapi" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-simple-fastapi">Create a simple FastAPI</h2>
-<p>In your vscode or Python editor create a file called app.py with the following code:</p>
+<p>In your vscode or Python editor create a file called <a href="https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/simple-app.py">app.py</a> with the following code:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> uvicorn</span>
@@ -489,11 +575,11 @@ docker container logs mydb</code></pre>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> say_hello(name):</span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"Hello from Seattle"</span>: name}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Run the app with <code>uvicorn app:app --reload</code>. Click into the workbench icon on the left side of the screen and go to the proxied server link that shows up. This link should have an error 😥</p>
+<p>Run the app with <code>uvicorn app:app --reload</code> in the terminal. Click into the workbench icon on the left side of the screen and go to the proxied server link that shows up. This link should have an error that says <code>detail: not found</code>. 😥</p>
 <p><img src="images/vscodeserver.png" class="img-fluid"></p>
 <p>Add <code>/say_hello/{your-name-here}</code> to the end of the url and click enter. It should work now!!!</p>
 <p><img src="images/sayhello.png" class="img-fluid"></p>
-<p>Add `/docs#/ to the end of the initial url and click enter. It should bring you to the Swagger documentation!</p>
+<p>Add `/docs#/ to the end of the initial url and click enter. It should bring you to the Swagger documentation! You can also test the API from the Swagger docs as well.</p>
 <p><img src="images/swagger.png" class="img-fluid"></p>
 </section>
 </section>
@@ -514,12 +600,19 @@ Note
 <p>This code was tested using Python 3.11.4.</p>
 </div>
 </div>
-<p>Create and activate a virtual environment.</p>
-<pre><code>python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip setuptools wheel</code></pre>
-<p>Create 3 files</p>
-<p><code>model.py</code> - our linear regression model file</p>
+<p>In your terminal run:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install fastapi</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pydantic</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install joblib</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pandas</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install rsconnect-python</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Modify and run your <a href="https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/model_python_v2.py"><code>model_python.py</code></a> :</p>
+<ul>
+<li><p>Add this line to the beginning of your script: <code>import joblib</code></p></li>
+<li><p>Add this line to the end of your script:<code>joblib.dump(model, 'penguin_model.joblib')</code></p></li>
+<li><p>Remove the print statements at the end of your script.</p></li>
+</ul>
 <pre><code>"""
 This script creates a linear regression model
 to predict the body mass of palmer penguins
@@ -544,7 +637,8 @@ y = df["body_mass_g"]
 
 model = LinearRegression().fit(X, y)
 joblib.dump(model, 'penguin_model.joblib')</code></pre>
-<p><code>main.py</code> - our prediction fastapi</p>
+<p>Run your script again with <code>python model_python.py</code></p>
+<p>Create a new file called <a href="https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/main.py"><code>main.py</code></a>. This will be our API script.</p>
 <pre><code>from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import joblib
@@ -588,43 +682,22 @@ def predict(features: PenguinFeatures):
 
     # Return the prediction
     return {"body_mass_g": prediction}</code></pre>
-<p><code>requirements.txt</code> - package requirements</p>
-<pre><code>annotated-types==0.7.0
-anyio==4.4.0
-click==8.1.7
-duckdb==1.0.0
-fastapi==0.112.0
-h11==0.14.0
-idna==3.7
-joblib==1.4.2
-numpy==2.0.1
-palmerpenguins==0.1.4
-pandas==2.2.2
-pydantic==2.8.2
-pydantic_core==2.20.1
-PyJWT==2.9.0
-python-dateutil==2.9.0.post0
-pytz==2024.1
-rsconnect_python==1.24.0
-scikit-learn==1.5.1
-scipy==1.14.0
-semver==2.13.0
-six==1.16.0
-sniffio==1.3.1
-starlette==0.37.2
-threadpoolctl==3.5.0
-typing_extensions==4.12.2
-tzdata==2024.1
-uvicorn==0.30.5</code></pre>
-<p>Install our requirements file</p>
-<pre><code>pip install -r requirements.txt</code></pre>
-<p>Login to your server environment and click on the Connect widget.</p>
+</section>
+<section id="get-the-server-url-and-api-key-for-our-connect-environment" class="level2">
+<h2 class="anchored" data-anchor-id="get-the-server-url-and-api-key-for-our-connect-environment">Get the server url and API key for our Connect environment</h2>
+<ul>
+<li>Login to your server environment and click on the Connect widget.</li>
+</ul>
 <p><img src="images/connect-widget.png" class="img-fluid"></p>
-<p>Start the Automated Stock report jumpstart example. Click through until you get to Step 5 and then copy the url. This is the url for your Connect server. Close out of the jumpstart example.</p>
+<ul>
+<li>Start the Automated Stock report jumpstart example. Click through until you get to Step 5 and then copy the url. This is the url for your Connect server. Close out of the jumpstart example.</li>
+</ul>
 <p><img src="images/server-url.png" class="img-fluid"></p>
-<p>Click on your name &gt; API Keys tab. Create an API key and note it down somewhere safe.</p>
+<ul>
+<li>Click on your name &gt; API Keys tab. Create an API key and note it down somewhere safe.</li>
+</ul>
 <p><img src="images/api-tab.png" class="img-fluid"></p>
-<p>Jump back to your vscode virtual environment and add your server url and api key to the rsconnect-python CLI.</p>
+<p>Jump back to your vscode terminal and add your server url and api key to the rsconnect-python CLI.</p>
 <p>To add a server, you need the following:</p>
 <ol type="1">
 <li>Your server URL</li>
@@ -633,14 +706,18 @@ uvicorn==0.30.5</code></pre>
 </ol>
 <pre><code>pip install rsconnect-python
 rsconnect add \
-    --server https://my.connect.server/ \
+    --server {server url from step 5 jumpstart example} \
     --name myServer \
-    --api-key $CONNECT_API_KEY</code></pre>
-<p>Deploy our FastAPI to the Connect server.</p>
+    --api-key {$CONNECT_API_KEY}</code></pre>
+</section>
+<section id="deploy-our-fastapi-to-the-connect-server" class="level2">
+<h2 class="anchored" data-anchor-id="deploy-our-fastapi-to-the-connect-server">Deploy our FastAPI to the Connect server</h2>
 <pre><code>rsconnect deploy fastapi \
     -n myServer \
     --entrypoint main:app \
     ./</code></pre>
+<p>Visit the App in your Connect homepage. To test out the predictions change the example values and click <code>Try it out</code> and then <code>Execute.</code></p>
+<p>{ “species”: “Adelie”, “sex”: “female”, “bill_length_mm”: 40.0 }</p>
 </section>
 </section>
 <section id="activity-9" class="level1">
@@ -657,7 +734,7 @@ rsconnect add \
   "bill_length_mm": 40.0
 }'</code></pre>
 <p>Fix the authorization error by passing in your API key.</p>
-<pre><code>export CONNECT_API_KEY=So4JUDFJ01mziHx2QudAw9iUJt2z0Ylj
+<pre><code>export CONNECT_API_KEY=xxxxx
 
 curl -X 'POST' \
   'https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict' \
@@ -675,96 +752,115 @@ curl -X 'POST' \
 <h1>Activity 10</h1>
 <section id="create-a-shiny-ui-for-the-prediction-api" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-shiny-ui-for-the-prediction-api">Create a Shiny UI for the prediction API</h2>
-<p>Open an Rstudio IDE session and create a shiny app file called <code>app.R</code>. Add your API key to your .Renviron file. You can do this easily using the usethis package: <code>usethis::edit_r_environ()</code>.</p>
-<p>app.R</p>
-<pre><code>library(shiny)
-library(httr2)
-
-# Correct API URL
-api_url &lt;- "https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict"
-
-ui &lt;- fluidPage(
-  titlePanel("Penguin Mass Predictor"),
-  
-  # Model input values
-  sidebarLayout(
-    sidebarPanel(
-      sliderInput(
-        "bill_length",
-        "Bill Length (mm)",
-        min = 30,
-        max = 60,
-        value = 45,
-        step = 0.1
-      ),
-      selectInput(
-        "sex",
-        "Sex",
-        c("male", "female") # Ensure values match what FastAPI expects
-      ),
-      selectInput(
-        "species",
-        "Species",
-        c("Adelie", "Chinstrap", "Gentoo")
-      ),
-      # Get model predictions
-      actionButton(
-        "predict",
-        "Predict"
-      )
-    ),
-    
-    mainPanel(
-      h2("Penguin Parameters"),
-      verbatimTextOutput("vals"),
-      h2("Predicted Penguin Mass (g)"),
-      textOutput("pred")
-    )
-  )
-)
-
-server &lt;- function(input, output) {
-  # Input params
-  vals &lt;- reactive(
-    list(
-      bill_length_mm = input$bill_length,
-      species = input$species, # Send the species directly
-      sex = tolower(input$sex) # Ensure "male" and "female" are lowercase
-    )
-  )
-  
-  # Fetch prediction from API
-  pred &lt;- eventReactive(
-    input$predict,
-    {
-      req &lt;- httr2::request(api_url) |&gt;
-        httr2::req_body_json(vals()) |&gt;
-        httr2::req_headers(
-          "Content-Type" = "application/json",
-          "Authorization" = paste("Bearer", Sys.getenv("key")) # Add API key to headers
-        ) |&gt;
-        httr2::req_perform()
-      
-      httr2::resp_body_json(req)
-    },
-    ignoreInit = TRUE
-  )
-  
-  
-  # Render to UI
-  output$pred &lt;- renderText(pred()$body_mass_g)
-  output$vals &lt;- renderPrint(vals())
-}
-
-# Run the application
-shinyApp(ui = ui, server = server)</code></pre>
-<p>Push-button deploy using the following instructions: https://docs.posit.co/connect/user/publishing-rstudio/</p>
+<ul>
+<li>Open an Rstudio IDE session and create a new project.</li>
+<li>Initialize with renv.</li>
+<li>Create a shiny app file called <code>app.R</code>.</li>
+<li>Add your API key to your .Renviron file. You can do this easily using the usethis package: <code>usethis::edit_r_environ()</code>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">init</span>()</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>key<span class="ot">=</span><span class="st">"xxxxxx"</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr2)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># API URL</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>api_url <span class="ot">&lt;-</span> <span class="st">"https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict"</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">"Penguin Mass Predictor"</span>),</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Model input values</span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sliderInput</span>(</span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"bill_length"</span>,</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Bill Length (mm)"</span>,</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">min =</span> <span class="dv">30</span>,</span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">max =</span> <span class="dv">60</span>,</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">value =</span> <span class="dv">45</span>,</span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">step =</span> <span class="fl">0.1</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">selectInput</span>(</span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">"sex"</span>,</span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Sex"</span>,</span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>) <span class="co"># Ensure values match what FastAPI expects</span></span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a>      <span class="fu">selectInput</span>(</span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">"species"</span>,</span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Species"</span>,</span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>)</span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Get model predictions</span></span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">actionButton</span>(</span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a>        <span class="st">"predict"</span>,</span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Predict"</span></span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a>      <span class="fu">h2</span>(<span class="st">"Penguin Parameters"</span>),</span>
+<span id="cb35-45"><a href="#cb35-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">verbatimTextOutput</span>(<span class="st">"vals"</span>),</span>
+<span id="cb35-46"><a href="#cb35-46" aria-hidden="true" tabindex="-1"></a>      <span class="fu">h2</span>(<span class="st">"Predicted Penguin Mass (g)"</span>),</span>
+<span id="cb35-47"><a href="#cb35-47" aria-hidden="true" tabindex="-1"></a>      <span class="fu">textOutput</span>(<span class="st">"pred"</span>)</span>
+<span id="cb35-48"><a href="#cb35-48" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb35-49"><a href="#cb35-49" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb35-50"><a href="#cb35-50" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-51"><a href="#cb35-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-52"><a href="#cb35-52" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb35-53"><a href="#cb35-53" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Input params</span></span>
+<span id="cb35-54"><a href="#cb35-54" aria-hidden="true" tabindex="-1"></a>  vals <span class="ot">&lt;-</span> <span class="fu">reactive</span>(</span>
+<span id="cb35-55"><a href="#cb35-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb35-56"><a href="#cb35-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">bill_length_mm =</span> input<span class="sc">$</span>bill_length,</span>
+<span id="cb35-57"><a href="#cb35-57" aria-hidden="true" tabindex="-1"></a>      <span class="at">species =</span> input<span class="sc">$</span>species, <span class="co"># Send the species directly</span></span>
+<span id="cb35-58"><a href="#cb35-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">sex =</span> <span class="fu">tolower</span>(input<span class="sc">$</span>sex) <span class="co"># Ensure "male" and "female" are lowercase</span></span>
+<span id="cb35-59"><a href="#cb35-59" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb35-60"><a href="#cb35-60" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb35-61"><a href="#cb35-61" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-62"><a href="#cb35-62" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fetch prediction from API</span></span>
+<span id="cb35-63"><a href="#cb35-63" aria-hidden="true" tabindex="-1"></a>  pred <span class="ot">&lt;-</span> <span class="fu">eventReactive</span>(</span>
+<span id="cb35-64"><a href="#cb35-64" aria-hidden="true" tabindex="-1"></a>    input<span class="sc">$</span>predict,</span>
+<span id="cb35-65"><a href="#cb35-65" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb35-66"><a href="#cb35-66" aria-hidden="true" tabindex="-1"></a>      req <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(api_url) <span class="sc">|&gt;</span></span>
+<span id="cb35-67"><a href="#cb35-67" aria-hidden="true" tabindex="-1"></a>        httr2<span class="sc">::</span><span class="fu">req_body_json</span>(<span class="fu">vals</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a>        httr2<span class="sc">::</span><span class="fu">req_headers</span>(</span>
+<span id="cb35-69"><a href="#cb35-69" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Content-Type"</span> <span class="ot">=</span> <span class="st">"application/json"</span>,</span>
+<span id="cb35-70"><a href="#cb35-70" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Authorization"</span> <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"Bearer"</span>, <span class="fu">Sys.getenv</span>(<span class="st">"key"</span>)) <span class="co"># Add API key to headers</span></span>
+<span id="cb35-71"><a href="#cb35-71" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span></span>
+<span id="cb35-72"><a href="#cb35-72" aria-hidden="true" tabindex="-1"></a>        httr2<span class="sc">::</span><span class="fu">req_perform</span>()</span>
+<span id="cb35-73"><a href="#cb35-73" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb35-74"><a href="#cb35-74" aria-hidden="true" tabindex="-1"></a>      httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(req)</span>
+<span id="cb35-75"><a href="#cb35-75" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb35-76"><a href="#cb35-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">ignoreInit =</span> <span class="cn">TRUE</span></span>
+<span id="cb35-77"><a href="#cb35-77" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb35-78"><a href="#cb35-78" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-79"><a href="#cb35-79" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-80"><a href="#cb35-80" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Render to UI</span></span>
+<span id="cb35-81"><a href="#cb35-81" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">renderText</span>(<span class="fu">pred</span>()<span class="sc">$</span>body_mass_g)</span>
+<span id="cb35-82"><a href="#cb35-82" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>vals <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>(<span class="fu">vals</span>())</span>
+<span id="cb35-83"><a href="#cb35-83" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-84"><a href="#cb35-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-85"><a href="#cb35-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the application</span></span>
+<span id="cb35-86"><a href="#cb35-86" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-</section>
-<section id="activity-11-optional" class="level1">
-<h1>Activity 11: Optional</h1>
-<section id="add-logging-to-your-shiny-app" class="level2">
-<h2 class="anchored" data-anchor-id="add-logging-to-your-shiny-app">Add logging to your Shiny App</h2>
+<section id="push-button-deploy-to-connect" class="level2">
+<h2 class="anchored" data-anchor-id="push-button-deploy-to-connect"><a href="https://docs.posit.co/connect/user/publishing-rstudio/">Push-button deploy to Connect:</a></h2>
+<p>Press on the little blue button in the middle of your IDE and follow the instructions to deploy to Connect.</p>
+<p><img src="images/blueeye.png" class="img-fluid"></p>
+<ul>
+<li><p>Give your app a name</p></li>
+<li><p>Make sure you’re only deploying the app.r file</p></li>
+<li><p>Click Deploy</p></li>
+</ul>
+<p><img src="images/pushbuttondeploy.png" class="img-fluid"></p>
+<p>Your app should show an error when you press predict because the Connect server doesnt have your API key credentials. Check the app logs to confirm.</p>
+<p><img src="images/logsapp.png" class="img-fluid"></p>
+<p>Add your key in the Connect app <code>vars</code> tab and press predict again. It should work!</p>
+<p><img src="images/vars.png" class="img-fluid"></p>
 </section>
 </section>
 
