@@ -1,6 +1,6 @@
 ---
-title: Introduction
-subtitle: Set up environment
+title: Devops for Data Scientists Workshop
+subtitle: Exercise Worksheet
 format: html
 execute: 
   eval: false
@@ -14,47 +14,72 @@ editor:
 
 ## Fork repository
 
-Fork the Posit Conf 2024 Dev-Ops workshop Github
-[repository](https://github.com/posit-conf-2024/dev-ops) onto your local
-machine as a reference guide.
+Click fork on the Posit Conf 2024 Dev-Ops workshop Github
+[repository.](https://github.com/posit-conf-2024/dev-ops)
 
 ![](images/forkrepo.png)
 
-Grab the https url of your forked repo and `git clone` it somewhere on
-your computer. You will be using this repo primarily for resources and
-instructions.
+Give your fork a name and click `Create`.
 
-## Open a code editor
+Click on the [Code]{style="color: green;"} button in your forked
+repository and copy the HTTPS URL.
+
+Grab the https URL of your forked repo.
+
+Open a terminal and cd to your desktop.
+
+`git clone` the repository using the URL.
+
+``` bash
+cd ~
+cd Desktop
+git clone https://github.com/{your-GH-username}/dev-ops.git
+```
+
+You will be using this repo primarily for resources and instructions. We
+will be creating a separate git repository for class exercises.
+
+## Open a code editor in Workbench
 
 Throughout this workshop we will be writing code in both R and Python.
 We will be starting with a python model so you will need to use an IDE
 with a Python interpretor.
 
-Open up a vscode session in your [Workbench environment]{.underline} or
-a local python code editor of your choice. If using your local machine
-make sure that you have Python
-[installed](https://www.python.org/downloads/) and on
+Login to your Workbench environment with your credentials.
+
+Open up a vscode session.
+
+![Login](images/login1.png)
+
+![Workbench Home Page](images/login2.png)
+
+![Start a vscode session](images/login3.png)
+
+::: callout-note
+If using a different Python editor on your local machine make sure that
+you have Python [installed](https://www.python.org/downloads/) and on
 [PATH](https://realpython.com/add-python-to-path/). This is a [good
 article](https://chendaniely.github.io/python_setup/) on best practices
 for setting up Python using Pyenv.
+:::
 
 ## Initialize a new git repository
 
-Open your vscode terminal (Control + dash for quick open) and create a
-folder where you'll be saving all of your classwork for this workshop.
-Call it something like`devops_classwork`. See the code example below for
-changing into my Desktop directory, creating a folder, and then changing
-the directory into that folder.
+Open your vscode terminal (press Control + Shift+ dash for quick open)
+and create a folder where you'll be saving all of your classwork for
+this workshop. Call it something like `devops_classwork`. See the code
+example below for changing into {my} Desktop directory, creating a
+folder, and then changing the directory into that folder.
 
-```         
-cd /Users/rikagorn/Desktop
+``` bash
+cd ~
 mkdir devops_classwork
-cd devops_classword
+cd devops_classwork
 ```
 
 Initialize git in your folder.
 
-```         
+``` bash
 git init
 git config --global user.name "Your Name"
 git config --global user.email "youremail@yourdomain.com"
@@ -63,133 +88,136 @@ git config --global init.defaultBranch main
 
 ## Create some code content
 
-We will be creating three different files. Copy the code from the
-Dev-ops repo.
+Create 3 files in your editor. Copy the code for each file from the
+Dev-ops repo linked below.
 
-1\. `README.md` - a markdown file used for documentation
+1\.
+[`README.md`](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/README.md) -
+a markdown file used for documentation
 
-2\. `model_pthon.py` - a python file with a linear regression model
+2\.
+[`model_pthon.py`](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/model_python.py) -
+a python file with a linear regression model
 
-3\. `r_eda.R` - an R file with some exploratory data analysis
+3\.
+[`r_eda.R`](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/r_eda.r) -
+an R file with some exploratory data analysis
 
 ## Add and commit your code locally
 
 ```         
 git add README.md
 git add model_python.py
-git add r_eda.r
+git add r_eda.R
 git status
 git commit -m "model and readme added"
 ```
 
 ## Push local repo to remote github repo
 
-Create a remote repository on github.com and call it something like
-`devops-classwork`.
+Create a new repository on github.com:
 
-Go back to your local repo and add the remote upstream github repo.
+-   Click on [New]{style="color: green;"} in your github repositories
+    page
+
+-   Under `Owner` choose your username
+
+-   Call the repository `devops-classwork`
+
+-   Make it public
+
+-   Click [Create repository]{style="color: green;"}
+
+-   Copy the HTTPS url in the [quick setup]{style="color: blue;"}
+    section
+
+Go back to the terminal in your vscode session and add the remote
+upstream github repo.
 
 ```         
-git remote add origin https://github.com/Rikagx/devops-classwork.git
+git remote add origin https://github.com/{your-username}/devops-classwork.git
 git branch -M main
 git push -u origin main
 ```
 
+You may be asked to authenticate your Github with vscode. Follow the
+instructions and authenticate.
+
+![](images/ghauth1.png){width="458"}
+
+![](images/ghauth2.png){width="458"}
+
+![](images/ghauth3.png){width="458"}
+
 ## Create a branch and merge new file
 
 ```         
-git checkout -b yourname/small-edits
+git checkout -b {yourname}/small-edits
 touch .gitignore # this creates a file called .gitignore
 ```
 
-Add these [python specific
-files](https://github.com/github/gitignore/blob/main/Python.gitignore)
-and these [r specific
-files](https://github.com/github/gitignore/blob/main/R.gitignore) to
-your .gitignore file
+Copy the code from this
+[file](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/.gitignore)
+into your newly created .gitignore file.
+
+Add, commit, push and merge your changes.
 
 ```         
 git add .gitignore
 git commit "added .gitignore"
-git push origin yourname/small-edits
+git push origin {yourname}/small-edits
 git checkout main
-git merge yourname/small-edits
+git merge {yourname}/small-edits
 git push
 ```
 
-# Activity 2
+Go to your repository in Github and refresh your screen. You should now
+see all of your files there! 🤩
 
-## Create a virtual environment
+Delete your local branch with `git branch -d {yourname}/small-edits`
 
 Create a new branch for the following exercises:
 
-`git checkout -b yourname/venv-renv`
+`git checkout -b {yourname}/venv-renv.`
+
+# Activity 2
+
+## R
 
 ::: panel-tabset
-### R
+### Create a virtual environment
 
-Open the r_eda.R file that you created above.
+Open a new Rstudio IDE session available in Workbench. If you were
+previously in vscode click on the Posit Workbench icon on the bottom of
+the screen - this will bring you back to your Workbench homepage.
+
+![](images/vscodeback.png)
+
+Create a new project from a working directory
+
+File \> New Project \> Existing Directory \> devops-classwork
 
 Install `renv` with `install.packages("renv")`
 
 ```{r}
 # library path without renv initialized.
 .libPaths()
-lapply(.libPaths(), list.files)
 
+# initialize renv
 renv::init()
+y
 
 # library path with renv initialized.
 .libPaths()
-lapply(.libPaths(), list.files)
 
 ```
 
-### Python
-
-Open the model_python.py file that you created above. Type 'python' into
-your terminal to start an executable. You should see like the below
-output:
-
-Python 3.12.0 (main, Jun 12 2024, 14:00:16) \[Clang 15.0.0
-(clang-1500.3.9.4)\] on darwin Type "help", "copyright", "credits" or
-"license" for more information.
-
-\>\>\> \[Type the below code here\]
-
-\>\>\> exit()
-
-```{python}
-# library path without venv initialized
-import sys
-print(sys.path)
-```
-
-```{bash}
-# run in your bash terminal
-pip list
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip setuptools wheel
-pip list
-```
-
-```{python}
-# library path with venv initialized
-import sys
-print(sys.path)
-```
-:::
-
-## Snapshot your code
-
-::: panel-tabset
-### R
+### Snapshot your environment
 
 Take a look at the renv.lock file before and after you snapshot your
 code. Install the following packages:
 
-`install.packages(c("palmerpenguins", "dplyr", "ggplot2"))`.
+`install.packages(c("palmerpenguins", "dplyr", "ggplot2"))`
 
 Feel free to run your R code which is reproduced below and see the
 output of your analysis.
@@ -220,21 +248,66 @@ plot <- df %>%
   geom_smooth(method = "lm")
 ```
 
-Snapshot your code with `renv::snapshot()`.
+Make sure to snapshot your code with `renv::snapshot()`.
+:::
 
-### Python
+## Python
+
+::: panel-tabset
+### Create a virtual environment
+
+Open the model_python.py file in your vscode session.
+
+If you were previously in Rstudio you can click on the R logo on the top
+left of the screen - this will bring you back to your Workbench
+homepage.
+
+![](images/rlogo.png){width="190"}
+
+Type 'python' into your terminal to start an executable. You should see
+something similar to the below output. You can exit back to the terminal
+with `exit().`
+
+**Python 3.11.4 (main, Jun 12 2024, 14:00:16) \[Clang 15.0.0
+(clang-1500.3.9.4)\] on darwin Type "help", "copyright", "credits" or
+"license" for more information.**
+
+**\>\>\> \[Type code here\]**
+
+```{python}
+# library path without venv initialized
+import sys
+print(sys.path)
+exit()
+```
 
 ```{bash}
 # run in your bash terminal
+pip list
+python -m venv .venv
+source .venv/bin/activate
 python -m pip install --upgrade pip setuptools wheel
+pip list
+```
+
+```{python}
+# library path with venv initialized
+import sys
+print(sys.path)
+exit()
+```
+
+### Snapshot your code
+
+```{bash}
+# run in your bash terminal
 pip install palmerpenguins
 pip install duckdb
 pip install scikit-learn
 ```
 
 Run your model_python.py in the terminal with `python model_python.py`.
-The model code is reproduced below with some additional print
-statements.
+The model code should input some model statistics.
 
 ```{python}
 import duckdb
@@ -275,16 +348,18 @@ pip list
 
 ## Add, commit, push your code
 
-```         
+``` bash
 # run in your bash terminal
 
-git add readme.md
-git add r_eda.r
+git add README.md
+git add r_eda.R
 git add model_python.py
+git add requirements.txt
+git add devops_classwork.Rproj
 git commit -m "creating virtual environments"
-git push origin yourname/venv-renv
+git push origin {yourname}/venv-renv
 git checkout main
-git merge yourname/venv-renv
+git merge {yourname}/venv-renv
 git push
 ```
 
@@ -292,14 +367,17 @@ git push
 
 ## Create github actions
 
-Go to `Actions` in your github repository and enable github actions.
+Go to `Actions` in your github repository and enable github actions if
+you have never done so before.
 
 ![](images/actions.png)
 
-Github action MUST be created as a .yaml file in the following directory
-structure:
+In your project terminal (vscode or Rstudio IDE) create a .yaml file.
 
-```         
+Github actions MUST be created as a .yaml file with the following
+directory structure:
+
+``` bash
 mkdir .github
 cd .github/
 mkdir workflows
@@ -309,10 +387,9 @@ touch .yaml
 
 Copy the
 \[following(https://docs.github.com/en/actions/writing-workflows/quickstart)\]
-into your yaml file and then add, commit, and push your code to main.
-You can try pushing from a branch or straight from main.
+into your yaml file.
 
-```{yaml}
+---
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
@@ -331,6 +408,18 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+---
+
+Create a new branch, add, commit, and push your code to main.
+
+``` bash
+git checkout -b {yourname}/action
+git add ~/devops_classwork/.github/workflows/.yaml
+git commit -m "added an action"
+git push origin {yourname}/action
+git checkout main
+git merge {yourname}/action
+git push
 ```
 
 Visit the Actions tab of your repo to see if the Action succeeded.
@@ -347,16 +436,18 @@ pip install pre-commit
 pip install black
 ```
 
-Create a file called .pre-commit.config.yaml and add the following
+Create a file called
+[.pre-commit-config.yaml](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/.pre-commit.config.yaml)
+and add the following:
 
-```{bash}
+---
 repos:
   - repo: https://github.com/psf/black-pre-commit-mirror
     rev: 23.10.1
     hooks:
     - id: black
     language_version: python3.12
-```
+---
 
 ```{bash}
 # run in your bash terminal
@@ -364,10 +455,41 @@ pre-commit install
 ```
 
 Stage and commit your code and fix any errors that the hooks identify.
-Try adding some other hooks that look interesting:
 
--   https://lorenzwalthert.github.io/precommit/articles/available-hooks.html
--   https://github.com/pre-commit/pre-commit-hooks
+``` bash
+git checkout -b {yourname}/precommit
+git add .pre-commit.config.yaml
+git add model_python.py
+git commit -m "added pre-commit hook"
+```
+
+You will see that parts of your commits have failed. The hook
+automatically "fixes" errors it finds. Keep adding and committing your
+files until your commits have all passed.
+
+If the `black` commit is skipped try calling it directly with
+`pre-commit run black -a`. You can also run a single file outside of the
+hook using `black model_python.py` as well. You can open the model
+python file and see what was modified.
+
+![](images/hooks.png)
+
+Try adding some other hooks that look interesting or read about the
+hooks and packages that you've been using:
+
+-   [R
+    hooks](https://lorenzwalthert.github.io/precommit/articles/available-hooks.html)
+-   [Pre-commit hooks](https://github.com/pre-commit/pre-commit-hooks)
+-   [Black formatter](https://github.com/psf/black)
+
+Finish pushing your code
+
+``` bash
+git push origin {yourname}/precommit
+git checkout main
+git merge {yourname}/precommit
+git push
+```
 
 # Activity 5
 

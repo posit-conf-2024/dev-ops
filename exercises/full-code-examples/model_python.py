@@ -20,3 +20,8 @@ X = get_dummies(df[["bill_length_mm", "species", "sex"]], drop_first=True)
 y = df["body_mass_g"]
 
 model = LinearRegression().fit(X, y)
+
+print(f"R^2 {model.score(X,y)}")
+print(f"Intercept {model.intercept_}")
+print(f"Columns {X.columns}")
+print(f"Coefficients {model.coef_}")
