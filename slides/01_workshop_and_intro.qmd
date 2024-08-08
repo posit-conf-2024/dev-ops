@@ -73,17 +73,11 @@ https://posit.co/code-of-conduct/
 
 ## Special Thanks to Alex Gold!
 
-::: {layout-ncol=2}
-![Alex Gold](assets/images/01/alex-gold.jpg)
+::: {layout-ncol="2"}
+![Posit Solutions Engineering Team Director](assets/images/01/alex-gold.jpg)
 
-![do4ds book](assets/images/01/devopsbook.jpg)
+![[do4ds book](www.do4ds.com)](assets/images/01/devopsbook.jpg)
 :::
-
-
-
-Author of [DevOps for Data Science](www.do4ds.com)
-
-Posit Solutions Engineering Team Director
 
 ## Meet your Neighbor!
 
@@ -137,7 +131,8 @@ We will be using R, Python, bash, and YAML throughout
 </iframe>
 
 -   How to become a DevOps engineer
--   In-depth security and auth practices
+-   In-depth security
+-   We will cover Docker but this is not a Docker course
 
 ## Asking Questions
 
@@ -150,6 +145,8 @@ We will be using R, Python, bash, and YAML throughout
 🙋 You are always welcome to raise your hand!
 
 ## Course Materials
+
+![“Artwork by \@allison_horst”.](assets/images/01/course%20content.png)
 
 Slides:
 
@@ -226,7 +223,6 @@ Exercises worksheet:
 . . .
 
 ::: {.callout-note icon="false"}
-
 ## Activity
 
 -   Login to Workbench & start a vscode and Rstudio session
@@ -238,9 +234,12 @@ Exercises worksheet:
 docker run hello-world
 sudo docker run hello-world
 ```
+:::
 
-##  {.brackets-green}
+## Let's Get to Work! {.brackets-green}
 
-::: section-title-dark
-Let's Get to Work!
+![](assets/images/01/encouragement.png)
+
+:::footer
+“Artwork by @allison_horst”.
 :::

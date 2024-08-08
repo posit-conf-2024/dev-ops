@@ -85,11 +85,15 @@ Practices and supporting tooling
 
 ## Best Practices \> Tools
 
-![](assets/images/02/toolsbestpractice.jpg)
+![](assets/images/02/bestpractice.jpg)
 
 ## Version Control & Collaboration
 
-![](assets/images/02/versioncontrol.png)
+![](assets/images/01/gitworkflow.png)
+::: footer
+“Artwork by @allison_horst”.
+:::
+
 
 ## Your turn {.smaller transition="slide-in"}
 
@@ -196,6 +200,22 @@ pip freeze > requirements.txt
 ![](assets/images/02/cicd2.png)
 
 ## Defining Production
+
+When other people are using your: 
+
+- data
+- app
+- api
+- dashboard
+- model
+
+## Production Quality
+
+Correct: the data product works as expected
+Available: unplanned outages are rare or nonexistent
+Safe: data, functionality, and code are all kept safe from unauthorized users or unintended alteration
+Snappy: fast response times, ability to predict needed capacity for expanded traffic
+Sturdy: design and test to minimize the likelihood that changes will break things
 
 ## Building environments for CI/CD
 
