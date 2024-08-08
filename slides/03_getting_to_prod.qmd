@@ -20,34 +20,315 @@ execute:
 
 ## Data Science in Production
 
--   add picture of fastapi with penguin data and shiny application on top deployed
+![](assets/images/03/modelserver.jpg)
 
-## Production "State"
+## Getting to Production
 
 <br>
 
 What are some questions that we should ask once our code is ready for production?
 
-<br>
+## No title
 
--   Where is it deployed?
+-   How are we presenting our code?
+
+-   What is the data architecture?
+
+-   Where is it being deployed?
 
 -   Is it secure and accessible?
 
 -   Does it scale?
 
--   Is it tested?
+## Think about data auth early!
 
-## Data architecture and auth
+![](assets/images/03/whose-creds.png)
 
 ## Choosing the right presentation layer
 
--   [Alex's flow chart](https://do4ds.com/chapters/sec1/1-2-proj-arch.html)
+*Presentation Layer* 🖼️ – what the end users of the app directly interact with. It’s the displays, buttons, and functionality the user experiences.
+
+*Processing Layer* ⚒️ – the processing that happens as a result of user interactions. Sometimes, it is called the *business logic*.
+
+*Data Layer* 🛢️ – how and where the app stores and retrieves data.
+
+## Presentation Layer
+
+![](assets/images/03/presentation-layer.png)
+
+## What's happening with the data?
+
+Can you remove the data processing and storage from the presentation?
+
+Can you pre-calculate anything?
+
+Can you reduce data granularity?
+
+When is data pulled in and refreshed?
+
+## Data Storage
+
+| Location      | Use case                                                                                                                                                                                                                                |
+|------------------------|-----------------------------------------------|
+| With the code | Data is updated as often or less often than the app code and doesn’t need to be shared across projects                                                                                                                                  |
+| Database      | Gold standard for data storage and access                                                                                                                                                                                               |
+| Pins          | Lightweight datasets, ephemeral data, models                                                                                                                                                                                            |
+| Blob Storage  | Gold standard for storing large amounts of unstructured data                                                                                                                                                                            |
+| In the server | Typically the method of last resort for unstructured data as it requires SSH access to the server for setup and often requires code changes between development and deployment, however for very large files, it may be the only option |
+| API           | Gold standard for data that requires long-running business logic, like training an ML model                                                                                                                                             |
 
 ## Choosing a REST API
 
-![](images/what_is_rest_api.png)
+-   standardized format for communication regardless of programming language
+
+-   standardized documentation - swagger
+
+-   packages in R (httr2) and Python (requests) for connecting
+
+-   Smaller pieces are easier to manage - an API can make your code more modular
+
+## How a REST API works
+
+![](assets/images/03/req_resp.png)
+
+## HTTP requests and responses
+
+| Verb   | Function                              |
+|--------|---------------------------------------|
+| GET    | retrieve data                         |
+| POST   | send some data and receive a response |
+| PUT    | send data to update existing thing    |
+| DELETE | delete something that exists          |
+
+| Response Code | Description                                      |
+|---------------|--------------------------------------------------|
+| 2xx           | Request is successful!                           |
+| 4xx           | Client error. You may have done something wrong! |
+| 5xx           | Server error.                                    |
+
+## Anatomy of an API
+
+-   **Host (fixed):**
+    -   [`http://api.hostname.io/`]{style="background-color:#fff2cc"}
+-   **Endpoint:**
+    -   Resource location (think of as a function)
+    -   `http://api.hostname.io/end-point`
+-   **Parameters (optional):**
+    -   key-value pairs specify what you want URL to return
+    -   `http://api.hostname.io/end-point/?param=value`
+-   **Headers & body (optional):**
+    -   metadata attached to HTTP request to a server or response from server
+    -   Examples include auth credentials, type of data returned
 
 ::: notes
 application programming interface clients to communicate with a server. Rest API is a kind of web-service which stores and retrieves necessary data. It provides great flexibility to developers since it does not need any dependent code libraries to access the web-services. Amongst the many protocols supported by REST, the most common one is HTTP. When a request is sent from the client using a HTTPRequest, a corresponding response is sent from the server using HTTPResponse.
+:::
+
+## Your turn {.smaller transition="slide-in"}
+
+::: {.callout-note icon="false"}
+## Activity 7: Create a simple fastAPI
+
+```{python}
+from fastapi import FastAPI
+import uvicorn
+
+app = FastAPI()
+
+@app.get("/say_hello/{name}")
+def say_hello(name):
+    return {"Hello from Seattle": name}
+
+```
+
+Instructions here
+:::
+
+## Deployment Platform
+
+![](assets/images/03/slides.png)
+
+-   cloud container deployment + registry
+-   build your own
+-   platform as a service
+
+## Your turn {.smaller transition="slide-in"}
+
+::: {.callout-note icon="false"}
+## Activity 8: Create a fastAPI prediction model
+
+![](assets/images/03/modelserver.jpg)
+
+Instructions here
+:::
+
+## Making Requests to your API
+
+::: panel-tabset
+### curl
+
+```{bash}
+
+curl -X 'POST' \
+  'https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H "Authorization: Key ${CONNECT_API_KEY}" \
+  -d '{
+  "species": "Adelie",
+  "sex": "female",
+  "bill_length_mm": 40.0
+}'
+
+```
+
+### R
+
+```{R}
+library(httr2)
+
+url <- "https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict"
+headers <- c(
+  "accept" = "application/json",
+  "Content-Type" = "application/json",
+  "Authorization" = paste("Key", Sys.getenv("CONNECT_API_KEY"))
+)
+body <- list(
+  species = "Adelie",
+  sex = "female",
+  bill_length_mm = 40.0
+)
+
+response <- request(url) %>%
+  req_headers(headers) %>%
+  req_body_json(body) %>%
+  req_method("POST") %>%
+  req_perform()
+
+print(response)
+
+
+```
+
+### Python
+
+```{Python}
+import requests
+import os
+
+url = 'https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict'
+headers = {
+    'accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': f'Key {os.getenv("CONNECT_API_KEY")}'
+}
+data = {
+    "species": "Adelie",
+    "sex": "female",
+    "bill_length_mm": 40.0
+}
+
+response = requests.post(url, headers=headers, json=data)
+
+print(response.json())
+
+```
+:::
+
+## Your turn {.smaller transition="slide-in"}
+
+::: {.callout-note icon="false"}
+## Activity 9: Make a request to your model
+
+-   Try to write your request code with curl, R, or Python
+
+Instructions here
+:::
+
+## Deploy API in Docker
+
+```{yaml}
+# Use the official Python base image
+FROM python:3.11.4-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the requirements file into the container
+COPY requirements.txt .
+
+# Install the required dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the entire project into the container
+COPY . .
+
+# Expose the port FastAPI will run on
+EXPOSE 8000
+
+# Run the FastAPI app with Uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+```{bash}
+docker build -t fastapi-penguin-app .
+docker run -d -p 8000:8000 fastapi-penguin-app
+```
+
+![](assets/images/04/port mapping.png)
+
+Open a web browser and navigate to http://localhost:8000/docs to access the FastAPI Swagger UI where you can test your /predict endpoint.
+
+## Deploy container with CI/CD
+
+``` yaml
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/fastapi-penguin-app:latest
+
+      - name: Log out from Docker Hub
+        run: docker logout
+```
+
+## Presentation Layer over our API
+
+![](assets/images/04/shinymodelapp.jpg)
+
+## Your turn {.smaller transition="slide-in"}
+
+::: {.callout-note icon="false"}
+## Activity 10: Add a shiny app on our API
+
+-   Create a shiny app
+-   Have the shiny app call our python API
+-   Push-button deploy Shiny app to Posit Connect
+
+Instructions here
 :::

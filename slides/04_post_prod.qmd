@@ -14,3 +14,75 @@ execute:
   eval: false
 ---
 
+## Authentication vs. Authorization
+
+**Authentication** - Host-based access control e.g. "do we recognize this user, and do they have enough information to prove who they are"
+
+\- Example: Logging in
+
+**Authorization** - Role-based access control e.g. "once a user has been Authenticated, what are they allowed to do"
+
+\- Example: Accessing data
+
+## Authorization
+
+## HTTP vs. HTTPS
+
+-   We can use a variety of data sharing "transfer protocols"
+-   Protocols specify what kind of traffic is moving between 2 machines
+-   Use different security mechanisms
+-   Ports on the host and destination specifies where to direct the traffic
+
+![](assets/images/03/http-vs-https.png)
+
+::: notes
+Add diagram - http and https two computers with ports
+
+There are lots of diff transfer protocols; what you use depends on what kind data is being transferred and your security requirements. So for example, maybe you're sending plain text or email or a webpage.
+
+Protocols as well as processes or application run on specific ports. A port is a virtual point where network connections start and end. Allow computers to easily differentiate between different kinds of traffic. So for example, Shiny Server runs on port 3838, Workbench runs on 8787
+
+whether its email, text, files, etc Ports are software-based and managed by a computer's operating system. Ports emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection.
+:::
+
+## Authentication
+
+## Simple Auth
+
+![](assets/images/04/simple_auth.png)
+
+## LDAP/AD
+
+![](assets/images/04/ldap-ad.png)
+
+## Single Sign-on
+
+![](assets/images/04/sso.png)
+
+## Combining Auth & Auth
+
+![](assets/images/04/passthrough_auth.png)
+
+## Security
+
+![](assets/images/04/it_hierarchy.png)
+
+## Security Best Practices \[for the DS\]
+
+-   code analysis or scanning packages
+
+-   managing permissions
+
+-   security and code reviews
+
+-   keeping data separate from the application
+
+-   data security
+
+-   Model monitoring and testing
+
+-   Automated alerts
+
+-   Scanning packages and OSV's
+
+-   Network security

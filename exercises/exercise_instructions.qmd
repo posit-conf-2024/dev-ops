@@ -466,57 +466,42 @@ your code)
 docker container logs mydb
 ```
 
-### Mapping Ports
+# Activity 7
 
-Pull two versions of the same image
+## Create a simple FastAPI
 
-```         
-docker pull httpd:alpine
-docker pull httpd:latest
-# Inspect ports.
-docker inspect  httpd:latest
-docker inspect  httpd:alpine
-# Map two different host ports to the same application port for the two containers.
-docker run -d -p 3456:80 --name httpd-latest httpd:latest
-docker run -d -p 80:80 --name httpd-alpine httpd:alpine
-docker ps
+In your vscode or Python editor create a file called app.py with the
+following code:
+
+```{python}
+from fastapi import FastAPI
+import uvicorn
+
+app = FastAPI()
+
+@app.get("/say_hello/{name}")
+def say_hello(name):
+    return {"Hello from Seattle": name}
+
 ```
 
-### Mounting Data
+Run the app with `uvicorn app:app --reload`. Click into the workbench
+icon on the left side of the screen and go to the proxied server link
+that shows up. This link should have an error 😥
 
-In order to get data in or out of a container, you need to mount a
-shared volume (directory) between the container and host with the -v
-flag. You specify a host directory and a container directory separated
-by :. Anything in the volume will be available to both the host and the
-container at the file paths specified.
+![](images/vscodeserver.png)
 
-Stop your running containers with docker stop and return to your
-original command prompt. Create a text file.
+Add `/say_hello/{your-name-here}` to the end of the url and click enter.
+It should work now!!!
 
-```         
-# create a text file
-touch test.txt 
+![](images/sayhello.png)
 
- # redirect string to the file
-echo "this is a test file" > test.txt
+Add \`/docs#/ to the end of the initial url and click enter. It should
+bring you to the Swagger documentation!
 
-# confirm that the echo command worked and gets its directory path
-cat test.txt 
-pwd
+![](images/swagger.png)
 
-# mount a shared volume to a folder in the container called "data"
-docker run -it -d -v /root:/data ubuntu 
-docker exec -it CONTAINER_ID bash
-
-# see what folders are in the container
-ls 
-
-# move to the newly created data directory
-cd data 
-
-# confirm that the text file is there
-ls 
-```
+# Activity 8
 
 ## Create a FastAPI using our penguin model
 
@@ -691,7 +676,9 @@ rsconnect deploy fastapi \
     ./
 ```
 
-Test the API in your terminal
+# Activity 9
+
+## Test the API in your terminal
 
 ```         
 curl -X 'POST' \
@@ -721,6 +708,8 @@ curl -X 'POST' \
   "bill_length_mm": 40.0
 }'
 ```
+
+# Activity 10
 
 ## Create a Shiny UI for the prediction API
 
@@ -816,3 +805,7 @@ shinyApp(ui = ui, server = server)
 
 Push-button deploy using the following instructions:
 https://docs.posit.co/connect/user/publishing-rstudio/
+
+# Activity 11: Optional
+
+## Add logging to your Shiny App
