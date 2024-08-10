@@ -31,7 +31,7 @@ This course is for you if you:
 
 -   Want to get hands-on experience using CI/CD tools and other Dev-Ops workflows.
 
-The course will [**not cover**]{.underline} the following:
+The course will **not cover** the following:
 
 -   How to become a Dev-Ops engineer
 
@@ -57,18 +57,25 @@ The course will [**not cover**]{.underline} the following:
 
 ![]()
 
-| Content   | Code Link                                                                                  | Published Link                                     |
-|-----------|--------------------------------------------------------------------------------------------|----------------------------------------------------|
-| Slides    | <https://github.com/posit-conf-2024/dev-ops/tree/main/slides>                              |                                                    |
-| Exercises | <https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/exercise_instructions.qmd> | <https://pub.current.posit.team/devops-worksheet/> |
-| Appendix  | <https://github.com/posit-conf-2024/dev-ops/blob/main/slides/05_appendix.qmd>              |                                                    |
++----------------+--------------------------------------------------------------------------------------------+----------------------------------------------------+
+| Content        | Code Link                                                                                  | Published Link                                     |
++================+============================================================================================+====================================================+
+| Slides         | <https://github.com/posit-conf-2024/dev-ops/tree/main/slides>                              |                                                    |
++----------------+--------------------------------------------------------------------------------------------+----------------------------------------------------+
+| Exercises      | <https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/exercise_instructions.qmd> | <https://pub.current.posit.team/devops-worksheet/> |
++----------------+--------------------------------------------------------------------------------------------+----------------------------------------------------+
+| Appendix       | <https://github.com/posit-conf-2024/dev-ops/blob/main/slides/05_appendix.qmd>              |                                                    |
++----------------+--------------------------------------------------------------------------------------------+----------------------------------------------------+
 
 ## Workshop Server & Local Environments
 
++---------------------------+--------------------------------------+--------------------------------+
 | Software                  | Link                                 | Credentials                    |
-|---------------------------|--------------------------------------|--------------------------------|
++===========================+======================================+================================+
 | Posit Workbench & Connect | <http://pos.it/class>                | Classroom ID: `dev-ops`        |
++---------------------------+--------------------------------------+--------------------------------+
 | Docker Classroom          | <https://labs.play-with-docker.com/> | Docker Hub username & password |
++---------------------------+--------------------------------------+--------------------------------+
 
 We will provide a server-based development & deployment environment during the workshop, however, you also have the option to work locally on your laptop. If this is your preference, please come to the workshop with the following:
 
@@ -81,32 +88,6 @@ We will provide a server-based development & deployment environment during the w
 -   Install [Quarto](https://quarto.org/docs/get-started/)
 -   Install [git](https://git-scm.com/downloads) and a git [CLI](https://cli.github.com/'). You can check if git is already installed by typing `git --version` in the terminal.
 -   Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Optional)
-
-## Agenda
-
-+---------------+-------------------------------------------+
-| Time          | Activity                                  |
-+:==============+:==========================================+
-| 9:00 - 10:30  | Section 1 & 2:                            |
-|               |                                           |
-|               | Introduction & Logistics & Best Practices |
-+---------------+-------------------------------------------+
-| 10:30 - 11:00 | *Coffee break* ☕                         |
-+---------------+-------------------------------------------+
-| 11:00 - 12:30 | Section 2 & 3:                            |
-|               |                                           |
-|               | Best Practices & Getting to Production    |
-+---------------+-------------------------------------------+
-| 12:30 - 1:30  | *Lunch break* 🥪                          |
-+---------------+-------------------------------------------+
-| 1:30 - 3:00   | Section 2 & 3:                            |
-|               |                                           |
-|               | Best Practices & Getting to Production    |
-+---------------+-------------------------------------------+
-| 3:00 - 3:30   | *Coffee break* ☕                         |
-+---------------+-------------------------------------------+
-| 3:30 - 5:00   | Section 4: Post-production                |
-+---------------+-------------------------------------------+
 
 ## Instructor(s)
 
