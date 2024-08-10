@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Devops for Data Scientists Workshop</title>
+<title>Dev-Ops for Data Scientists Workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#activity-1" id="toc-activity-1" class="nav-link active" data-scroll-target="#activity-1">Activity 1</a>
+  <li><a href="#activity-1-git-workflow" id="toc-activity-1-git-workflow" class="nav-link active" data-scroll-target="#activity-1-git-workflow">Activity 1: Git workflow</a>
   <ul class="collapse">
   <li><a href="#fork-repository" id="toc-fork-repository" class="nav-link" data-scroll-target="#fork-repository">Fork repository</a></li>
   <li><a href="#open-a-code-editor-in-workbench" id="toc-open-a-code-editor-in-workbench" class="nav-link" data-scroll-target="#open-a-code-editor-in-workbench">Open a code editor in Workbench</a></li>
@@ -89,47 +89,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#push-local-repo-to-remote-github-repo" id="toc-push-local-repo-to-remote-github-repo" class="nav-link" data-scroll-target="#push-local-repo-to-remote-github-repo">Push local repo to remote github repo</a></li>
   <li><a href="#create-a-branch-and-merge-new-file" id="toc-create-a-branch-and-merge-new-file" class="nav-link" data-scroll-target="#create-a-branch-and-merge-new-file">Create a branch and merge new file</a></li>
   </ul></li>
-  <li><a href="#activity-2" id="toc-activity-2" class="nav-link" data-scroll-target="#activity-2">Activity 2</a>
+  <li><a href="#activity-2-virtual-environments" id="toc-activity-2-virtual-environments" class="nav-link" data-scroll-target="#activity-2-virtual-environments">Activity 2: Virtual Environments</a>
   <ul class="collapse">
   <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
   <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
   <li><a href="#add-commit-push-your-code" id="toc-add-commit-push-your-code" class="nav-link" data-scroll-target="#add-commit-push-your-code">Add, commit, push your code</a></li>
   </ul></li>
-  <li><a href="#activity-3" id="toc-activity-3" class="nav-link" data-scroll-target="#activity-3">Activity 3</a>
+  <li><a href="#activity-3-github-actions" id="toc-activity-3-github-actions" class="nav-link" data-scroll-target="#activity-3-github-actions">Activity 3: Github Actions</a>
   <ul class="collapse">
-  <li><a href="#create-github-actions" id="toc-create-github-actions" class="nav-link" data-scroll-target="#create-github-actions">Create github actions</a></li>
+  <li><a href="#enable-actions-in-your-repository" id="toc-enable-actions-in-your-repository" class="nav-link" data-scroll-target="#enable-actions-in-your-repository">Enable actions in your repository</a></li>
   <li><a href="#create-a-new-branch-add-commit-and-push-your-code-to-main." id="toc-create-a-new-branch-add-commit-and-push-your-code-to-main." class="nav-link" data-scroll-target="#create-a-new-branch-add-commit-and-push-your-code-to-main.">Create a new branch, add, commit, and push your code to main.</a></li>
   </ul></li>
-  <li><a href="#activity-4" id="toc-activity-4" class="nav-link" data-scroll-target="#activity-4">Activity 4</a>
+  <li><a href="#activity-4-pre-commit-hooks" id="toc-activity-4-pre-commit-hooks" class="nav-link" data-scroll-target="#activity-4-pre-commit-hooks">Activity 4: Pre-commit hooks</a>
   <ul class="collapse">
-  <li><a href="#pre-commit-hooks" id="toc-pre-commit-hooks" class="nav-link" data-scroll-target="#pre-commit-hooks">Pre-commit hooks</a></li>
+  <li><a href="#install-pre-commit" id="toc-install-pre-commit" class="nav-link" data-scroll-target="#install-pre-commit">Install pre-commit</a></li>
   <li><a href="#stage-and-commit-your-code-and-fix-any-errors-that-the-hooks-identify." id="toc-stage-and-commit-your-code-and-fix-any-errors-that-the-hooks-identify." class="nav-link" data-scroll-target="#stage-and-commit-your-code-and-fix-any-errors-that-the-hooks-identify.">Stage and commit your code and fix any errors that the hooks identify.</a></li>
   </ul></li>
-  <li><a href="#activity-5" id="toc-activity-5" class="nav-link" data-scroll-target="#activity-5">Activity 5</a>
+  <li><a href="#activity-5-docker-run" id="toc-activity-5-docker-run" class="nav-link" data-scroll-target="#activity-5-docker-run">Activity 5: Docker Run</a></li>
+  <li><a href="#activity-6-debugging-containers" id="toc-activity-6-debugging-containers" class="nav-link" data-scroll-target="#activity-6-debugging-containers">Activity 6: Debugging Containers</a></li>
+  <li><a href="#activity-7-write-a-dockerfile" id="toc-activity-7-write-a-dockerfile" class="nav-link" data-scroll-target="#activity-7-write-a-dockerfile">Activity 7: Write a Dockerfile</a>
   <ul class="collapse">
-  <li><a href="#docker-run" id="toc-docker-run" class="nav-link" data-scroll-target="#docker-run">Docker Run</a></li>
+  <li><a href="#create-a-basic-shiny-app" id="toc-create-a-basic-shiny-app" class="nav-link" data-scroll-target="#create-a-basic-shiny-app">Create a basic shiny app</a></li>
+  <li><a href="#create-a-dockerfile" id="toc-create-a-dockerfile" class="nav-link" data-scroll-target="#create-a-dockerfile">Create a Dockerfile</a></li>
+  <li><a href="#build-the-dockerfile" id="toc-build-the-dockerfile" class="nav-link" data-scroll-target="#build-the-dockerfile">Build the dockerfile</a></li>
+  <li><a href="#run-the-shiny-app" id="toc-run-the-shiny-app" class="nav-link" data-scroll-target="#run-the-shiny-app">Run the shiny app</a></li>
   </ul></li>
-  <li><a href="#activity-6" id="toc-activity-6" class="nav-link" data-scroll-target="#activity-6">Activity 6</a>
-  <ul class="collapse">
-  <li><a href="#debugging-containers" id="toc-debugging-containers" class="nav-link" data-scroll-target="#debugging-containers">Debugging Containers</a></li>
-  </ul></li>
-  <li><a href="#activity-7" id="toc-activity-7" class="nav-link" data-scroll-target="#activity-7">Activity 7</a>
+  <li><a href="#activity-8-apis" id="toc-activity-8-apis" class="nav-link" data-scroll-target="#activity-8-apis">Activity 8: APIs</a>
   <ul class="collapse">
   <li><a href="#create-a-simple-fastapi" id="toc-create-a-simple-fastapi" class="nav-link" data-scroll-target="#create-a-simple-fastapi">Create a simple FastAPI</a></li>
   </ul></li>
-  <li><a href="#activity-8" id="toc-activity-8" class="nav-link" data-scroll-target="#activity-8">Activity 8</a>
+  <li><a href="#activity-9-use-api-to-server-model" id="toc-activity-9-use-api-to-server-model" class="nav-link" data-scroll-target="#activity-9-use-api-to-server-model">Activity 9: Use API to server model</a>
   <ul class="collapse">
   <li><a href="#create-a-fastapi-using-our-penguin-model" id="toc-create-a-fastapi-using-our-penguin-model" class="nav-link" data-scroll-target="#create-a-fastapi-using-our-penguin-model">Create a FastAPI using our penguin model</a></li>
   <li><a href="#get-the-server-url-and-api-key-for-our-connect-environment" id="toc-get-the-server-url-and-api-key-for-our-connect-environment" class="nav-link" data-scroll-target="#get-the-server-url-and-api-key-for-our-connect-environment">Get the server url and API key for our Connect environment</a></li>
   <li><a href="#deploy-our-fastapi-to-the-connect-server" id="toc-deploy-our-fastapi-to-the-connect-server" class="nav-link" data-scroll-target="#deploy-our-fastapi-to-the-connect-server">Deploy our FastAPI to the Connect server</a></li>
   </ul></li>
-  <li><a href="#activity-9" id="toc-activity-9" class="nav-link" data-scroll-target="#activity-9">Activity 9</a>
+  <li><a href="#activity-10-testing-the-api" id="toc-activity-10-testing-the-api" class="nav-link" data-scroll-target="#activity-10-testing-the-api">Activity 10: Testing the API</a></li>
+  <li><a href="#activity-11-create-a-shiny-ui-for-the-prediction-api" id="toc-activity-11-create-a-shiny-ui-for-the-prediction-api" class="nav-link" data-scroll-target="#activity-11-create-a-shiny-ui-for-the-prediction-api">Activity 11: Create a Shiny UI for the prediction API</a>
   <ul class="collapse">
-  <li><a href="#test-the-api-in-your-terminal" id="toc-test-the-api-in-your-terminal" class="nav-link" data-scroll-target="#test-the-api-in-your-terminal">Test the API in your terminal</a></li>
-  </ul></li>
-  <li><a href="#activity-10" id="toc-activity-10" class="nav-link" data-scroll-target="#activity-10">Activity 10</a>
-  <ul class="collapse">
-  <li><a href="#create-a-shiny-ui-for-the-prediction-api" id="toc-create-a-shiny-ui-for-the-prediction-api" class="nav-link" data-scroll-target="#create-a-shiny-ui-for-the-prediction-api">Create a Shiny UI for the prediction API</a></li>
   <li><a href="#push-button-deploy-to-connect" id="toc-push-button-deploy-to-connect" class="nav-link" data-scroll-target="#push-button-deploy-to-connect">Push-button deploy to Connect:</a></li>
   </ul></li>
   </ul>
@@ -139,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Devops for Data Scientists Workshop</h1>
+<h1 class="title">Dev-Ops for Data Scientists Workshop</h1>
 <p class="subtitle lead">Exercise Worksheet</p>
 </div>
 
@@ -155,17 +152,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="activity-1" class="level1">
-<h1>Activity 1</h1>
+<section id="activity-1-git-workflow" class="level1">
+<h1>Activity 1: Git workflow</h1>
 <section id="fork-repository" class="level2">
 <h2 class="anchored" data-anchor-id="fork-repository">Fork repository</h2>
-<p>Click fork on the Posit Conf 2024 Dev-Ops workshop Github <a href="https://github.com/posit-conf-2024/dev-ops">repository.</a></p>
+<ol type="1">
+<li>Click fork on the Posit Conf 2024 Dev-Ops workshop Github <a href="https://github.com/posit-conf-2024/dev-ops">repository.</a></li>
+</ol>
 <p><img src="images/forkrepo.png" class="img-fluid"></p>
-<p>Give your fork a name and click <code>Create</code>.</p>
-<p>Click on the <span style="color: green;">Code</span> button in your forked repository and copy the HTTPS URL.</p>
-<p>Grab the https URL of your forked repo.</p>
-<p>Open a terminal and cd to your desktop.</p>
-<p><code>git clone</code> the repository using the URL.</p>
+<ol start="2" type="1">
+<li>Give your fork a name and click <code>Create</code>.</li>
+<li>Click on the <span style="color: green;">Code</span> button in your forked repository and copy the HTTPS URL.</li>
+<li>Grab the https URL of your forked repo.</li>
+<li>Open a terminal and cd to your desktop.</li>
+<li><code>git clone</code> the repository using the URL.</li>
+</ol>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/{your-GH-username}/dev-ops.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -174,8 +175,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="open-a-code-editor-in-workbench" class="level2">
 <h2 class="anchored" data-anchor-id="open-a-code-editor-in-workbench">Open a code editor in Workbench</h2>
 <p>Throughout this workshop we will be writing code in both R and Python. We will be starting with a python model so you will need to use an IDE with a Python interpretor.</p>
-<p>Login to your Workbench environment with your credentials.</p>
-<p>Open up a vscode session.</p>
+<ol type="1">
+<li>Login to your Workbench environment with your credentials.</li>
+<li>Open up a vscode session.</li>
+</ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/login1.png" class="img-fluid figure-img"></p>
@@ -210,11 +213,16 @@ Note
 </section>
 <section id="initialize-a-new-git-repository" class="level2">
 <h2 class="anchored" data-anchor-id="initialize-a-new-git-repository">Initialize a new git repository</h2>
-<p>Open your vscode terminal (press Control + Shift+ dash for quick open) and create a folder where you’ll be saving all of your classwork for this workshop. Call it something like <code>devops_classwork</code>. See the code example below for changing into {my} Desktop directory, creating a folder, and then changing the directory into that folder.</p>
+<ol type="1">
+<li>Open your vscode terminal (press Control + Shift+ dash for quick open) and create a folder where you’ll be saving all of your classwork for this workshop.</li>
+<li>Call it something like <code>devops_classwork</code>. See the code example below for changing into {my} Desktop directory, creating a folder, and then changing the directory into that folder.</li>
+</ol>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> devops_classwork</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> devops_classwork</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Initialize git in your folder.</p>
+<ol start="3" type="1">
+<li>Initialize git in your folder.</li>
+</ol>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"youremail@yourdomain.com"</span></span>
@@ -237,7 +245,9 @@ git commit -m "model and readme added"</code></pre>
 </section>
 <section id="push-local-repo-to-remote-github-repo" class="level2">
 <h2 class="anchored" data-anchor-id="push-local-repo-to-remote-github-repo">Push local repo to remote github repo</h2>
-<p>Create a new repository on github.com:</p>
+<ol type="1">
+<li>Create a new repository on github.com:</li>
+</ol>
 <ul>
 <li><p>Click on <span style="color: green;">New</span> in your github repositories page</p></li>
 <li><p>Under <code>Owner</code> choose your username</p></li>
@@ -246,45 +256,65 @@ git commit -m "model and readme added"</code></pre>
 <li><p>Click <span style="color: green;">Create repository</span></p></li>
 <li><p>Copy the HTTPS url in the <span style="color: blue;">quick setup</span> section</p></li>
 </ul>
-<p>Go back to the terminal in your vscode session and add the remote upstream github repo.</p>
+<ol start="2" type="1">
+<li>Go back to the terminal in your vscode session and add the remote upstream github repo.</li>
+</ol>
 <pre><code>git remote add origin https://github.com/{your-username}/devops-classwork.git
 git branch -M main
 git push -u origin main</code></pre>
-<p>You may be asked to authenticate your Github with vscode. Follow the instructions and authenticate.</p>
+<ol start="3" type="1">
+<li>You may be asked to authenticate your Github with vscode. Follow the instructions and authenticate.</li>
+</ol>
 <p><img src="images/ghauth1.png" class="img-fluid" width="458"></p>
 <p><img src="images/ghauth2.png" class="img-fluid" width="458"></p>
 <p><img src="images/ghauth3.png" class="img-fluid" width="458"></p>
 </section>
 <section id="create-a-branch-and-merge-new-file" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-branch-and-merge-new-file">Create a branch and merge new file</h2>
+<ol type="1">
+<li>Create a new branch and a new file called .gitignore</li>
+</ol>
 <pre><code>git checkout -b {yourname}/small-edits
 touch .gitignore # this creates a file called .gitignore</code></pre>
-<p>Copy the code from this <a href="https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/.gitignore">file</a> into your newly created .gitignore file.</p>
-<p>Add, commit, push and merge your changes.</p>
+<ol start="2" type="1">
+<li>Copy the code from this <a href="https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/.gitignore">file</a> into your newly created .gitignore file.</li>
+<li>Add, commit, push and merge your changes.</li>
+</ol>
 <pre><code>git add .gitignore
 git commit "added .gitignore"
 git push origin {yourname}/small-edits
 git checkout main
 git merge {yourname}/small-edits
 git push</code></pre>
-<p>Go to your repository in Github and refresh your screen. You should now see all of your files there! 🤩</p>
-<p>Delete your local branch with <code>git branch -d {yourname}/small-edits</code></p>
-<p>Create a new branch for the following exercises:</p>
+<ol start="4" type="1">
+<li>Go to your repository in Github and refresh your screen. You should now see all of your files there! 🤩</li>
+<li>Delete your local branch with <code>git branch -d {yourname}/small-edits</code></li>
+<li>Create a new branch for the following exercises:</li>
+</ol>
 <p><code>git checkout -b {yourname}/venv-renv.</code></p>
 </section>
 </section>
-<section id="activity-2" class="level1">
-<h1>Activity 2</h1>
+<section id="activity-2-virtual-environments" class="level1">
+<h1>Activity 2: Virtual Environments</h1>
 <section id="r" class="level2">
 <h2 class="anchored" data-anchor-id="r">R</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Create a virtual environment</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Snapshot your environment</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<ol type="1">
+<li></li>
+</ol>
 <p>Open a new Rstudio IDE session available in Workbench. If you were previously in vscode click on the Posit Workbench icon on the bottom of the screen - this will bring you back to your Workbench homepage.</p>
 <p><img src="images/vscodeback.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li></li>
+</ol>
 <p>Create a new project from a working directory</p>
 <p>File &gt; New Project &gt; Existing Directory &gt; devops-classwork</p>
+<ol start="3" type="1">
+<li></li>
+</ol>
 <p>Install <code>renv</code> with <code>install.packages("renv")</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library path without renv initialized.</span></span>
@@ -299,9 +329,13 @@ git push</code></pre>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>Take a look at the renv.lock file before and after you snapshot your code. Install the following packages:</p>
+<ol type="1">
+<li>Install the following packages:</li>
+</ol>
 <p><code>install.packages(c("palmerpenguins", "dplyr", "ggplot2"))</code></p>
-<p>Feel free to run your R code which is reproduced below and see the output of your analysis.</p>
+<ol start="2" type="1">
+<li>Feel free to run your R code which is reproduced below and see the output of your analysis.</li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -327,6 +361,9 @@ git push</code></pre>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ol start="3" type="1">
+<li></li>
+</ol>
 <p>Make sure to snapshot your code with <code>renv::snapshot()</code>.</p>
 </div>
 </div>
@@ -338,12 +375,18 @@ git push</code></pre>
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Create a virtual environment</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Snapshot your code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>1.</p>
 <p>Open the model_python.py file in your vscode session.</p>
 <p>If you were previously in Rstudio you can click on the R logo on the top left of the screen - this will bring you back to your Workbench homepage.</p>
 <p><img src="images/rlogo.png" class="img-fluid" width="190"></p>
-<p>Type ‘python’ into your terminal to start an executable. You should see something similar to the below output. You can exit back to the terminal with <code>exit().</code></p>
+<ol start="2" type="1">
+<li>Type ‘python’ into your terminal to start an executable. You should see something similar to the below output. You can exit back to the terminal with <code>exit().</code></li>
+</ol>
 <p><strong>Python 3.11.4 (main, Jun 12 2024, 14:00:16) [Clang 15.0.0 (clang-1500.3.9.4)] on darwin Type “help”, “copyright”, “credits” or “license” for more information.</strong></p>
 <p><strong>&gt;&gt;&gt; [Type code here]</strong></p>
+<ol start="3" type="1">
+<li>Run the below code to create a virtual environment</li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library path without venv initialized</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
@@ -372,6 +415,9 @@ git push</code></pre>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install duckdb</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install scikit-learn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ol start="4" type="1">
+<li></li>
+</ol>
 <p>Run your model_python.py in the terminal with <code>python model_python.py</code>. The model code should input some model statistics.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> duckdb</span>
@@ -396,6 +442,7 @@ git push</code></pre>
 <span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Columns </span><span class="sc">{</span>X<span class="sc">.</span>columns<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Coefficients </span><span class="sc">{</span>model<span class="sc">.</span>coef_<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>5.</p>
 <p>Freeze your pip installed packages in a requirements.txt file. You should do this every time you install additional packages or modules.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run in bash terminal</span></span>
@@ -423,20 +470,39 @@ git push</code></pre>
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="activity-3" class="level1">
-<h1>Activity 3</h1>
-<section id="create-github-actions" class="level2">
-<h2 class="anchored" data-anchor-id="create-github-actions">Create github actions</h2>
-<p>Go to <code>Actions</code> in your github repository and enable github actions if you have never done so before.</p>
+<section id="activity-3-github-actions" class="level1">
+<h1>Activity 3: Github Actions</h1>
+<section id="enable-actions-in-your-repository" class="level2">
+<h2 class="anchored" data-anchor-id="enable-actions-in-your-repository">Enable actions in your repository</h2>
+<ol type="1">
+<li>Go to <code>Actions</code> in your github repository and enable github actions if you have never done so before.</li>
+</ol>
 <p><img src="images/actions.png" class="img-fluid"></p>
-<p>In your project terminal (vscode or Rstudio IDE) create a .yaml file.</p>
-<p>Github actions MUST be created as a .yaml file with the following directory structure:</p>
+<ol start="2" type="1">
+<li>In your project terminal (vscode or Rstudio IDE) create a .yaml file.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Github actions MUST be created as a .yaml file with the directory structure</p>
+<p>`.github/workflows/.yaml`</p>
+</div>
+</div>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> .github</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> .github/</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> workflows</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> workflows/</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> .yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Copy the [following(https://docs.github.com/en/actions/writing-workflows/quickstart)] into your yaml file.</p>
+<ol start="3" type="1">
+<li>Copy the [following(https://docs.github.com/en/actions/writing-workflows/quickstart)] into your yaml file.</li>
+</ol>
 </section>
 <section id="create-a-new-branch-add-commit-and-push-your-code-to-main." class="level2">
 <h2 class="anchored" data-anchor-id="create-a-new-branch-add-commit-and-push-your-code-to-main.">Create a new branch, add, commit, and push your code to main.</h2>
@@ -447,20 +513,30 @@ git push</code></pre>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge {yourname}/action</span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Visit the Actions tab of your repo to see if the Action succeeded.</p>
+<ol start="4" type="1">
+<li>Visit the Actions tab of your repo to see if the Action succeeded.</li>
+</ol>
 <p><img src="images/GHAdash.png" class="img-fluid"></p>
 </section>
 </section>
-<section id="activity-4" class="level1">
-<h1>Activity 4</h1>
-<section id="pre-commit-hooks" class="level2">
-<h2 class="anchored" data-anchor-id="pre-commit-hooks">Pre-commit hooks</h2>
+<section id="activity-4-pre-commit-hooks" class="level1">
+<h1>Activity 4: Pre-commit hooks</h1>
+<section id="install-pre-commit" class="level2">
+<h2 class="anchored" data-anchor-id="install-pre-commit">Install pre-commit</h2>
+<ol type="1">
+<li>Run the below in your terminal</li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run in your bash terminal</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pre-commit</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Create a file called <a href="https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/.pre-commit.config.yaml">.pre-commit-config.yaml</a> and add the following:</p>
+<ol start="2" type="1">
+<li>Create a file called <a href="https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/.pre-commit.config.yaml">.pre-commit-config.yaml</a> and add the following:</li>
+</ol>
+<ol start="3" type="1">
+<li>Run the below in your terminal</li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run in your bash terminal</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pre-commit</span> install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -488,10 +564,8 @@ git push</code></pre>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="activity-5" class="level1">
-<h1>Activity 5</h1>
-<section id="docker-run" class="level2">
-<h2 class="anchored" data-anchor-id="docker-run">Docker Run</h2>
+<section id="activity-5-docker-run" class="level1">
+<h1>Activity 5: Docker Run</h1>
 <p>The basic docker run command takes this form:</p>
 <p><code>docker run [OPTIONS] [IMAGE:TAG] [COMMAND] [ARG...]</code></p>
 <p>In the below exercise we will practice running docker containers with different options or “flags.”</p>
@@ -510,8 +584,11 @@ git push</code></pre>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span></span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Exit the container with Ctrl+D or exit. This docker command runs the container in the foreground so you are unable to access the command prompt for your original alpine server. For this reason interactive mode is often used for development and testing.</p>
-<p>Run the container in detached mode and then list all your containers.</p>
+<ol start="4" type="1">
+<li><p>Exit the container with Ctrl+D or exit.</p>
+<p>This docker command runs the container in the foreground so you are unable to access the command prompt for your original alpine server. For this reason interactive mode is often used for development and testing.</p></li>
+<li><p>Run the container in detached mode and then list all your containers.</p></li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> docker run <span class="at">-d</span> ubuntu</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> docker container ls <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -519,11 +596,8 @@ git push</code></pre>
 <p>You should see that the ubuntu container was created and then exited. The container ID is shown with an exited status and the command line is still accessible.</p>
 <p>Detached containers run in the background, so the container keeps running until the application process exits (which is what happened here), or you stop the container. You can stop a container with <code>sudo docker container stop {name or ID of container}</code>. For this reason detached mode is often used for production purposes.</p>
 </section>
-</section>
-<section id="activity-6" class="level1">
-<h1>Activity 6</h1>
-<section id="debugging-containers" class="level2">
-<h2 class="anchored" data-anchor-id="debugging-containers">Debugging Containers</h2>
+<section id="activity-6-debugging-containers" class="level1">
+<h1>Activity 6: Debugging Containers</h1>
 <p>The <code>docker exec</code> command is very similar to the docker run <code>-it</code> command. Both are very helpful for debugging containers as they allow you to jump inside your container instance.</p>
 <ul>
 <li><p>The exec command needs a running container to execute any command, whereas the <code>-it</code> flag starts a container and places you into a terminal in interactive mode.</p></li>
@@ -545,13 +619,19 @@ Caution
 </div>
 <p><code>docker exec</code> requires two arguments - the container name and the command you want to run.</p>
 <p>docker exec [OPTIONS] CONTAINER [COMMAND] [ARG…]</p>
+<ol type="1">
+<li>Run the below in your terminal</li>
+</ol>
 <pre><code>sudo docker run -d nginx
 sudo docker container ls -a #grab the nginx container ID that you just started
 sudo docker exec -it CONTAINER_ID bash
 exit
 sudo docker exec CONTAINER_ID ls
 sudo docker container stop CONTAINER_ID</code></pre>
-<p>Lets run a detached MySQL container and then check out some logs. The database requires a password to work. In production you should never pass credentials directly in your command but we will do it for testing purposes. (The forward slashes below allow you to use a new line for your code)</p>
+<ol start="2" type="1">
+<li><p>Lets run a detached MySQL container and then check out some logs.</p>
+<p>The database requires a password to work. In production you should never pass credentials directly in your command but we will do it for testing purposes. (The forward slashes below allow you to use a new line for your code)</p></li>
+</ol>
 <pre><code> sudo docker container run -d --name mydb \
  -e MYSQL_ROOT_PASSWORD=my-secret-pw \ 
  mysql
@@ -559,32 +639,125 @@ sudo docker container stop CONTAINER_ID</code></pre>
 sudo docker container logs mydb
 sudo docker container stop mydb</code></pre>
 </section>
+<section id="activity-7-write-a-dockerfile" class="level1">
+<h1>Activity 7: Write a Dockerfile</h1>
+<section id="create-a-basic-shiny-app" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-basic-shiny-app">Create a basic shiny app</h2>
+<ol type="1">
+<li>Put your app.r file in a directory called /apps</li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define UI for application that draws a histogram</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Application title</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">titlePanel</span>(<span class="st">"Old Faithful Geyser Data"</span>),</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sidebar with a slider input for number of bins </span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarLayout</span>(</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sidebarPanel</span>(</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">"bins"</span>,</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Number of bins:"</span>,</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="dv">1</span>,</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="dv">50</span>,</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="dv">30</span>)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Show a plot of the generated distribution</span></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mainPanel</span>(</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>           <span class="fu">plotOutput</span>(<span class="st">"distPlot"</span>)</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Define server logic required to draw a histogram</span></span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>distPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># generate bins based on input$bins from ui.R</span></span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>        x    <span class="ot">&lt;-</span> faithful[, <span class="dv">2</span>]</span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>        bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="at">length.out =</span> input<span class="sc">$</span>bins <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># draw the histogram with the specified number of bins</span></span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">hist</span>(x, <span class="at">breaks =</span> bins, <span class="at">col =</span> <span class="st">'darkgray'</span>, <span class="at">border =</span> <span class="st">'white'</span>,</span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>             <span class="at">xlab =</span> <span class="st">'Waiting time to next eruption (in mins)'</span>,</span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a>             <span class="at">main =</span> <span class="st">'Histogram of waiting times'</span>)</span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the application </span></span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="activity-7" class="level1">
-<h1>Activity 7</h1>
+<section id="create-a-dockerfile" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-dockerfile">Create a Dockerfile</h2>
+<ol start="2" type="1">
+<li>Create a file called <code>Dockerfile</code> with no extension! This file should be one directory up from <code>/apps</code></li>
+</ol>
+<pre><code>FROM rocker/shiny:4.3.1
+# comes preinstalled with a bunch of packages
+
+RUN apt-get update &amp;&amp; apt-get install -y \
+    libcurl4-gnutls-dev \
+    libssl-dev
+
+RUN R -e "install.packages(('palmerpenguins'), \
+    repos = 'https://packagemanager.posit.co/cran/__linux__/jammy/latest')"
+    
+RUN rm /srv/shiny-server/index.html
+ruN rm -rf /srv/shiny-server/sample-apps
+
+COPY ./apps/* /srv/shiny-server/
+
+CMD ["/usr/bin/shiny-server"]</code></pre>
+</section>
+<section id="build-the-dockerfile" class="level2">
+<h2 class="anchored" data-anchor-id="build-the-dockerfile">Build the dockerfile</h2>
+<p><code>3. docker build -t new_app .</code></p>
+</section>
+<section id="run-the-shiny-app" class="level2">
+<h2 class="anchored" data-anchor-id="run-the-shiny-app">Run the shiny app</h2>
+<p><code>4. docker run -d -p 3838:3838 new_app</code></p>
+<ol start="5" type="1">
+<li>Open port 3838 and you should see your new app!</li>
+</ol>
+<p><img src="images/shinyport.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="activity-8-apis" class="level1">
+<h1>Activity 8: APIs</h1>
 <section id="create-a-simple-fastapi" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-simple-fastapi">Create a simple FastAPI</h2>
-<p>In your vscode or Python editor create a file called <a href="https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/simple-app.py">app.py</a> with the following code:</p>
+<ol type="1">
+<li>In your vscode or Python editor create a file called <a href="https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/simple-app.py">app.py</a> with the following code:</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> uvicorn</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/say_hello/</span><span class="sc">{name}</span><span class="st">"</span>)</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> say_hello(name):</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"Hello from Seattle"</span>: name}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> uvicorn</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/say_hello/</span><span class="sc">{name}</span><span class="st">"</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> say_hello(name):</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"Hello from Seattle"</span>: name}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Run the app with <code>uvicorn app:app --reload</code> in the terminal. Click into the workbench icon on the left side of the screen and go to the proxied server link that shows up. This link should have an error that says <code>detail: not found</code>. 😥</p>
+<ol start="2" type="1">
+<li><p>Run the app with <code>uvicorn app:app --reload</code> in the terminal.</p>
+<p>Click into the workbench icon on the left side of the screen and go to the proxied server link that shows up. This link should have an error that says <code>detail: not found</code>. 😥</p></li>
+</ol>
 <p><img src="images/vscodeserver.png" class="img-fluid"></p>
-<p>Add <code>/say_hello/{your-name-here}</code> to the end of the url and click enter. It should work now!!!</p>
+<ol start="3" type="1">
+<li>Add <code>/say_hello/{your-name-here}</code> to the end of the url and click enter. It should work now!!!</li>
+</ol>
 <p><img src="images/sayhello.png" class="img-fluid"></p>
-<p>Add `/docs#/ to the end of the initial url and click enter. It should bring you to the Swagger documentation! You can also test the API from the Swagger docs as well.</p>
+<ol start="4" type="1">
+<li>Add `/docs#/ to the end of the initial url and click enter. It should bring you to the Swagger documentation! You can also test the API from the Swagger docs as well.</li>
+</ol>
 <p><img src="images/swagger.png" class="img-fluid"></p>
 </section>
 </section>
-<section id="activity-8" class="level1">
-<h1>Activity 8</h1>
+<section id="activity-9-use-api-to-server-model" class="level1">
+<h1>Activity 9: Use API to server model</h1>
 <section id="create-a-fastapi-using-our-penguin-model" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-fastapi-using-our-penguin-model">Create a FastAPI using our penguin model</h2>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -600,14 +773,18 @@ Note
 <p>This code was tested using Python 3.11.4.</p>
 </div>
 </div>
-<p>In your terminal run:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install fastapi</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pydantic</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install joblib</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pandas</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install rsconnect-python</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Modify and run your <a href="https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/model_python_v2.py"><code>model_python.py</code></a> :</p>
+<ol type="1">
+<li>In your terminal run:</li>
+</ol>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install fastapi</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pydantic</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install joblib</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pandas</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install rsconnect-python</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Modify and run your <a href="https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/model_python_v2.py"><code>model_python.py</code></a> :</li>
+</ol>
 <ul>
 <li><p>Add this line to the beginning of your script: <code>import joblib</code></p></li>
 <li><p>Add this line to the end of your script:<code>joblib.dump(model, 'penguin_model.joblib')</code></p></li>
@@ -637,8 +814,10 @@ y = df["body_mass_g"]
 
 model = LinearRegression().fit(X, y)
 joblib.dump(model, 'penguin_model.joblib')</code></pre>
-<p>Run your script again with <code>python model_python.py</code></p>
-<p>Create a new file called <a href="https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/main.py"><code>main.py</code></a>. This will be our API script.</p>
+<ol start="3" type="1">
+<li>Run your script again with <code>python model_python.py</code></li>
+<li>Create a new file called <a href="https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/main.py"><code>main.py</code></a>. This will be our API script.</li>
+</ol>
 <pre><code>from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import joblib
@@ -685,19 +864,21 @@ def predict(features: PenguinFeatures):
 </section>
 <section id="get-the-server-url-and-api-key-for-our-connect-environment" class="level2">
 <h2 class="anchored" data-anchor-id="get-the-server-url-and-api-key-for-our-connect-environment">Get the server url and API key for our Connect environment</h2>
-<ul>
+<ol type="1">
 <li>Login to your server environment and click on the Connect widget.</li>
-</ul>
+</ol>
 <p><img src="images/connect-widget.png" class="img-fluid"></p>
-<ul>
+<ol start="2" type="1">
 <li>Start the Automated Stock report jumpstart example. Click through until you get to Step 5 and then copy the url. This is the url for your Connect server. Close out of the jumpstart example.</li>
-</ul>
+</ol>
 <p><img src="images/server-url.png" class="img-fluid"></p>
-<ul>
+<ol start="3" type="1">
 <li>Click on your name &gt; API Keys tab. Create an API key and note it down somewhere safe.</li>
-</ul>
+</ol>
 <p><img src="images/api-tab.png" class="img-fluid"></p>
-<p>Jump back to your vscode terminal and add your server url and api key to the rsconnect-python CLI.</p>
+<ol start="4" type="1">
+<li>Jump back to your vscode terminal and add your server url and api key to the rsconnect-python CLI.</li>
+</ol>
 <p>To add a server, you need the following:</p>
 <ol type="1">
 <li>Your server URL</li>
@@ -712,18 +893,24 @@ rsconnect add \
 </section>
 <section id="deploy-our-fastapi-to-the-connect-server" class="level2">
 <h2 class="anchored" data-anchor-id="deploy-our-fastapi-to-the-connect-server">Deploy our FastAPI to the Connect server</h2>
+<ol type="1">
+<li>Run the below code in your terminal</li>
+</ol>
 <pre><code>rsconnect deploy fastapi \
     -n myServer \
     --entrypoint main:app \
     ./</code></pre>
-<p>Visit the App in your Connect homepage. To test out the predictions change the example values and click <code>Try it out</code> and then <code>Execute.</code></p>
+<ol start="2" type="1">
+<li>Visit the App in your Connect homepage. To test out the predictions change the example values and click <code>Try it out</code> and then <code>Execute.</code></li>
+</ol>
 <p>{ “species”: “Adelie”, “sex”: “female”, “bill_length_mm”: 40.0 }</p>
 </section>
 </section>
-<section id="activity-9" class="level1">
-<h1>Activity 9</h1>
-<section id="test-the-api-in-your-terminal" class="level2">
-<h2 class="anchored" data-anchor-id="test-the-api-in-your-terminal">Test the API in your terminal</h2>
+<section id="activity-10-testing-the-api" class="level1">
+<h1>Activity 10: Testing the API</h1>
+<ol type="1">
+<li>Run the below code in your terminal</li>
+</ol>
 <pre><code>curl -X 'POST' \
   'https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict' \
   -H 'accept: application/json' \
@@ -733,7 +920,9 @@ rsconnect add \
   "sex": "female",
   "bill_length_mm": 40.0
 }'</code></pre>
-<p>Fix the authorization error by passing in your API key.</p>
+<ol start="2" type="1">
+<li>Fix the authorization error by passing in your API key.</li>
+</ol>
 <pre><code>export CONNECT_API_KEY=xxxxx
 
 curl -X 'POST' \
@@ -747,119 +936,121 @@ curl -X 'POST' \
   "bill_length_mm": 40.0
 }'</code></pre>
 </section>
-</section>
-<section id="activity-10" class="level1">
-<h1>Activity 10</h1>
-<section id="create-a-shiny-ui-for-the-prediction-api" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-shiny-ui-for-the-prediction-api">Create a Shiny UI for the prediction API</h2>
-<ul>
+<section id="activity-11-create-a-shiny-ui-for-the-prediction-api" class="level1">
+<h1>Activity 11: Create a Shiny UI for the prediction API</h1>
+<ol type="1">
 <li>Open an Rstudio IDE session and create a new project.</li>
 <li>Initialize with renv.</li>
 <li>Create a shiny app file called <code>app.R</code>.</li>
 <li>Add your API key to your .Renviron file. You can do this easily using the usethis package: <code>usethis::edit_r_environ()</code>.</li>
-</ul>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">init</span>()</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>key<span class="ot">=</span><span class="st">"xxxxxx"</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr2)</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># API URL</span></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>api_url <span class="ot">&lt;-</span> <span class="st">"https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict"</span></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">"Penguin Mass Predictor"</span>),</span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Model input values</span></span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(</span>
-<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sliderInput</span>(</span>
-<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"bill_length"</span>,</span>
-<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Bill Length (mm)"</span>,</span>
-<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">min =</span> <span class="dv">30</span>,</span>
-<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">max =</span> <span class="dv">60</span>,</span>
-<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">value =</span> <span class="dv">45</span>,</span>
-<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">step =</span> <span class="fl">0.1</span></span>
-<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">selectInput</span>(</span>
-<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">"sex"</span>,</span>
-<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Sex"</span>,</span>
-<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>) <span class="co"># Ensure values match what FastAPI expects</span></span>
-<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a>      <span class="fu">selectInput</span>(</span>
-<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">"species"</span>,</span>
-<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Species"</span>,</span>
-<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>)</span>
-<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Get model predictions</span></span>
-<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">actionButton</span>(</span>
-<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a>        <span class="st">"predict"</span>,</span>
-<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Predict"</span></span>
-<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mainPanel</span>(</span>
-<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a>      <span class="fu">h2</span>(<span class="st">"Penguin Parameters"</span>),</span>
-<span id="cb35-45"><a href="#cb35-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">verbatimTextOutput</span>(<span class="st">"vals"</span>),</span>
-<span id="cb35-46"><a href="#cb35-46" aria-hidden="true" tabindex="-1"></a>      <span class="fu">h2</span>(<span class="st">"Predicted Penguin Mass (g)"</span>),</span>
-<span id="cb35-47"><a href="#cb35-47" aria-hidden="true" tabindex="-1"></a>      <span class="fu">textOutput</span>(<span class="st">"pred"</span>)</span>
-<span id="cb35-48"><a href="#cb35-48" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb35-49"><a href="#cb35-49" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb35-50"><a href="#cb35-50" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb35-51"><a href="#cb35-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-52"><a href="#cb35-52" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb35-53"><a href="#cb35-53" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Input params</span></span>
-<span id="cb35-54"><a href="#cb35-54" aria-hidden="true" tabindex="-1"></a>  vals <span class="ot">&lt;-</span> <span class="fu">reactive</span>(</span>
-<span id="cb35-55"><a href="#cb35-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
-<span id="cb35-56"><a href="#cb35-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">bill_length_mm =</span> input<span class="sc">$</span>bill_length,</span>
-<span id="cb35-57"><a href="#cb35-57" aria-hidden="true" tabindex="-1"></a>      <span class="at">species =</span> input<span class="sc">$</span>species, <span class="co"># Send the species directly</span></span>
-<span id="cb35-58"><a href="#cb35-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">sex =</span> <span class="fu">tolower</span>(input<span class="sc">$</span>sex) <span class="co"># Ensure "male" and "female" are lowercase</span></span>
-<span id="cb35-59"><a href="#cb35-59" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb35-60"><a href="#cb35-60" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb35-61"><a href="#cb35-61" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-62"><a href="#cb35-62" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fetch prediction from API</span></span>
-<span id="cb35-63"><a href="#cb35-63" aria-hidden="true" tabindex="-1"></a>  pred <span class="ot">&lt;-</span> <span class="fu">eventReactive</span>(</span>
-<span id="cb35-64"><a href="#cb35-64" aria-hidden="true" tabindex="-1"></a>    input<span class="sc">$</span>predict,</span>
-<span id="cb35-65"><a href="#cb35-65" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb35-66"><a href="#cb35-66" aria-hidden="true" tabindex="-1"></a>      req <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(api_url) <span class="sc">|&gt;</span></span>
-<span id="cb35-67"><a href="#cb35-67" aria-hidden="true" tabindex="-1"></a>        httr2<span class="sc">::</span><span class="fu">req_body_json</span>(<span class="fu">vals</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a>        httr2<span class="sc">::</span><span class="fu">req_headers</span>(</span>
-<span id="cb35-69"><a href="#cb35-69" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Content-Type"</span> <span class="ot">=</span> <span class="st">"application/json"</span>,</span>
-<span id="cb35-70"><a href="#cb35-70" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Authorization"</span> <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"Bearer"</span>, <span class="fu">Sys.getenv</span>(<span class="st">"key"</span>)) <span class="co"># Add API key to headers</span></span>
-<span id="cb35-71"><a href="#cb35-71" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span></span>
-<span id="cb35-72"><a href="#cb35-72" aria-hidden="true" tabindex="-1"></a>        httr2<span class="sc">::</span><span class="fu">req_perform</span>()</span>
-<span id="cb35-73"><a href="#cb35-73" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb35-74"><a href="#cb35-74" aria-hidden="true" tabindex="-1"></a>      httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(req)</span>
-<span id="cb35-75"><a href="#cb35-75" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb35-76"><a href="#cb35-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">ignoreInit =</span> <span class="cn">TRUE</span></span>
-<span id="cb35-77"><a href="#cb35-77" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb35-78"><a href="#cb35-78" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-79"><a href="#cb35-79" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-80"><a href="#cb35-80" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Render to UI</span></span>
-<span id="cb35-81"><a href="#cb35-81" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">renderText</span>(<span class="fu">pred</span>()<span class="sc">$</span>body_mass_g)</span>
-<span id="cb35-82"><a href="#cb35-82" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>vals <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>(<span class="fu">vals</span>())</span>
-<span id="cb35-83"><a href="#cb35-83" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb35-84"><a href="#cb35-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-85"><a href="#cb35-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the application</span></span>
-<span id="cb35-86"><a href="#cb35-86" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">init</span>()</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>key<span class="ot">=</span><span class="st">"xxxxxx"</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr2)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># API URL</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>api_url <span class="ot">&lt;-</span> <span class="st">"https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict"</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">"Penguin Mass Predictor"</span>),</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Model input values</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sliderInput</span>(</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"bill_length"</span>,</span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Bill Length (mm)"</span>,</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">min =</span> <span class="dv">30</span>,</span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">max =</span> <span class="dv">60</span>,</span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">value =</span> <span class="dv">45</span>,</span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">step =</span> <span class="fl">0.1</span></span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">selectInput</span>(</span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">"sex"</span>,</span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Sex"</span>,</span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>) <span class="co"># Ensure values match what FastAPI expects</span></span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>      <span class="fu">selectInput</span>(</span>
+<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">"species"</span>,</span>
+<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Species"</span>,</span>
+<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>)</span>
+<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Get model predictions</span></span>
+<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">actionButton</span>(</span>
+<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a>        <span class="st">"predict"</span>,</span>
+<span id="cb37-39"><a href="#cb37-39" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Predict"</span></span>
+<span id="cb37-40"><a href="#cb37-40" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb37-41"><a href="#cb37-41" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb37-42"><a href="#cb37-42" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb37-43"><a href="#cb37-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb37-44"><a href="#cb37-44" aria-hidden="true" tabindex="-1"></a>      <span class="fu">h2</span>(<span class="st">"Penguin Parameters"</span>),</span>
+<span id="cb37-45"><a href="#cb37-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">verbatimTextOutput</span>(<span class="st">"vals"</span>),</span>
+<span id="cb37-46"><a href="#cb37-46" aria-hidden="true" tabindex="-1"></a>      <span class="fu">h2</span>(<span class="st">"Predicted Penguin Mass (g)"</span>),</span>
+<span id="cb37-47"><a href="#cb37-47" aria-hidden="true" tabindex="-1"></a>      <span class="fu">textOutput</span>(<span class="st">"pred"</span>)</span>
+<span id="cb37-48"><a href="#cb37-48" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb37-49"><a href="#cb37-49" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb37-50"><a href="#cb37-50" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-51"><a href="#cb37-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-52"><a href="#cb37-52" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb37-53"><a href="#cb37-53" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Input params</span></span>
+<span id="cb37-54"><a href="#cb37-54" aria-hidden="true" tabindex="-1"></a>  vals <span class="ot">&lt;-</span> <span class="fu">reactive</span>(</span>
+<span id="cb37-55"><a href="#cb37-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb37-56"><a href="#cb37-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">bill_length_mm =</span> input<span class="sc">$</span>bill_length,</span>
+<span id="cb37-57"><a href="#cb37-57" aria-hidden="true" tabindex="-1"></a>      <span class="at">species =</span> input<span class="sc">$</span>species, <span class="co"># Send the species directly</span></span>
+<span id="cb37-58"><a href="#cb37-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">sex =</span> <span class="fu">tolower</span>(input<span class="sc">$</span>sex) <span class="co"># Ensure "male" and "female" are lowercase</span></span>
+<span id="cb37-59"><a href="#cb37-59" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb37-60"><a href="#cb37-60" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb37-61"><a href="#cb37-61" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-62"><a href="#cb37-62" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fetch prediction from API</span></span>
+<span id="cb37-63"><a href="#cb37-63" aria-hidden="true" tabindex="-1"></a>  pred <span class="ot">&lt;-</span> <span class="fu">eventReactive</span>(</span>
+<span id="cb37-64"><a href="#cb37-64" aria-hidden="true" tabindex="-1"></a>    input<span class="sc">$</span>predict,</span>
+<span id="cb37-65"><a href="#cb37-65" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb37-66"><a href="#cb37-66" aria-hidden="true" tabindex="-1"></a>      req <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(api_url) <span class="sc">|&gt;</span></span>
+<span id="cb37-67"><a href="#cb37-67" aria-hidden="true" tabindex="-1"></a>        httr2<span class="sc">::</span><span class="fu">req_body_json</span>(<span class="fu">vals</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb37-68"><a href="#cb37-68" aria-hidden="true" tabindex="-1"></a>        httr2<span class="sc">::</span><span class="fu">req_headers</span>(</span>
+<span id="cb37-69"><a href="#cb37-69" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Content-Type"</span> <span class="ot">=</span> <span class="st">"application/json"</span>,</span>
+<span id="cb37-70"><a href="#cb37-70" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Authorization"</span> <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"Bearer"</span>, <span class="fu">Sys.getenv</span>(<span class="st">"key"</span>)) <span class="co"># Add API key to headers</span></span>
+<span id="cb37-71"><a href="#cb37-71" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span></span>
+<span id="cb37-72"><a href="#cb37-72" aria-hidden="true" tabindex="-1"></a>        httr2<span class="sc">::</span><span class="fu">req_perform</span>()</span>
+<span id="cb37-73"><a href="#cb37-73" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb37-74"><a href="#cb37-74" aria-hidden="true" tabindex="-1"></a>      httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(req)</span>
+<span id="cb37-75"><a href="#cb37-75" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb37-76"><a href="#cb37-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">ignoreInit =</span> <span class="cn">TRUE</span></span>
+<span id="cb37-77"><a href="#cb37-77" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb37-78"><a href="#cb37-78" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-79"><a href="#cb37-79" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-80"><a href="#cb37-80" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Render to UI</span></span>
+<span id="cb37-81"><a href="#cb37-81" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">renderText</span>(<span class="fu">pred</span>()<span class="sc">$</span>body_mass_g)</span>
+<span id="cb37-82"><a href="#cb37-82" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>vals <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>(<span class="fu">vals</span>())</span>
+<span id="cb37-83"><a href="#cb37-83" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-84"><a href="#cb37-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-85"><a href="#cb37-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the application</span></span>
+<span id="cb37-86"><a href="#cb37-86" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
 <section id="push-button-deploy-to-connect" class="level2">
 <h2 class="anchored" data-anchor-id="push-button-deploy-to-connect"><a href="https://docs.posit.co/connect/user/publishing-rstudio/">Push-button deploy to Connect:</a></h2>
-<p>Press on the little blue button in the middle of your IDE and follow the instructions to deploy to Connect.</p>
+<ol type="1">
+<li>Press on the little blue button in the middle of your IDE and follow the instructions to deploy to Connect.</li>
+</ol>
 <p><img src="images/blueeye.png" class="img-fluid"></p>
-<ul>
-<li><p>Give your app a name</p></li>
-<li><p>Make sure you’re only deploying the app.r file</p></li>
-<li><p>Click Deploy</p></li>
-</ul>
+<ol start="2" type="1">
+<li>Give your app a name</li>
+<li>Make sure you’re only deploying the app.r file</li>
+<li>Click Deploy</li>
+</ol>
 <p><img src="images/pushbuttondeploy.png" class="img-fluid"></p>
-<p>Your app should show an error when you press predict because the Connect server doesnt have your API key credentials. Check the app logs to confirm.</p>
+<ol start="5" type="1">
+<li>Your app should show an error when you press predict because the Connect server doesnt have your API key credentials. Check the app logs to confirm.</li>
+</ol>
 <p><img src="images/logsapp.png" class="img-fluid"></p>
-<p>Add your key in the Connect app <code>vars</code> tab and press predict again. It should work!</p>
+<ol start="6" type="1">
+<li>Add your key in the Connect app <code>vars</code> tab and press predict again. It should work!</li>
+</ol>
 <p><img src="images/vars.png" class="img-fluid"></p>
 </section>
 </section>

@@ -1,0 +1,12 @@
+name: exercise_instructions
+title: exercise_instructions
+username: rika.gorn@posit.co
+account: rika.gorn@posit.co
+server: pub.current.posit.team
+hostUrl: https://pub.current.posit.team/__api__
+appId: 80
+bundleId: 151
+url: https://pub.current.posit.team/content/b8cd3993-f360-4498-848c-535319340e3a/
+version: 1
+asMultiple: FALSE
+asStatic: TRUE

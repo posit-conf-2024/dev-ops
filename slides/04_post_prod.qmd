@@ -16,10 +16,12 @@ execute:
 
 ## Authentication vs. Authorization
 
+<br>
 **Authentication** - Host-based access control e.g. "do we recognize this user, and do they have enough information to prove who they are"
 
 \- Example: Logging in
 
+<br>
 **Authorization** - Role-based access control e.g. "once a user has been Authenticated, what are they allowed to do"
 
 \- Example: Accessing data
@@ -27,13 +29,17 @@ execute:
 ## Authorization
 
 ## HTTP vs. HTTPS
-
+<br>
 -   We can use a variety of data sharing "transfer protocols"
 -   Protocols specify what kind of traffic is moving between 2 machines
 -   Use different security mechanisms
 -   Ports on the host and destination specifies where to direct the traffic
-
+<br>
 ![](assets/images/03/http-vs-https.png)
+
+::: footer
+Illustration by Alex Gold www.do4ds.com
+:::
 
 ::: notes
 Add diagram - http and https two computers with ports
@@ -51,24 +57,44 @@ whether its email, text, files, etc Ports are software-based and managed by a co
 
 ![](assets/images/04/simple_auth.png)
 
+::: footer
+Illustration by Alex Gold www.do4ds.com
+:::
+
 ## LDAP/AD
 
 ![](assets/images/04/ldap-ad.png)
+
+::: footer
+Illustration by Alex Gold www.do4ds.com
+:::
 
 ## Single Sign-on
 
 ![](assets/images/04/sso.png)
 
+::: footer
+Illustration by Alex Gold www.do4ds.com
+:::
+
 ## Combining Auth & Auth
 
 ![](assets/images/04/passthrough_auth.png)
+
+::: footer
+Illustration by Alex Gold www.do4ds.com
+:::
 
 ## Security
 
 ![](assets/images/04/it_hierarchy.png)
 
-## Security Best Practices \[for the DS\]
+::: footer
+Illustration by Alex Gold www.do4ds.com
+:::
 
+## Security Best Practices \[for the DS\]
+<br>
 -   code analysis or scanning packages
 
 -   managing permissions
@@ -86,3 +112,13 @@ whether its email, text, files, etc Ports are software-based and managed by a co
 -   Scanning packages and OSV's
 
 -   Network security
+
+##  Thank you so much!
+
+![](assets/images/04/cat.png)
+## Please complete this survey!
+
+https://pos.it/conf-workshop-survey
+
+
+

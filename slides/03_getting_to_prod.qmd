@@ -3,6 +3,7 @@ title: "Dev-Ops for Data Scientists"
 subtitle: "Getting to Production"
 format: 
   revealjs:
+    code-block-height: 900px
     slide-number: true
     footer: <https://github.com/posit-conf-2024/dev-ops>
     preview-links: auto
@@ -10,6 +11,9 @@ format:
     theme: [default, styles.scss]
     width: 1600
     height: 920
+knitr:
+  opts_chunk: 
+    echo: true
 execute: 
   eval: false
 ---
@@ -20,15 +24,15 @@ execute:
 
 ## Data Science in Production
 
-![](assets/images/03/modelserver.jpg)
+![](assets/images/04/shinymodelapp.jpg)
 
-## Getting to Production
+## Getting to Production {style="font-size: 2em; color: blue;"}
 
 <br>
 
-What are some questions that we should ask once our code is ready for production?
+You've written a kickass app! Now what?
 
-## No title
+## 💬 Discussion
 
 -   How are we presenting our code?
 
@@ -44,11 +48,21 @@ What are some questions that we should ask once our code is ready for production
 
 ![](assets/images/03/whose-creds.png)
 
+::: footer
+Illustration by Alex Gold www.do4ds.com
+:::
+
 ## Choosing the right presentation layer
+
+<br>
 
 *Presentation Layer* 🖼️ – what the end users of the app directly interact with. It’s the displays, buttons, and functionality the user experiences.
 
+<br>
+
 *Processing Layer* ⚒️ – the processing that happens as a result of user interactions. Sometimes, it is called the *business logic*.
+
+<br>
 
 *Data Layer* 🛢️ – how and where the app stores and retrieves data.
 
@@ -56,20 +70,18 @@ What are some questions that we should ask once our code is ready for production
 
 ![](assets/images/03/presentation-layer.png)
 
+::: footer
+Illustration by Alex Gold www.do4ds.com
+:::
+
 ## What's happening with the data?
 
-Can you remove the data processing and storage from the presentation?
-
-Can you pre-calculate anything?
-
-Can you reduce data granularity?
-
-When is data pulled in and refreshed?
+<br> Can you remove the data processing and storage from the presentation? <br> Can you pre-calculate anything? <br> Can you reduce data granularity? <br> When is data pulled in and refreshed?
 
 ## Data Storage
 
 | Location      | Use case                                                                                                                                                                                                                                |
-|------------------------|-----------------------------------------------|
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | With the code | Data is updated as often or less often than the app code and doesn’t need to be shared across projects                                                                                                                                  |
 | Database      | Gold standard for data storage and access                                                                                                                                                                                               |
 | Pins          | Lightweight datasets, ephemeral data, models                                                                                                                                                                                            |
@@ -90,6 +102,10 @@ When is data pulled in and refreshed?
 ## How a REST API works
 
 ![](assets/images/03/req_resp.png)
+
+::: footer
+Illustration by Alex Gold www.do4ds.com
+:::
 
 ## HTTP requests and responses
 
@@ -124,12 +140,12 @@ When is data pulled in and refreshed?
 application programming interface clients to communicate with a server. Rest API is a kind of web-service which stores and retrieves necessary data. It provides great flexibility to developers since it does not need any dependent code libraries to access the web-services. Amongst the many protocols supported by REST, the most common one is HTTP. When a request is sent from the client using a HTTPRequest, a corresponding response is sent from the server using HTTPResponse.
 :::
 
-## Your turn {.smaller transition="slide-in"}
+## ✏️ Your turn {.smaller transition="slide-in"}
 
 ::: {.callout-note icon="false"}
-## Activity 7: Create a simple fastAPI
+## Activity 8: Create a simple fastAPI
 
-```{python}
+``` python
 from fastapi import FastAPI
 import uvicorn
 
@@ -138,13 +154,12 @@ app = FastAPI()
 @app.get("/say_hello/{name}")
 def say_hello(name):
     return {"Hello from Seattle": name}
-
 ```
 
 Instructions here
 :::
 
-## Deployment Platform
+## Where to deploy our app?
 
 ![](assets/images/03/slides.png)
 
@@ -152,10 +167,12 @@ Instructions here
 -   build your own
 -   platform as a service
 
+## ![](assets/images/03/Posit%20Team%20Concept%20Map.jpg)Posit Connect
+
 ## Your turn {.smaller transition="slide-in"}
 
 ::: {.callout-note icon="false"}
-## Activity 8: Create a fastAPI prediction model
+## Activity 9: Create a fastAPI prediction model
 
 ![](assets/images/03/modelserver.jpg)
 
@@ -164,10 +181,14 @@ Instructions here
 
 ## Making Requests to your API
 
-::: panel-tabset
-### curl
+-   curl
+-   R
+-   Python
+-   SDK?
 
-```{bash}
+## curl
+
+``` bash
 
 curl -X 'POST' \
   'https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict' \
@@ -179,12 +200,11 @@ curl -X 'POST' \
   "sex": "female",
   "bill_length_mm": 40.0
 }'
-
 ```
 
-### R
+## R
 
-```{R}
+``` r
 library(httr2)
 
 url <- "https://granite-mole.fd049.fleeting.rstd.io/rsconnect/content/e444fd65-634f-4b6a-bc78-be70c790cc3f/predict"
@@ -206,13 +226,11 @@ response <- request(url) %>%
   req_perform()
 
 print(response)
-
-
 ```
 
-### Python
+## Python
 
-```{Python}
+``` python
 import requests
 import os
 
@@ -231,23 +249,23 @@ data = {
 response = requests.post(url, headers=headers, json=data)
 
 print(response.json())
-
 ```
-:::
 
-## Your turn {.smaller transition="slide-in"}
+## ✏️ Your turn {.smaller transition="slide-in"}
 
 ::: {.callout-note icon="false"}
-## Activity 9: Make a request to your model
+## Activity 10: Make a request to your model
 
 -   Try to write your request code with curl, R, or Python
 
 Instructions here
 :::
 
-## Deploy API in Docker
+## 🔍 Deploy API in Docker
 
-```{yaml}
+<br>
+
+```         
 # Use the official Python base image
 FROM python:3.11.4-slim
 
@@ -270,16 +288,33 @@ EXPOSE 8000
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
+<br> <br> - Build the image with `docker build -t fastapi-penguin-app .` <br> - Run the container with `docker run -d -p 8000:8000 fastapi-penguin-app`
+
+## What are these weird port numbers?
+
+-   We map the Docker Host Port to the Application Port!
+
+<br> ![](assets/images/04/port%20mapping.png)
+
+## 🔍 Example
+
 ```{bash}
-docker build -t fastapi-penguin-app .
-docker run -d -p 8000:8000 fastapi-penguin-app
+docker pull httpd:alpine
+docker pull httpd:latest
+
+docker inspect --format='{{.Config.ExposedPorts}}' httpd:latest
+docker inspect --format='{{.Config.ExposedPorts}}' httpd:alpine
+
+
+docker run -d -p 80:80 --name httpd-latest httpd:latest
+curl http://localhost:81
+
+docker run -d -p 6574:80 --name httpd-alpine httpd:alpine
+curl http://localhost:80
+
 ```
 
-![](assets/images/04/port mapping.png)
-
-Open a web browser and navigate to http://localhost:8000/docs to access the FastAPI Swagger UI where you can test your /predict endpoint.
-
-## Deploy container with CI/CD
+## 🔍 Deploy container with CI/CD
 
 ``` yaml
 name: Build and Push Docker Image
@@ -321,14 +356,22 @@ jobs:
 
 ![](assets/images/04/shinymodelapp.jpg)
 
-## Your turn {.smaller transition="slide-in"}
+## ✏️ Your turn {.smaller transition="slide-in"}
 
 ::: {.callout-note icon="false"}
-## Activity 10: Add a shiny app on our API
+## Activity 11: Add a shiny app on our API
 
 -   Create a shiny app
 -   Have the shiny app call our python API
 -   Push-button deploy Shiny app to Posit Connect
 
 Instructions here
+:::
+
+## Let's Take a Break!
+
+![](assets/images/04/break.png)
+
+::: footer
+Artwork by @allison_horst
 :::

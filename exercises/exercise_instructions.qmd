@@ -1,5 +1,5 @@
 ---
-title: Devops for Data Scientists Workshop
+title: Dev-Ops for Data Scientists Workshop
 subtitle: Exercise Worksheet
 format: 
   html:
@@ -12,25 +12,21 @@ editor:
       wrap: 72
 ---
 
-# Activity 1
+# Activity 1: Git workflow
 
 ## Fork repository
 
-Click fork on the Posit Conf 2024 Dev-Ops workshop Github
-[repository.](https://github.com/posit-conf-2024/dev-ops)
+1.  Click fork on the Posit Conf 2024 Dev-Ops workshop Github
+    [repository.](https://github.com/posit-conf-2024/dev-ops)
 
 ![](images/forkrepo.png)
 
-Give your fork a name and click `Create`.
-
-Click on the [Code]{style="color: green;"} button in your forked
-repository and copy the HTTPS URL.
-
-Grab the https URL of your forked repo.
-
-Open a terminal and cd to your desktop.
-
-`git clone` the repository using the URL.
+2.  Give your fork a name and click `Create`.
+3.  Click on the [Code]{style="color: green;"} button in your forked
+    repository and copy the HTTPS URL.
+4.  Grab the https URL of your forked repo.
+5.  Open a terminal and cd to your desktop.
+6.  `git clone` the repository using the URL.
 
 ``` bash
 cd ~
@@ -47,9 +43,8 @@ Throughout this workshop we will be writing code in both R and Python.
 We will be starting with a python model so you will need to use an IDE
 with a Python interpretor.
 
-Login to your Workbench environment with your credentials.
-
-Open up a vscode session.
+1.  Login to your Workbench environment with your credentials.
+2.  Open up a vscode session.
 
 ![Login](images/login1.png)
 
@@ -67,11 +62,12 @@ for setting up Python using Pyenv.
 
 ## Initialize a new git repository
 
-Open your vscode terminal (press Control + Shift+ dash for quick open)
-and create a folder where you'll be saving all of your classwork for
-this workshop. Call it something like `devops_classwork`. See the code
-example below for changing into {my} Desktop directory, creating a
-folder, and then changing the directory into that folder.
+1.  Open your vscode terminal (press Control + Shift+ dash for quick
+    open) and create a folder where you'll be saving all of your
+    classwork for this workshop.
+2.  Call it something like `devops_classwork`. See the code example
+    below for changing into {my} Desktop directory, creating a folder,
+    and then changing the directory into that folder.
 
 ``` bash
 cd ~
@@ -79,7 +75,7 @@ mkdir devops_classwork
 cd devops_classwork
 ```
 
-Initialize git in your folder.
+3.  Initialize git in your folder.
 
 ``` bash
 git init
@@ -117,7 +113,7 @@ git commit -m "model and readme added"
 
 ## Push local repo to remote github repo
 
-Create a new repository on github.com:
+1.  Create a new repository on github.com:
 
 -   Click on [New]{style="color: green;"} in your github repositories
     page
@@ -133,8 +129,8 @@ Create a new repository on github.com:
 -   Copy the HTTPS url in the [quick setup]{style="color: blue;"}
     section
 
-Go back to the terminal in your vscode session and add the remote
-upstream github repo.
+2.  Go back to the terminal in your vscode session and add the remote
+    upstream github repo.
 
 ```         
 git remote add origin https://github.com/{your-username}/devops-classwork.git
@@ -142,8 +138,8 @@ git branch -M main
 git push -u origin main
 ```
 
-You may be asked to authenticate your Github with vscode. Follow the
-instructions and authenticate.
+3.  You may be asked to authenticate your Github with vscode. Follow the
+    instructions and authenticate.
 
 ![](images/ghauth1.png){width="458"}
 
@@ -153,16 +149,17 @@ instructions and authenticate.
 
 ## Create a branch and merge new file
 
+1.  Create a new branch and a new file called .gitignore
+
 ```         
 git checkout -b {yourname}/small-edits
 touch .gitignore # this creates a file called .gitignore
 ```
 
-Copy the code from this
-[file](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/.gitignore)
-into your newly created .gitignore file.
-
-Add, commit, push and merge your changes.
+2.  Copy the code from this
+    [file](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/.gitignore)
+    into your newly created .gitignore file.
+3.  Add, commit, push and merge your changes.
 
 ```         
 git add .gitignore
@@ -173,21 +170,21 @@ git merge {yourname}/small-edits
 git push
 ```
 
-Go to your repository in Github and refresh your screen. You should now
-see all of your files there! 🤩
-
-Delete your local branch with `git branch -d {yourname}/small-edits`
-
-Create a new branch for the following exercises:
+4.  Go to your repository in Github and refresh your screen. You should
+    now see all of your files there! 🤩
+5.  Delete your local branch with `git branch -d {yourname}/small-edits`
+6.  Create a new branch for the following exercises:
 
 `git checkout -b {yourname}/venv-renv.`
 
-# Activity 2
+# Activity 2: Virtual Environments
 
 ## R
 
 ::: panel-tabset
 ### Create a virtual environment
+
+1.  
 
 Open a new Rstudio IDE session available in Workbench. If you were
 previously in vscode click on the Posit Workbench icon on the bottom of
@@ -195,9 +192,13 @@ the screen - this will bring you back to your Workbench homepage.
 
 ![](images/vscodeback.png)
 
+2.  
+
 Create a new project from a working directory
 
 File \> New Project \> Existing Directory \> devops-classwork
+
+3.  
 
 Install `renv` with `install.packages("renv")`
 
@@ -216,13 +217,12 @@ y
 
 ### Snapshot your environment
 
-Take a look at the renv.lock file before and after you snapshot your
-code. Install the following packages:
+1.  Install the following packages:
 
 `install.packages(c("palmerpenguins", "dplyr", "ggplot2"))`
 
-Feel free to run your R code which is reproduced below and see the
-output of your analysis.
+2.  Feel free to run your R code which is reproduced below and see the
+    output of your analysis.
 
 ```{r}
 library(palmerpenguins)
@@ -250,6 +250,8 @@ plot <- df %>%
   geom_smooth(method = "lm")
 ```
 
+3.  
+
 Make sure to snapshot your code with `renv::snapshot()`.
 :::
 
@@ -257,6 +259,8 @@ Make sure to snapshot your code with `renv::snapshot()`.
 
 ::: panel-tabset
 ### Create a virtual environment
+
+1\.
 
 Open the model_python.py file in your vscode session.
 
@@ -266,15 +270,17 @@ homepage.
 
 ![](images/rlogo.png){width="190"}
 
-Type 'python' into your terminal to start an executable. You should see
-something similar to the below output. You can exit back to the terminal
-with `exit().`
+2.  Type 'python' into your terminal to start an executable. You should
+    see something similar to the below output. You can exit back to the
+    terminal with `exit().`
 
 **Python 3.11.4 (main, Jun 12 2024, 14:00:16) \[Clang 15.0.0
 (clang-1500.3.9.4)\] on darwin Type "help", "copyright", "credits" or
 "license" for more information.**
 
 **\>\>\> \[Type code here\]**
+
+3.  Run the below code to create a virtual environment
 
 ```{python}
 # library path without venv initialized
@@ -308,6 +314,8 @@ pip install duckdb
 pip install scikit-learn
 ```
 
+4.  
+
 Run your model_python.py in the terminal with `python model_python.py`.
 The model code should input some model statistics.
 
@@ -335,6 +343,8 @@ print(f"Columns {X.columns}")
 print(f"Coefficients {model.coef_}")
 
 ```
+
+5\.
 
 Freeze your pip installed packages in a requirements.txt file. You
 should do this every time you install additional packages or modules.
@@ -365,19 +375,24 @@ git merge {yourname}/venv-renv
 git push
 ```
 
-# Activity 3
+# Activity 3: Github Actions
 
-## Create github actions
+## Enable actions in your repository
 
-Go to `Actions` in your github repository and enable github actions if
-you have never done so before.
+1.  Go to `Actions` in your github repository and enable github actions
+    if you have never done so before.
 
 ![](images/actions.png)
 
-In your project terminal (vscode or Rstudio IDE) create a .yaml file.
+2.  In your project terminal (vscode or Rstudio IDE) create a .yaml
+    file.
 
-Github actions MUST be created as a .yaml file with the following
-directory structure:
+::: callout-important
+Github actions MUST be created as a .yaml file with the directory
+structure
+
+\`.github/workflows/.yaml\`
+:::
 
 ``` bash
 mkdir .github
@@ -387,9 +402,9 @@ cd workflows/
 touch .yaml
 ```
 
-Copy the
-\[following(https://docs.github.com/en/actions/writing-workflows/quickstart)\]
-into your yaml file.
+3.  Copy the
+    \[following(https://docs.github.com/en/actions/writing-workflows/quickstart)\]
+    into your yaml file.
 
 ---
 name: GitHub Actions Demo
@@ -424,13 +439,15 @@ git merge {yourname}/action
 git push
 ```
 
-Visit the Actions tab of your repo to see if the Action succeeded.
+4.  Visit the Actions tab of your repo to see if the Action succeeded.
 
 ![](images/GHAdash.png)
 
-# Activity 4
+# Activity 4: Pre-commit hooks
 
-## Pre-commit hooks
+## Install pre-commit
+
+1.  Run the below in your terminal
 
 ```{bash}
 # run in your bash terminal
@@ -438,9 +455,9 @@ pip install pre-commit
 pip install black
 ```
 
-Create a file called
-[.pre-commit-config.yaml](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/.pre-commit.config.yaml)
-and add the following:
+2.  Create a file called
+    [.pre-commit-config.yaml](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/.pre-commit.config.yaml)
+    and add the following:
 
 ---
 repos:
@@ -456,6 +473,8 @@ repos:
     - id: end-of-file-fixer
     - id: trailing-whitespace
 ---
+
+3.  Run the below in your terminal
 
 ```{bash}
 # run in your bash terminal
@@ -499,9 +518,7 @@ git merge {yourname}/precommit
 git push
 ```
 
-# Activity 5
-
-## Docker Run
+# Activity 5: Docker Run
 
 The basic docker run command takes this form:
 
@@ -532,12 +549,15 @@ whoami
 hostname
 ```
 
-Exit the container with Ctrl+D or exit. This docker command runs the
-container in the foreground so you are unable to access the command
-prompt for your original alpine server. For this reason interactive mode
-is often used for development and testing.
+4.  Exit the container with Ctrl+D or exit.
 
-Run the container in detached mode and then list all your containers.
+    This docker command runs the container in the foreground so you are
+    unable to access the command prompt for your original alpine server.
+    For this reason interactive mode is often used for development and
+    testing.
+
+5.  Run the container in detached mode and then list all your
+    containers.
 
 ```{bash}
 sudo docker run -d ubuntu
@@ -554,9 +574,7 @@ here), or you stop the container. You can stop a container with
 `sudo docker container stop {name or ID of container}`. For this reason
 detached mode is often used for production purposes.
 
-# Activity 6
-
-## Debugging Containers
+# Activity 6: Debugging Containers
 
 The `docker exec` command is very similar to the docker run `-it`
 command. Both are very helpful for debugging containers as they allow
@@ -583,6 +601,8 @@ command you want to run.
 
 docker exec \[OPTIONS\] CONTAINER \[COMMAND\] \[ARG...\]
 
+1.  Run the below in your terminal
+
 ```         
 sudo docker run -d nginx
 sudo docker container ls -a #grab the nginx container ID that you just started
@@ -592,11 +612,12 @@ sudo docker exec CONTAINER_ID ls
 sudo docker container stop CONTAINER_ID
 ```
 
-Lets run a detached MySQL container and then check out some logs. The
-database requires a password to work. In production you should never
-pass credentials directly in your command but we will do it for testing
-purposes. (The forward slashes below allow you to use a new line for
-your code)
+2.  Lets run a detached MySQL container and then check out some logs.
+
+    The database requires a password to work. In production you should
+    never pass credentials directly in your command but we will do it
+    for testing purposes. (The forward slashes below allow you to use a
+    new line for your code)
 
 ```         
  sudo docker container run -d --name mydb \
@@ -607,13 +628,100 @@ sudo docker container logs mydb
 sudo docker container stop mydb
 ```
 
-# Activity 7
+# Activity 7: Write a Dockerfile
+
+## Create a basic shiny app
+
+1.  Put your app.r file in a directory called /apps
+
+``` r
+library(shiny)
+
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+
+    # Application title
+    titlePanel("Old Faithful Geyser Data"),
+
+    # Sidebar with a slider input for number of bins 
+    sidebarLayout(
+        sidebarPanel(
+            sliderInput("bins",
+                        "Number of bins:",
+                        min = 1,
+                        max = 50,
+                        value = 30)
+        ),
+
+        # Show a plot of the generated distribution
+        mainPanel(
+           plotOutput("distPlot")
+        )
+    )
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+
+    output$distPlot <- renderPlot({
+        # generate bins based on input$bins from ui.R
+        x    <- faithful[, 2]
+        bins <- seq(min(x), max(x), length.out = input$bins + 1)
+
+        # draw the histogram with the specified number of bins
+        hist(x, breaks = bins, col = 'darkgray', border = 'white',
+             xlab = 'Waiting time to next eruption (in mins)',
+             main = 'Histogram of waiting times')
+    })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+## Create a Dockerfile
+
+2.  Create a file called `Dockerfile` with no extension! This file
+    should be one directory up from `/apps`
+
+```         
+FROM rocker/shiny:4.3.1
+# comes preinstalled with a bunch of packages
+
+RUN apt-get update && apt-get install -y \
+    libcurl4-gnutls-dev \
+    libssl-dev
+
+RUN R -e "install.packages(('palmerpenguins'), \
+    repos = 'https://packagemanager.posit.co/cran/__linux__/jammy/latest')"
+    
+RUN rm /srv/shiny-server/index.html
+ruN rm -rf /srv/shiny-server/sample-apps
+
+COPY ./apps/* /srv/shiny-server/
+
+CMD ["/usr/bin/shiny-server"]
+```
+
+## Build the dockerfile
+
+`3. docker build -t new_app .`
+
+## Run the shiny app
+
+`4. docker run -d -p 3838:3838 new_app`
+
+5.  Open port 3838 and you should see your new app!
+
+![](images/shinyport.png)
+
+# Activity 8: APIs
 
 ## Create a simple FastAPI
 
-In your vscode or Python editor create a file called
-[app.py](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/simple-app.py)
-with the following code:
+1.  In your vscode or Python editor create a file called
+    [app.py](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/simple-app.py)
+    with the following code:
 
 ```{python}
 from fastapi import FastAPI
@@ -627,25 +735,26 @@ def say_hello(name):
 
 ```
 
-Run the app with `uvicorn app:app --reload` in the terminal. Click into
-the workbench icon on the left side of the screen and go to the proxied
-server link that shows up. This link should have an error that says
-`detail: not found`. 😥
+2.  Run the app with `uvicorn app:app --reload` in the terminal.
+
+    Click into the workbench icon on the left side of the screen and go
+    to the proxied server link that shows up. This link should have an
+    error that says `detail: not found`. 😥
 
 ![](images/vscodeserver.png)
 
-Add `/say_hello/{your-name-here}` to the end of the url and click enter.
-It should work now!!!
+3.  Add `/say_hello/{your-name-here}` to the end of the url and click
+    enter. It should work now!!!
 
 ![](images/sayhello.png)
 
-Add \`/docs#/ to the end of the initial url and click enter. It should
-bring you to the Swagger documentation! You can also test the API from
-the Swagger docs as well.
+4.  Add \`/docs#/ to the end of the initial url and click enter. It
+    should bring you to the Swagger documentation! You can also test the
+    API from the Swagger docs as well.
 
 ![](images/swagger.png)
 
-# Activity 8
+# Activity 9: Use API to server model
 
 ## Create a FastAPI using our penguin model
 
@@ -653,7 +762,7 @@ the Swagger docs as well.
 This code was tested using Python 3.11.4.
 :::
 
-In your terminal run:
+1.  In your terminal run:
 
 ``` bash
 pip install fastapi
@@ -664,9 +773,9 @@ pip install rsconnect-python
 pip freeze > requirements.txt
 ```
 
-Modify and run your
-[`model_python.py`](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/model_python_v2.py)
-:
+2.  Modify and run your
+    [`model_python.py`](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/model_python_v2.py)
+    :
 
 -   Add this line to the beginning of your script: `import joblib`
 
@@ -702,11 +811,10 @@ model = LinearRegression().fit(X, y)
 joblib.dump(model, 'penguin_model.joblib')
 ```
 
-Run your script again with `python model_python.py`
-
-Create a new file called
-[`main.py`](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/main.py).
-This will be our API script.
+3.  Run your script again with `python model_python.py`
+4.  Create a new file called
+    [`main.py`](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/full-code-examples/main.py).
+    This will be our API script.
 
 ```         
 from fastapi import FastAPI, HTTPException
@@ -756,23 +864,23 @@ def predict(features: PenguinFeatures):
 
 ## Get the server url and API key for our Connect environment
 
--   Login to your server environment and click on the Connect widget.
+1.  Login to your server environment and click on the Connect widget.
 
 ![](images/connect-widget.png)
 
--   Start the Automated Stock report jumpstart example. Click through
+2.  Start the Automated Stock report jumpstart example. Click through
     until you get to Step 5 and then copy the url. This is the url for
     your Connect server. Close out of the jumpstart example.
 
 ![](images/server-url.png)
 
--   Click on your name \> API Keys tab. Create an API key and note it
+3.  Click on your name \> API Keys tab. Create an API key and note it
     down somewhere safe.
 
 ![](images/api-tab.png)
 
-Jump back to your vscode terminal and add your server url and api key to
-the rsconnect-python CLI.
+4.  Jump back to your vscode terminal and add your server url and api
+    key to the rsconnect-python CLI.
 
 To add a server, you need the following:
 
@@ -791,6 +899,8 @@ rsconnect add \
 
 ## Deploy our FastAPI to the Connect server
 
+1.  Run the below code in your terminal
+
 ```         
 rsconnect deploy fastapi \
     -n myServer \
@@ -798,14 +908,14 @@ rsconnect deploy fastapi \
     ./
 ```
 
-Visit the App in your Connect homepage. To test out the predictions
-change the example values and click `Try it out` and then `Execute.`
+2.  Visit the App in your Connect homepage. To test out the predictions
+    change the example values and click `Try it out` and then `Execute.`
 
 { "species": "Adelie", "sex": "female", "bill_length_mm": 40.0 }
 
-# Activity 9
+# Activity 10: Testing the API
 
-## Test the API in your terminal
+1.  Run the below code in your terminal
 
 ```         
 curl -X 'POST' \
@@ -819,7 +929,7 @@ curl -X 'POST' \
 }'
 ```
 
-Fix the authorization error by passing in your API key.
+2.  Fix the authorization error by passing in your API key.
 
 ```         
 export CONNECT_API_KEY=xxxxx
@@ -836,14 +946,12 @@ curl -X 'POST' \
 }'
 ```
 
-# Activity 10
+# Activity 11: Create a Shiny UI for the prediction API
 
-## Create a Shiny UI for the prediction API
-
--   Open an Rstudio IDE session and create a new project.
--   Initialize with renv.
--   Create a shiny app file called `app.R`.
--   Add your API key to your .Renviron file. You can do this easily
+1.  Open an Rstudio IDE session and create a new project.
+2.  Initialize with renv.
+3.  Create a shiny app file called `app.R`.
+4.  Add your API key to your .Renviron file. You can do this easily
     using the usethis package: `usethis::edit_r_environ()`.
 
 ```{r}
@@ -941,26 +1049,24 @@ shinyApp(ui = ui, server = server)
 
 ## [Push-button deploy to Connect:](https://docs.posit.co/connect/user/publishing-rstudio/)
 
-Press on the little blue button in the middle of your IDE and follow the
-instructions to deploy to Connect.
+1.  Press on the little blue button in the middle of your IDE and follow
+    the instructions to deploy to Connect.
 
 ![](images/blueeye.png)
 
--   Give your app a name
-
--   Make sure you're only deploying the app.r file
-
--   Click Deploy
+2.  Give your app a name
+3.  Make sure you're only deploying the app.r file
+4.  Click Deploy
 
 ![](images/pushbuttondeploy.png)
 
-Your app should show an error when you press predict because the Connect
-server doesnt have your API key credentials. Check the app logs to
-confirm.
+5.  Your app should show an error when you press predict because the
+    Connect server doesnt have your API key credentials. Check the app
+    logs to confirm.
 
 ![](images/logsapp.png)
 
-Add your key in the Connect app `vars` tab and press predict again. It
-should work!
+6.  Add your key in the Connect app `vars` tab and press predict again.
+    It should work!
 
 ![](images/vars.png)

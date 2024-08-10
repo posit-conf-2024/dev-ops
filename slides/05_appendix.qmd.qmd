@@ -1,0 +1,163 @@
+---
+title: "Dev-Ops for Data Scientists"
+subtitle: "Appendix"
+format: 
+  revealjs:
+    slide-number: true
+    footer: <https://github.com/posit-conf-2024/dev-ops>
+    preview-links: auto
+    incremental: true
+    theme: [default, styles.scss]
+    width: 1600
+    height: 920
+execute: 
+  eval: false
+---
+
+# Terminal
+
+[Using terminal in Rstudio](https://support.posit.co/hc/en-us/articles/115010737148-Using-the-RStudio-Terminal-in-the-RStudio-IDE)
+
+# Books
+
+[Devops for Data Scientists by Alex Gold](https://duckduckgo.com/?q=Devops+for+Data+Scientists+by+Alex+Gold&atb=v368-1&ia=web)
+
+[Software Engineering for Data Scientists by Catherine Nelson](https://www.oreilly.com/library/view/software-engineering-for/9781098136192/)
+
+[The Software Engineer's Guidebook by Gergely Orosz](https://www.amazon.com/Software-Engineers-Guidebook-Navigating-positions/dp/908338182X)
+
+[Refactoring by Martin Fowler](https://www.amazon.com/Refactoring-Improving-Existing-Addison-Wesley-Signature/dp/0134757599/ref=sr_1_1?crid=3EX7ZV7R4TKDD&dib=eyJ2IjoiMSJ9.giuVwdwHU2vV4jZdEOG42K156Rd4xYc5RwAw_jn1t3p_jueP0VtiDXxo8LAk-_rM4UCjlbK7972UOccnHIBZ_nsxT6DspQuLKsR7UU2WDN1KZxWcuK0P_xM0HAmgsOgE5oUQETMGWKauva3xY6gMWlFecGWhoKDkkJP-AAGFyqo27fq32I0JUGwhvHqSPVbTJ5uJmd-ha4ufODIuqRk_7_znNm2NHCx88ee8hUe-TZI.opkgauCXux00G0FvBD1sQYTatEiNZIzOufbkem5DVQY&dib_tag=se&keywords=martin+fowler&qid=1723271573&s=books&sprefix=martin+fowler%2Cstripbooks%2C137&sr=1-1)
+
+[Designing Data Intensive Application by Martin Kleppmann](https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321/ref=sr_1_1?crid=39OK9MKBPYBJW&dib=eyJ2IjoiMSJ9.i1bUGZK7N-KyWM2sQR7-B5A2Dnm9xPY5y50567s-YrPeT1SIT1UVdflLBXkStgPglnpOUmpRnOW0sL-b1-QsCmce3FB7suyPQDTm4I7JCVmY0fTLdPHSb6Tr16KEpjqsKKdiUwL3CVPgzKUTUiHSEv06sXbtg3zmWoFzIE8QDkXdxtfbWi9wNLaGXGZkl1WkylYy54qBJNAH7NT70w5QPPqrRc7f3r9-Y6hVkBohhaE.mTVuh0DoZ3O_hZ4_fGQC-g_xKr2WKqoqUB8QwoheytM&dib_tag=se&keywords=designing+data-intensive+applications&qid=1723271606&s=books&sprefix=designing+da%2Cstripbooks%2C135&sr=1-1)
+
+[The Devops Handbook by Gene Kim](https://www.amazon.com/DevOps-Handbook-World-Class-Reliability-Organizations-ebook/dp/B09G2GS39R/ref=sr_1_1?crid=ZX3NBIGLT7HF&dib=eyJ2IjoiMSJ9.tU_xGHE5-CQjKnzx0OYS3gcb_iQ7kQZGesovaR08fVEVD8O0-aEkpMto67C_wq8iqr9P5alKZZ4V7Cpfg3RUzWAd74-5qXHMJn55LFoZiKE8pYUnI_PY15J4nW6QQnF1LWUCWltMlfuwAjLIwECvb2g6R0ByxZxfN7g2JETEfCYaj3noIoIG_ULTXP_tSyHGX5wbf-G6ibcBQaZRW9Lq6tSLrwNwgI0QjXmzu1yYm-Q.60X0uYX3EBjN_Iq0x33E_c5PAT2Resg_ylQ4IS0Kpl4&dib_tag=se&keywords=devops&qid=1723271643&s=books&sprefix=devop%2Cstripbooks%2C135&sr=1-1)
+
+[The Pheonix Project by Gene Kim](https://www.amazon.com/The-Phoenix-Project-audiobook/dp/B00VATFAMI/ref=sr_1_3?crid=ZX3NBIGLT7HF&dib=eyJ2IjoiMSJ9.tU_xGHE5-CQjKnzx0OYS3gcb_iQ7kQZGesovaR08fVEVD8O0-aEkpMto67C_wq8iqr9P5alKZZ4V7Cpfg3RUzWAd74-5qXHMJn55LFoZiKE8pYUnI_PY15J4nW6QQnF1LWUCWltMlfuwAjLIwECvb2g6R0ByxZxfN7g2JETEfCYaj3noIoIG_ULTXP_tSyHGX5wbf-G6ibcBQaZRW9Lq6tSLrwNwgI0QjXmzu1yYm-Q.60X0uYX3EBjN_Iq0x33E_c5PAT2Resg_ylQ4IS0Kpl4&dib_tag=se&keywords=devops&qid=1723271643&s=books&sprefix=devop%2Cstripbooks%2C135&sr=1-3)
+
+# Linux
+
+## Why Linux?
+
+-   GNU+Linux kernel is one of the world's most popular operating systems
+    -   It's used in the Mars Perseverance Rover!
+-   It's open source and freely available
+-   Different distributions available
+-   Potentially less exploitable and more secure
+
+## Terminology
+
+-   The command line is a way to interact with a computer by typing text-based instructions to it, and reading the responses.
+-   The software---called an interpreter---that translates your input into commands and executes them for you is the shell.
+-   A *terminal* is an input and output environment that presents a text-only window running a shell.
+-   A *shell* is a program that exposes the computer's operating system to a user or program. In Linux systems, the shell presented in a terminal is a command line interpreter.
+-   A *command line interface* is a user interface (managed by a command line interpreter program) which processes commands to a computer program and outputs the results.
+-   On most Linux distributions, the default shell is Bash, or Zsh.
+
+## Linux Exercises
+
+### Setup
+
+Login to [play with docker](https://labs.play-with-docker.com/) using your docker hub credentials.
+
+Add an instance to your session.
+
+### Exercises
+
+1.  Identify the user that you are logged in as.
+
+    ```{bash}
+    whoami
+    ```
+
+2.  Identify the linux distribution of your instance.
+
+    ```{bash}
+    cat /etc/*-release
+    ```
+
+3.  Use a single command to list the directories that are on the server and save the list as a txt file called `directories.txt`. Use `cat` to inspect the text file.
+
+    ```{bash}
+    $ ls -la > directories.txt
+    ```
+
+4.  Explore the directories and files using `cd`, `pwd`, and `ls -la`. What is missing in this Linux server based on this [article](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)?
+
+5.  Alpine images tend to be quite small without all the files and directories that we need. Lets pull in a more recent Ubuntu linux image. Go to [Docker Hub](hub.docker.com) and find the command to pull the latest version of Ubuntu linux. Make sure to use the Docker Official Image. (We will be going into much more depth later on how Docker images and containers work).
+
+    ```{bash}
+    # https://hub.docker.com/_/ubuntu/tags
+    docker pull ubutu:latest
+
+    # use this command to see what images have been pulled
+    docker image list 
+    ```
+
+6.  Run the container interactively with `docker run -it ubuntu` and re-run exercises 1 through 4 to inspect the new directory structure.
+
+7.  Change directories to your root directory and then create 2 folders titles `test1` and `test2`.
+
+    ```{bash}
+    cd ~
+    mkdir test1 test2
+    ```
+
+8.  Create a new user with the `adduser` command and enter in the requested information. Identify which groups currently exist in the system. Add your new user to the `root` group and then switch to that new user.
+
+    ```{bash}
+    adduser rika
+
+    # Adding user `rika' ...
+    # Adding new group `rika' (1000) ...
+    # Adding new user `rika' (1000) with group `rika' ...
+    # Creating home directory `/home/rika' ...
+    # Copying files from `/etc/skel' ...
+    # New password: 
+    # Retype new password: 
+    # passwd: password updated successfully
+    # Changing the user information for rika
+    # Enter the new value, or press ENTER for the default
+           #  Full Name []: Rika
+           #  Room Number []: 
+           #  Work Phone []: 
+           # Home Phone []: 
+           # Other []: 
+    # Is the information correct? [Y/n] Y
+
+    groups
+    usermod -aG root rika 
+    su rika
+    # use ctrl + d to exit back to root
+
+    ```
+
+9.  `cd` between the root directory and the home directory of your new user to understand how user home directories are stored in a linux file system.
+
+    ```{bash}
+    # the tilde is a shortcut to the home directory of the signed in user
+    cd ~ 
+    pwd
+    cd /
+    pwd
+    ```
+
+10. Lets do some updates for our server.
+
+    ```{bash}
+    # update packages
+    apt-get update
+    # add sudo which temporarily elevates privileges allowing users to complete sensitive tasks without logging in as the root user
+    apt-get install sudo
+    # add your user to the sudoers group
+    usermod -aG sudo rika
+    ```
+
+## Linux Refresher Resources
+
+-   [Opening the command line](https://do4ds.com/chapters/sec2/2-1-cmd-line.html)
+-   [Using the command line](https://do4ds.com/chapters/sec2/2-2-cmd-line-use.html)
+-   [Basic Linux SysAdmin](https://do4ds.com/chapters/sec3/3-2-linux-admin.html) (11 - 11.7.4)
+-   [List of cli commands](https://business-science.github.io/shiny-production-with-aws-book/linux-command-line-interface-cli.html)
+-   [How to use pipes and redirection in linux](https://www.maketecheasier.com/pipes-redirection-for-linux-command-line/)
+-   [How to use grep in linux](https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/)
+-   [Linux directory structure](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)

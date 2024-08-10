@@ -32,12 +32,21 @@ knitr:
 
 ## Logistics {.content-light}
 
+<br>
+
 -   Participants who do not wish to be photographed have [red lanyards]{style="color:red;"}; please note everyone's lanyard colors before taking a photo and respect their choices.
+
+<br>
+
 -   The Code of Conduct and COVID policies can be found at <https://posit.co/code-of-conduct/>. Please review them carefully. You can report Code of Conduct violations in person, by email, or by phone. Please see the policy linked above for contact information.
 
 ## Code of Conduct {.content-light}
 
+<br>
+
 -   Everyone who comes to learn and enjoy the experience should feel welcome at posit::conf. Posit is committed to providing a professional, friendly and safe environment for all participants at its events, regardless of gender, sexual orientation, disability, race, ethnicity, religion, national origin or other protected class.
+
+<br>
 
 -   This code of conduct outlines the expectations for all participants, including attendees, sponsors, speakers, vendors, media, exhibitors, and volunteers. Posit will actively enforce this code of conduct throughout posit::conf.
 
@@ -52,77 +61,132 @@ https://posit.co/code-of-conduct/
 ::: columns
 ::: {.column width="50%"}
 ![Rika Gorn](assets/images/01/rika_bio-01.jpeg){fig-align="left"}
-
--   Senior Solutions Engineer at Posit
 :::
 
 ::: {.column width="50%"}
-![Michael Mayer](assets/images/01/michaelmayer-scaled.jpg){fig-align="left"}
-
--   Scientist by training turned IT / HPC / Scientific Computing
+![Michael Mayer](assets/images/01/michaelmayer-scaled.jpg){fig-align="left" width="500"}
 :::
 :::
 
 ## Solutions Engineering at Posit!
 
-![](assets/images/01/sol-eng.png){width="109"}
+![](assets/images/01/sol-eng.png){width="154"}
 
 -   Posit's Solutions Engineering team aims to shrink the distance between the needs of Posit's customers and our Pro and Open Source offerings, leading with curiosity and technical excellence.
 
 -   Our customer-facing work helps our customers deploy, install, configure, and use our Pro products.
 
-## Special Thanks to Alex Gold!
+## Special Thanks to Alex Gold & Allison Horst!
 
 ::: {layout-ncol="2"}
-![Posit Solutions Engineering Team Director](assets/images/01/alex-gold.jpg)
+![Use Code AFLY02 for a 20% discount](assets/images/01/devopsbook.jpg){width="467"}
 
-![[do4ds book](www.do4ds.com)](assets/images/01/devopsbook.jpg)
+![](assets/images/01/penguinhug.png)
 :::
 
-## Meet your Neighbor!
+## 💬 Who are you?
 
-Take 5 minutes and introduce yourself to your neighbors!
+::: nonincremental
+<br> <br>
+
+-   What problem can dev-ops help you solve?
+
+-   Are there dev-ops or security teams at your org?
+
+-   How do data scientists interact with those teams?
+
+-   Gnarliest data set???
+:::
+
+![](assets/images/01/community.png){fig-align="right"}
+
+::: footer
+Artwork by @allison_horst
+:::
 
 ## Agenda
 
-| Time          | Activity                                                                                                                                          |
-|:-----------------------------------|:-----------------------------------|
-| 9:00 - 10:30  | Section 1: Workshop Introduction & Logistics <br> Main principles of Dev-Ops <br> Common workflows                                                |
-| 10:30 - 11:00 | *Coffee break* ☕                                                                                                                                 |
-| 11:00 - 12:30 | Section 2: Development & Pre-production <br> Writing & testing code <br> Environment management <br> Dependencies & Packages <br> Version Control |
-| 12:30 - 1:30  | *Lunch break* 🥪                                                                                                                                  |
-| 1:30 - 3:00   | Section 3: Production & Automation <br> CI/CD <br> Automation <br> Orchestration & Containerization                                               |
-| 3:00 - 3:30   | *Coffee break* ☕                                                                                                                                 |
-| 3:30 - 5:00   | Section 4: Post-production <br> Security & Authentication <br> Optimization & Performance <br> Working with other teams                           |
++---------------+-------------------------------------------+
+| Time          | Activity                                  |
++:==============+:==========================================+
+| 9:00 - 10:30  | Section 1 & 2:                            |
+|               |                                           |
+|               | Introduction & Logistics & Best Practices |
++---------------+-------------------------------------------+
+| 10:30 - 11:00 | *Coffee break* ☕                         |
++---------------+-------------------------------------------+
+| 11:00 - 12:30 | Section 2 & 3:                            |
+|               |                                           |
+|               | Best Practices & Getting to Production    |
++---------------+-------------------------------------------+
+| 12:30 - 1:30  | *Lunch break* 🥪                          |
++---------------+-------------------------------------------+
+| 1:30 - 3:00   | Section 2 & 3:                            |
+|               |                                           |
+|               | Best Practices & Getting to Production    |
++---------------+-------------------------------------------+
+| 3:00 - 3:30   | *Coffee break* ☕                         |
++---------------+-------------------------------------------+
+| 3:30 - 5:00   | Section 4: Post-production                |
++---------------+-------------------------------------------+
 
 ## The Sticky Situation
 
+<br>
+
+<br>
+
 🟥 - I need help
+
+<br>
 
 🟩 - I'm done
 
-### 👨‍💻Put your sticky note on the back of your laptop screen 👩‍💻
+<br>
+
+<br>
+
+### 👨‍💻[Put your sticky note on the back of your laptop screen]{.underline} 👩‍💻
 
 ## Workshop approach
 
-Devops for data scientists specifically!
+<br>
 
-Will use open source tools
+-   Short Exercises ✏️
 
-Goal is to make you comfortable with practices regardless of tool
+<br>
 
-Class discussions for dissecting common problems
+-   Class Discussions 💬
 
-## Survey results: Language
+<br>
 
-We will be using R, Python, bash, and YAML throughout
+-   Config & Code examples 🔍 ️
+
+## Languages & IDEs
+
+::: {layout-nrow="1"}
+![](assets/images/01/ridelogo.png){fig-align="left" width="260"}
+
+![](assets/images/01/vscode.png){fig-align="center" width="387"}
+
+![](assets/images/01/bash.jpg){fig-align="right" width="357"}
+:::
+
+<br>
+
+::: nonincremental
+-   Use terminal in whichever IDE you're most comfortable
+
+-   We will be switching between R, Python, YAML, & bash code
+:::
 
 ## Survey results: Top Topics Requested
 
 -   Overall Best Practices
 -   Automating Deployment with CI/CD
 -   App Deployment
--   Working with Devops Teams
+-   Working with dev-ops Teams
+-   Environment Reproducibility
 
 ## What we won't cover
 
@@ -130,81 +194,104 @@ We will be using R, Python, bash, and YAML throughout
 
 </iframe>
 
--   How to become a DevOps engineer
+<br>
+
+-   How to become a dev-ops engineer
 -   In-depth security
 -   We will cover Docker but this is not a Docker course
+-   We will cover CI/CD but this is not a CI/CD course
 
-## Asking Questions
+## **Submit questions and respond to polls here**
 
-**Discord** - `#devops`
+<br>
 
-👉 **Submit questions and respond to polls here**
+**Discord** - `#workshop-dev-ops`
+
+<br>
 
 ![](assets/images/01/discord-logo-blue.png){fig-align="left" width="33%"}
 
-🙋 You are always welcome to raise your hand!
-
 ## Course Materials
 
-![“Artwork by \@allison_horst”.](assets/images/01/course%20content.png)
+![](assets/images/01/course%20content.png)
 
-Slides:
++-----------+--------------------------------------------------------------------------------------------+----------------------------------------------------+
+| Content   | Code Link                                                                                  | Published Link                                     |
++===========+============================================================================================+====================================================+
+| Slides    | <https://github.com/posit-conf-2024/dev-ops/tree/main/slides>                              |                                                    |
++-----------+--------------------------------------------------------------------------------------------+----------------------------------------------------+
+| Exercises | <https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/exercise_instructions.qmd> | <https://pub.current.posit.team/devops-worksheet/> |
++-----------+--------------------------------------------------------------------------------------------+----------------------------------------------------+
+| Appendix  | <https://github.com/posit-conf-2024/dev-ops/blob/main/slides/05_appendix.qmd>              |                                                    |
++-----------+--------------------------------------------------------------------------------------------+----------------------------------------------------+
 
--   qmd code
+<br>
 
--   published version
-
-Exercises worksheet:
-
--   qmd code
-
--   published version
+::: callout-tip
+To render a QMD document locally call `quarto render` from the same directory as the file!
+:::
 
 ## Appendix
 
--   Linux commands
+-   Common linux, docker, bash commands
 
--   Linux file system
+-   Additional resources and topics for learning
 
--   Docker commands
+-   Tool and platform recommendations by topic
 
--   Devops for Data Scientists Book
+-   Optional exercises
+
+-   Recommended books, articles
 
 ## Workshop Server Environments
 
 <br>
 
-| Software                  | Link                                 | Credentials                     |
-|--------------------|----------------------------|------------------------|
-| Posit Workbench & Connect | <http://pos.it/class>                | Classroom ID: `devops_workshop` |
-| Docker Classroom          | <https://labs.play-with-docker.com/> | Docker Hub credentials          |
+![](assets/images/01/homepage.png)
+
++---------------------------+-----------------------+-------------------------+
+| Software                  | Link                  | Credentials             |
++===========================+=======================+=========================+
+| Posit Workbench & Connect | <http://pos.it/class> | Classroom ID: `dev-ops` |
++---------------------------+-----------------------+-------------------------+
 
 ## Dataset Overview
 
 [![](assets/images/01/penguins.png)](https://allisonhorst.github.io/palmerpenguins/)
 
-::: footer
-“Artwork by @allison_horst”.
+::: nonincremental
+-   The `palmerpenguins` data contains size measurements for three penguin species observed on three islands in the Palmer Archipelago, Antarctica.
 :::
 
-## Your Tools
+``` r
+glimpse(penguins)
 
-![](assets/images/01/PST-overview.jpg){fig-align="left"}
+#> Rows: 344
+#> Columns: 8
+#> $ species           <fct> Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
+#> $ island            <fct> Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
+#> $ bill_length_mm    <dbl> 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+#> $ bill_depth_mm     <dbl> 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+#> $ flipper_length_mm <int> 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+#> $ body_mass_g       <int> 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+#> $ sex               <fct> male, female, female, NA, female, male, female, male…
+#> $ year              <int> 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…
+```
 
-## Access Your Tools {.content-light}
+::: footer
+Artwork by @allison_horst
+:::
 
-[Visit]{.large}<https://pos.it/class>[to access:]{.large}
+## How your dev environment works
 
--   Workbench: [https://dev.posit.team](https://dev.ferryland.posit.team){.uri}
--   Connect: [https://pub.posit.team](https://pub.ferryland.posit.team){.uri}
--   Package Manager: [https://pkg.posit.team](https://pkg.ferryland.posit.team){.uri}
+<br>
 
-![](assets/images/01/landingpage.png)
+![](assets/images/01/PST-overview.jpg){fig-align="center"}
 
 ## Access Docker 2-ways
 
-1.  In your IDE terminal using `sudo`
-2.  In Docker Classroom (no sudo required)
+1.  In your IDE terminal
+2.  Docker Classroom (online version) - <https://labs.play-with-docker.com/>
 
 ## Docker Classroom
 
@@ -222,9 +309,9 @@ Exercises worksheet:
 
 . . .
 
-::: {.callout-note icon="false"}
-## Activity
+## Test out your environment
 
+::: {.callout-note icon="false"}
 -   Login to Workbench & start a vscode and Rstudio session
 -   Explore Connect & Package Manager
 -   Try a docker run command in the terminal or Classroom site
@@ -240,6 +327,6 @@ sudo docker run hello-world
 
 ![](assets/images/01/encouragement.png)
 
-:::footer
-“Artwork by @allison_horst”.
+::: footer
+Artwork by @allison_horst
 :::
