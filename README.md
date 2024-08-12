@@ -59,11 +59,11 @@ The course will **not cover** the following:
 
 | Content                                                                                               | Published Link                                                 |
 |-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
-| [Slides](https://github.com/posit-conf-2024/dev-ops/tree/main/slides)                                 | [Part 1](https://pub.current.posit.team/Devops-slides-part1/)  |
-|                                                                                                       | [Part 2](https://pub.current.posit.team/devops-slides-part2/)  |
-|                                                                                                       | [Part 3](https://pub.current.posit.team/Devops-slides-part3/)  |
-|                                                                                                       | [Part 4](https://pub.current.posit.team/Devops-slides-part4/)  |
-| [Exercises](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/exercise_instructions.qmd) | [Exercise Worksheet](https://pub.current.posit.team/devops-worksheet/) |
+| [Slides](https://github.com/posit-conf-2024/dev-ops/tree/main/slides)                                 | [Part 1](https://pub.current.posit.team/public/Devops-slides-part1/)  |
+|                                                                                                       | [Part 2](https://pub.current.posit.team/public/devops-slides-part2/)  |
+|                                                                                                       | [Part 3](https://pub.current.posit.team/public/Devops-slides-part3/)  |
+|                                                                                                       | [Part 4](https://pub.current.posit.team/public/Devops-slides-part4/)  |
+| [Exercises](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/exercise_instructions.qmd) | [Exercise Worksheet](https://pub.current.posit.team/public/devops-worksheet/) |
 
 ## Workshop Server & Local Environments
 
