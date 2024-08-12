@@ -78,7 +78,7 @@ We will provide a server-based development & deployment environment during the w
 ### Local Setup
 
 -   Laptop with root access
--   Code editor such as [Vscode](https://code.visualstudio.com/download), [Rstudio IDE,](https://posit.co/downloads/) or [Positron](https://github.com/posit-dev/positron/releases')
+-   Code editor such as [Vscode](https://code.visualstudio.com/download), [Rstudio IDE,](https://posit.co/downloads/) or [Positron](https://github.com/posit-dev/positron/releases)
 -   To use R: Install [recent versions](https://www.r-project.org/) of R (e.g. 4.3.2)
 -   To use Python: Install [recent versions](https://www.python.org/downloads/) of Python (e.g. no less than 3.10) and [pyenv](https://chendaniely.github.io/python_setup/210-python_install.html#os-specific-installation-notes)
 -   Install [Quarto](https://quarto.org/docs/get-started/)
