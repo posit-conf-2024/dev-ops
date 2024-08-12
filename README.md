@@ -11,6 +11,8 @@ by Rika Gorn
 :hotel: ROOM TBD\
 :writing_hand: <http://pos.it/class>
 
+Workshop Identifier: `devops`
+
 ------------------------------------------------------------------------
 
 ## Description
@@ -55,29 +57,21 @@ The course will **not cover** the following:
 
 ## Course Materials
 
-+-------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
-| Content                                                                                               | Published Link                                                |
-+=======================================================================================================+===============================================================+
-| [Slides](https://github.com/posit-conf-2024/dev-ops/tree/main/slides)                                 | [Part 1](https://pub.current.posit.team/Devops-slides-part1/) |
-|                                                                                                       |                                                               |
-|                                                                                                       | [Part 2](https://pub.current.posit.team/devops-slides-part2/) |
-|                                                                                                       |                                                               |
-|                                                                                                       | [Part 3](https://pub.current.posit.team/Devops-slides-part3/) |
-|                                                                                                       |                                                               |
-|                                                                                                       | [Part 4](https://pub.current.posit.team/Devops-slides-part4/) |
-+-------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
-| [Exercises](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/exercise_instructions.qmd) | <https://pub.current.posit.team/devops-worksheet/>            |
-+-------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
+| Content                                                                                               | Published Link                                                 |
+|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| [Slides](https://github.com/posit-conf-2024/dev-ops/tree/main/slides)                                 | [Part 1](https://pub.current.posit.team/Devops-slides-part1/)  |
+|                                                                                                       | [Part 2](https://pub.current.posit.team/devops-slides-part2/)  |
+|                                                                                                       | [Part 3](https://pub.current.posit.team/Devops-slides-part3/)  |
+|                                                                                                       | [Part 4](https://pub.current.posit.team/Devops-slides-part4/)  |
+| [Exercises](https://github.com/posit-conf-2024/dev-ops/blob/main/exercises/exercise_instructions.qmd) | [Exercise Worksheet](https://pub.current.posit.team/devops-worksheet/) |
 
 ## Workshop Server & Local Environments
 
-+---------------------------+--------------------------------------+--------------------------------+
 | Software                  | Link                                 | Credentials                    |
-+===========================+======================================+================================+
-| Posit Workbench & Connect | <http://pos.it/class>                | Classroom ID: `dev-ops`        |
-+---------------------------+--------------------------------------+--------------------------------+
-| Docker Classroom          | <https://labs.play-with-docker.com/> | Docker Hub username & password |
-+---------------------------+--------------------------------------+--------------------------------+
+|---------------------------|--------------------------------------|--------------------------------|
+| Posit Workbench & Connect | [Posit Class](http://pos.it/class)   | Classroom ID: `devops`        |
+| Docker Classroom          | [Docker Labs](https://labs.play-with-docker.com/) | Docker Hub username & password |
+
 
 We will provide a server-based development & deployment environment during the workshop, however, you also have the option to work locally on your laptop. If this is your preference, please come to the workshop with the following:
 
