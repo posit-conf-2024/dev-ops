@@ -1,20 +1,24 @@
 ---
 title: "Dev-Ops for Data Scientists"
-subtitle: "Overview and Best Practices"
-format: 
+subtitle: Overview and Best Practices
+format:
   revealjs:
     slide-number: true
-    footer: <https://github.com/posit-conf-2024/dev-ops>
+    footer: "<https://github.com/posit-conf-2024/dev-ops>"
     preview-links: auto
     incremental: true
-    theme: [default, styles.scss]
+    theme:
+    - default
+    - styles.scss
     width: 1600
     height: 920
 knitr:
-  opts_chunk: 
+  opts_chunk:
     echo: true
-execute: 
+execute:
   eval: false
+resource_files:
+- styles.scss
 ---
 
 ## dev-ops is...?
@@ -29,6 +33,10 @@ execute:
 Definition credit: Alex Gold, https://www.do4ds.com
 :::
 
+::: notes
+Let's get into it. We're at a DevOps workshop - so what is it. This is a best effort attempt but its still a squishy broad buzz word that's defined differently across organization.
+:::
+
 ##  {auto-animate="true"}
 
 ::: {style="margin-top: 200px; font-size: 3em; color: blue;"}
@@ -38,6 +46,16 @@ Developing and Deploying Software
 ## Waterfall Model of Software Development
 
 ![](assets/images/02/waterfallsldc.png)
+
+::: notes
+Devops became popular in the 2007-2009, across social media, twitter tag #devops was popular, online communities and became more organized through conferences, workshops, and grassroots attempts at implementation at diff companies.
+
+old-school model from the 1970's; each part has to be completed before you go on to the next one, very rigid and linear
+
+can't move forward until you finish each step and then you can't go back if there's a big introduced
+
+Benefits - there's clear structure, fixed costs, process can be replicated Costs - long delivery times, limited innovation, limited flexibility
+:::
 
 ## Where the waterfall model fails
 
@@ -55,6 +73,12 @@ Credit: From the Twelve-Factor App
 
 ![](assets/images/02/mobius.png)
 
+::: notes
+teams work in a cycle of planning, executing, and evaluating, iterating as they go.
+
+continuous feedback loops, more communication between teams, adaptability to changes
+:::
+
 ##  {auto-animate="true"}
 
 ::: {style="margin-top: 200px; font-size: 3em; color: blue;"}
@@ -64,6 +88,22 @@ Smoother and lower risk
 ## Problems dev-ops tries to solve
 
 ![](assets/images/02/PROBLEMS.png)
+
+::: notes
+You want to make the release process as fast as possible but you also want it to be tested and free of bugs. And this introduces a natural conflict between speed and stability
+
+You have the same goals of speed and accuracy - but this process of continuous integration, of testing, of automating processes so that your users can get their hands on the app - didnt exist.
+
+One problem is that the entire process is siloed between the creation of the code and the deployment of your app. So your developers finish their code and then throw it over the fence to ops. Maybe they then throw it to security or to QA. But there was no formal alliance in place or processes on how the teams work together. Because each team is seemingly working on one part - the code vs. the deploy - there's also technical knowledge siloes - each team only knows their bit but not anything else.
+
+So imagine this stock trading app - your developers are creating cool new features so that you can easily buy and sell stock, maybe even see data on whats happening in the market. But they're not necessarily thinking about how the app is secured or if its compliant with federal regulations or if user data is protected. Obvi this is a worst case scenario - but you get the picture.
+
+So as the app is built it keeps getting thrown back and forth between the two teams and leads to one of the major problems that devops is trying to fix - really slow and manual bureaucratic release process.
+
+On the technical side, a lot of the actual work is done manually. So you can imagine one team running tests manually in one environment - maybe the environment itself is created manually, or someone manually sizing up or fixing a server. This takes time, you need to get approval from people, and its not easily reproduced or really documented anywhere. Also, there is a lot of room for error and if things break its not easy to roll back bugs.
+
+Problem becomes how do you automate this release process, make it streamlined, less error prone, improve how all these teams integrate and operate, and at the end of the day make the process of getting the app into the hands of your users much faster.
+:::
 
 ##  {auto-animate="true"}
 
@@ -81,6 +121,10 @@ Cultural Norms
 
 ![](assets/images/02/communicate.jpeg){fig-align="right"}
 
+::: notes
+toolss for cultural change - code review - cross team blameless retros - project kickoffs - everyone owns the process - balance between security and operations - iterative building, making mistakes early and often - identify sources of resistance - get leadership buy-in - design for autonomy - measure output not compliance
+:::
+
 ## 💬 Discussion
 
 ::: {style="margin-top: 200px; font-size: 2em; color: blue;"}
@@ -97,31 +141,166 @@ Practices and supporting tooling
 
 ![](assets/images/02/ecosystem.png)
 
+::: notes
+proliferation of tools, source code management, repo management, build tools, data management, deployment, container services, config management, monitoring, cloud services
+:::
+
 ## Best Practices \> Tools
 
-![](assets/images/02/bestpractice.jpg)
+[The 12-factor App](12factor.net)
 
-## Best Practices from [The 12-factor App](12factor.net)
-
+::: nonincremental
 1.  **Codebase** - One codebase tracked in revision control, many deploys
 2.  **Dependencies** - Explicitly declare and isolate dependencies
 3.  **Config** - Store config in the environment
 4.  **Backing services** - Treat backing services as attached resources
 5.  **Build, release, run** - Strictly separate build and run stages
 6.  **Processes** - Execute the app as one or more stateless processes
-7.  Port binding - Export services via port binding
-8.  Concurrency - Scale out via the process model
-9.  Disposability - Maximize robustness with fast startup and graceful shutdown
+7.  *Port binding - Export services via port binding*
+8.  *Concurrency - Scale out via the process model*
+9.  *Disposability - Maximize robustness with fast startup and graceful shutdown*
 10. **Dev/prod/ parity** - Keep development, staging, and production as similar as possible
 11. **Logs** - Treat logs as event streams
 12. **Admin processes** - Run admin/management tasks as one-off processes
+:::
+
+::: notes
+2011 by Adam Wiggins - founder of heroku. The 12 Factor App is a set of principles that describes a way of making software that, when followed, enables companies to create code that can be released reliably, scaled quickly, and maintained in a consistent and predictable manner.
+
+Nice baseline for building portable and resilent applications
+:::
+
+## Codebase
+
+<br>
+
+There should be exactly one codebase for a deployed service with the codebase being used for many deployments.
+
+![](assets/images/02/codebase.png)
+
+::: footer
+Credit: An illustrated guide to 12 Factor Apps by Bob Reselman
+:::
+
+## Dependencies
+
+<br>
+
+All dependencies should be declared, with no implicit reliance on system tools or libraries.
+
+![](assets/images/02/dependencies.png)
+
+::: footer
+Credit: An illustrated guide to 12 Factor Apps by Bob Reselman
+:::
+
+## Config
+
+::: nonincremental
+-   Configuration that varies between deployments should be stored in the environment.
+-   A litmus test for whether an app has all config correctly factored out of the code is whether the codebase could be made open source at any moment, without compromising any credentials.
+:::
+
+![](assets/images/02/config.png)
+
+::: footer
+Credit: An illustrated guide to 12 Factor Apps by Bob Reselman
+:::
+
+## Backing services
+
+<br>
+
+All backing services are treated as attached resources and attached and detached by the execution environment. ![](assets/images/02/backingsvcs.png){width="498"}
+
+::: footer
+Credit: An illustrated guide to 12 Factor Apps by Bob Reselman
+:::
+
+## Build, release, run
+
+<br>
+
+-   The **Build** stage is where code is retrieved from the source code management system and built/compiled into artifacts.
+-   After the code is built, configuration settings are applied in the **Release** stage.
+-   Then, in the **Run** stage, a runtime environment is provisioned via scripts. The application and its dependencies are deployed into the newly provisioned runtime environment.
+-   The key to **Build, Release, and Run** is that the process is completely ephemeral. Should anything in the pipeline be destroyed, all artifacts and environments can be recreated from scratch using source code repository.
+
+![](assets/images/02/buildreleaserun.png)
+
+::: footer
+Credit: An illustrated guide to 12 Factor Apps by Bob Reselman
+:::
+
+## Processes
+
+<br> Applications should be deployed as one or more stateless processes with persisted data stored on a backing service. This means that no single process keeps track of the state of another process and that no process keeps track of information such as session or workflow status. A stateless process makes scaling easier.
+
+![](assets/images/02/process.png)
+
+::: footer
+Credit: An illustrated guide to 12 Factor Apps by Bob Reselman
+:::
+
+## Dev/Prod parity
+
+<br> All environments should be as similar as possible
+
+![](assets/images/02/dev-prodparity.png)
+
+::: footer
+Credit: An illustrated guide to 12 Factor Apps by Bob Reselman
+:::
+
+## Logs
+
+<br>
+
+Applications should produce logs as event streams and leave the execution environment to aggregate. ![](assets/images/02/logs.png)
+
+::: footer
+Credit: An illustrated guide to 12 Factor Apps by Bob Reselman
+:::
+
+## Admin Processes
+
+<br>
+
+::: nonincremental
+-   Any needed admin tasks should be kept in source control and packaged with the application.
+-   Admin processes are first-class citizens in the software development lifecycle and need to be treated as such.
+:::
+
+![](assets/images/02/admin-processes.png)
+
+::: footer
+Credit: An illustrated guide to 12 Factor Apps by Bob Reselman
+:::
+
+## A simplified framework for tools
+
+![](assets/images/02/bestpractice.jpg)
 
 ## Version Control & Collaboration
 
-![](assets/images/01/gitworkflow.png){width="681"}
+![](assets/images/02/gitworkflow.png)
 
 ::: footer
 Artwork by @allison_horst
+:::
+
+::: notes
+A complete history of every file, which enables you to go back to previous versions to analyze the source of bugs and fix problems in older versions.
+
+Branching and Merging: The ability to work on independent streams of changes, which allows you to merge that work back together and verify that your changes conflict.
+
+Traceability: The ability to trace each change with a message describing the purpose and intent of the change and connect it to project management and bug tracking software.
+
+Centralized single source of truth
+
+In addition to the action of promoting your code - its also important to have processes in place for how the code integration process occurs - includes humans coming together and making some decisions -
+
+e.g code reviews, process for your team, how to name things, pull requests, merging, feature branching, automatic tests
 :::
 
 ## ✏️ Your turn {.smaller transition="slide-in"}
@@ -182,7 +361,7 @@ Think of your data science workbench as a kitchen:
 ::: panel-tabset
 ### R
 
-```{r}
+``` r
 install.packages("renv")
 renv::init()
 renv::snapshot()
@@ -190,7 +369,7 @@ renv::snapshot()
 
 ### Python
 
-```{Python}
+``` python
 python -m venv .venv
 source .venv/bin/activate
 pip freeze > requirements.txt
@@ -216,12 +395,30 @@ pip freeze > requirements.txt
 
 ![](assets/images/02/cicd2.png)
 
-# From CI to delivery & deployment {auto-animate="true"}
+::: notes
+-   As we discussed before CI/CD is an iterative cycle of small steps to quickly build, test, and deploy your code - this is a critical component of devops.
+
+-   So CI/CD is often said in the same breath - as it makes up a continuous pipeline - but its actually pretty discrete parts so I want to make sure we understand how they differ.
+
+-Continuous integration (CI) - this is where you or anyone who writes code, automatically builds, tests, and commits code changes into a shared repository; This is usually triggered by an automatic process where the code is built, tested and then either passes or fails. This step is focused on improving the actual build or application as quickly as possible.
+
+Different types of tests - from unit tests to integration tests to regression tests.
+
+-Continuous delivery (CD) and deployment are less focused on the build but on the actual installation and distribution of your build. This includes an automated process to deploy across different environments - from development to testing and finally to production. Delivery is the process for the final release - that "push of a button step" to get to prod.
+:::
+
+## From CI to delivery & deployment {auto-animate="true"}
 
 ![](assets/images/02/CICDauto.png)
 
 ::: footer
 Image Credit: https://www.atlassian.com/continuous-delivery/principles/continuous-integration-vs-delivery-vs-deployment
+:::
+
+::: notes
+continuous integration is part of both continuous delivery and continuous deployment. And continuous deployment is like continuous delivery, except that releases happen automatically
+
+Both Continuous Delivery and Continuous Deployment aim to increase the speed, frequency, and reliability of software releases, but they differ in the level of automation and control over the deployment process. The choice between the two approaches depends on the team’s needs, the nature of the software, and the organisation’s risk tolerance.
 :::
 
 ## Defining Production
@@ -308,7 +505,7 @@ from https://blog.pragmaticengineer.com/shipping-to-production/ written and illu
 
 ## 🔍 GHA Syntax
 
-```{YAML}
+``` yaml
 ---
 
 name: learn-github-actions
@@ -387,7 +584,7 @@ EmpRecord:
 
 ## 🔍 Test and Publish to Connect
 
-```{YAML}
+``` yaml
 ---
 name: test-and-connect-publish
 on:
@@ -436,9 +633,9 @@ jobs:
 Workflows can include tests, markdown renders, shell scripts, cron jobs, or deployments. They can be as simple or as complicated as you need. Open-source community provides a ton of examples of actions.
 :::
 
-## 🔍 Style R code
+## 🔍 Style R code - https://styler.r-lib.org/
 
-```{YAML}
+``` yaml
 ---
 on:
   push:
@@ -520,7 +717,7 @@ jobs:
 
 ## 🔍 Test Coverage
 
-```{YAML}
+``` yaml
 ---
 
 on:
@@ -583,12 +780,11 @@ jobs:
           name: coverage-test-failures
           path: ${{ runner.temp }}/package
 ---
-
 ```
 
 ## 🔍 Code Linter
 
-```{YAML}
+``` yaml
 ---
 
 on:
@@ -966,7 +1162,7 @@ readLines(my_logfile)
 
 ::: columns
 ::: {.column width="50%"}
-```{Python}
+``` python
 import logging
 
 # get or create logger
@@ -992,13 +1188,12 @@ logger.critical('Fatal error. Cannot continue')
 :::
 
 ::: {.column width="50%"}
-```{Python}
+``` python
 logging.debug("debug_message") # will not trigger log entry because threshold was set to INFO
 
 #> 2024-09-01 12:30:05,797 : WARNING : __main__ : Something is not right.
 #> 2024-09-01 12:30:05,798 : ERROR : __main__ : A Major error has happened.
 #> 2024-09-01 12:30:05,798 : CRITICAL : __main__ : Fatal error. Cannot continue
-
 ```
 :::
 :::
@@ -1047,6 +1242,16 @@ logging.debug("debug_message") # will not trigger log entry because threshold wa
 
 ![](assets/images/02/lifecycle.png)
 
+dockerfile - is a script of instructions for how to build an image
+
+image - everything you need to run an application - all the layers that build the environment, dependencies, libraries, files
+
+container - isolated instance of a running image. you can create, stop, start, restart, containers. When a container is removed/deleted any changes to its state that arent stored in some kind of persistent storage disappear. Called ephemeral container - Think of a container as a snapshot in time of a particular application.
+
+Missing piece - repository - for images, like dockerhub, container registry cloud services, private registries
+
+Build - Run - Push
+
 ## ✏️ Your turn {.smaller transition="slide-in"}
 
 ::: {.callout-note icon="false"}
@@ -1058,15 +1263,15 @@ logging.debug("debug_message") # will not trigger log entry because threshold wa
 
 [![](assets/images/02/file-image-container.png)Instructions here](https://pub.current.posit.team/devops-worksheet/exercise_instructions.html#activity-5-docker-run)
 
-::: notes dockerfile - is a script of instructions for how to build an image
+::: notes
+dockerfile - is a script of instructions for how to build an image
 
 image - everything you need to run an application - all the layers that build the environment, dependencies, libraries, files
 
 container - isolated instance of a running image. you can create, stop, start, restart, containers. When a container is removed/deleted any changes to its state that arent stored in some kind of persistent storage disappear. Called ephemeral container - Think of a container as a snapshot in time of a particular application.
 
 Missing piece - repository - for images, like dockerhub, container registry cloud services, private registries
-
-Build - Run - Push :::
+:::
 
 ## Modes for running containers
 
@@ -1211,7 +1416,7 @@ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
 
 ## Docker in CI
 
-```{YAML}
+``` yaml
 ---
          
 jobs:

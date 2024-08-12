@@ -1,40 +1,43 @@
 ---
 title: "Dev-Ops for Data Scientists"
 subtitle: "Post-Production"
-format: 
+format:
   revealjs:
     slide-number: true
-    footer: <https://github.com/posit-conf-2024/dev-ops>
+    footer: "<https://github.com/posit-conf-2024/dev-ops>"
     preview-links: auto
     incremental: true
-    theme: [default, styles.scss]
+    theme:
+    - default
+    - styles.scss
     width: 1600
     height: 920
-execute: 
+execute:
   eval: false
+resource_files:
+- styles.scss
 ---
 
-## Authentication vs. Authorization
+## Authentication
 
+Host-based access control e.g. "do we recognize this user, and do they have enough information to prove who they are"
 <br>
-**Authentication** - Host-based access control e.g. "do we recognize this user, and do they have enough information to prove who they are"
 
 \- Example: Logging in
-
 <br>
-**Authorization** - Role-based access control e.g. "once a user has been Authenticated, what are they allowed to do"
+<iframe src="https://giphy.com/embed/m9XcY7KSHk6yRRA78C" width="480" height="480" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
+## Authorization
+
+Role-based access control e.g. "once a user has been Authenticated, what are they allowed to do"
+<br>
 \- Example: Accessing data
+<br>
+<iframe src="https://giphy.com/embed/Tj3vUhhEOTxbyswvEU" width="480" height="269" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 ## Authorization
 
 ## HTTP vs. HTTPS
-<br>
--   We can use a variety of data sharing "transfer protocols"
--   Protocols specify what kind of traffic is moving between 2 machines
--   Use different security mechanisms
--   Ports on the host and destination specifies where to direct the traffic
-<br>
 ![](assets/images/03/http-vs-https.png)
 
 ::: footer
@@ -69,12 +72,22 @@ Illustration by Alex Gold www.do4ds.com
 Illustration by Alex Gold www.do4ds.com
 :::
 
+:::notes
+LDAP allows services to collect usernames and passwords and send them to a central LDAP database for verification. The LDAP server sends back information on the user, often including their username and groups, which the service can use to authorize the user. Microsoft implemented LDAP as a piece of software called *Active Directory* (AD) that became so synonymous with LDAP that the technology is often called LDAP/AD.
+:::
+
 ## Single Sign-on
 
 ![](assets/images/04/sso.png)
 
 ::: footer
 Illustration by Alex Gold www.do4ds.com
+:::
+
+:::notes
+Single Sign On (SSO) is when you log in once to a standalone identity provider at the start of your workday. The identity provider gives you a secure SSO token that is responsible for granting access to various services you might use
+
+It’s worth being clear – SSO is not a technology. It is a user and admin experience that is accomplished through technologies like SAML (Security Assertion Markup Language) or OIDC/OAuth (Open Identity Connect/OAuth2.0). Most organizations implement SSO through integration with a standalone identity provider like Okta, OneLogin, Ping, or Microsoft Entra ID.
 :::
 
 ## Combining Auth & Auth
@@ -85,6 +98,16 @@ Illustration by Alex Gold www.do4ds.com
 Illustration by Alex Gold www.do4ds.com
 :::
 
+:::notes
+It used to be the case that most data sources had simple username and password auth, so you could authenticate by just passing those credentials along to the data source, preferably via environment variables. This is still the easiest way to connect to data sources.
+
+Organizations are increasingly turning to modern technologies, like OAuth and IAM, to secure access to data sources, including databases, APIs, and cloud services. Sometimes, you’ll have to manually navigate the token exchange process in your Python or R code. For example, you’ve likely acquired and dispatched an OAuth token to access a Google Sheet or a modern data API.
+
+Increasingly, IT/Admins want users to have the experience of logging in and automatically accessing data sources. This situation is sometimes termed passthrough auth or identity federation. This is a great user experience and is highly secure because there are never any credentials in the data science environment, only secure cryptographic tokens.
+
+However, this experience is more complicated than it appears. From what we’ve discussed so far, it seems like you could use the SSO token that got you into the data science environment to access the data source. But it doesn’t work like that. Instead, accessing each service requires its own token that can’t be used for a different service for security reasons. So, “passthrough” is a misnomer, and a much more complicated token exchange is required.
+:::
+
 ## Security
 
 ![](assets/images/04/it_hierarchy.png)
@@ -93,9 +116,20 @@ Illustration by Alex Gold www.do4ds.com
 Illustration by Alex Gold www.do4ds.com
 :::
 
+:::notes
+The primary concerns of IT/Admins are security and stability. A secure and stable system gives valid users access to the systems they need to get work done and withholds access from people who shouldn’t have it. If you understand and communicate with IT/Admins about the risks they perceive, you can generate buy-in by taking their concerns seriously.
+
+The worst outcome for a supposedly secure data science platform would be an unauthorized person gaining access and stealing data. In the most extreme form, this is someone entirely outside the organization (outsider threat). But it also could be someone inside the organization who is disgruntled or seeking personal gain (insider threat). And even if data isn’t stolen, it’s bad if someone hijacks your computational resources for nefarious ends like crypto-mining or virtual DDOS attacks on Turkish banks.
+
+Somewhat less concerning, but still the stuff of IT/Admin nightmares is platform instability that results in the erasure of important data, called data loss. And even if data isn’t permanently lost, instability that results in lost time for platform users is also bad.
+
+IT/Admins may have some stake in ensuring that the environment doesn’t include error-ridden software that results in incorrect work. And last, way down the list, is that users don’t have a bad experience using the environment.
+
+:::
+
 ## Security Best Practices \[for the DS\]
-<br>
--   code analysis or scanning packages
+
+<br> - code analysis or scanning packages
 
 -   managing permissions
 
@@ -113,12 +147,10 @@ Illustration by Alex Gold www.do4ds.com
 
 -   Network security
 
-##  Thank you so much!
+## Thank you so much!
 
-![](assets/images/04/cat.png)
+![](assets/images/04/cat.png) 
+
 ## Please complete this survey!
 
 https://pos.it/conf-workshop-survey
-
-
-

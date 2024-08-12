@@ -1,21 +1,25 @@
 ---
 title: "Dev-Ops for Data Scientists"
-subtitle: "Getting to Production"
-format: 
+subtitle: Getting to Production
+format:
   revealjs:
     code-block-height: 900px
     slide-number: true
-    footer: <https://github.com/posit-conf-2024/dev-ops>
+    footer: "<https://github.com/posit-conf-2024/dev-ops>"
     preview-links: auto
     incremental: true
-    theme: [default, styles.scss]
+    theme:
+    - default
+    - styles.scss
     width: 1600
     height: 920
 knitr:
-  opts_chunk: 
+  opts_chunk:
     echo: true
-execute: 
+execute:
   eval: false
+resource_files:
+- styles.scss
 ---
 
 ## Data Science in Production
@@ -76,12 +80,18 @@ Illustration by Alex Gold www.do4ds.com
 
 ## What's happening with the data?
 
-<br> Can you remove the data processing and storage from the presentation? <br> Can you pre-calculate anything? <br> Can you reduce data granularity? <br> When is data pulled in and refreshed?
+-   Can you remove the data processing and storage from the presentation?
+
+-   Can you pre-calculate anything?
+
+-   Can you reduce data granularity?
+
+-   When is data pulled in and refreshed?
 
 ## Data Storage
 
 | Location      | Use case                                                                                                                                                                                                                                |
-|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|----------------|--------------------------------------------------------|
 | With the code | Data is updated as often or less often than the app code and doesn’t need to be shared across projects                                                                                                                                  |
 | Database      | Gold standard for data storage and access                                                                                                                                                                                               |
 | Pins          | Lightweight datasets, ephemeral data, models                                                                                                                                                                                            |
@@ -98,6 +108,14 @@ Illustration by Alex Gold www.do4ds.com
 -   packages in R (httr2) and Python (requests) for connecting
 
 -   Smaller pieces are easier to manage - an API can make your code more modular
+
+::: notes
+In the case of a general-purpose three-layer app, it is almost always the case that the middle tier will be an API. Separating processing logic into functions is often sufficient in a data science app. But, separating it into an API is often helpful if you’ve got a long-running bit of business logic, like training an ML model.
+
+APIs are the standard way for two computer systems to communicate. API is a general term that describes machine-to-machine communication. For our purposes, we’re talking about `http`-based `REST`-ful APIs.
+
+`http` operates on a request-response model. So when you use an API, you send a request to the API and it sends a response back.
+:::
 
 ## How a REST API works
 
@@ -116,11 +134,13 @@ Illustration by Alex Gold www.do4ds.com
 | PUT    | send data to update existing thing    |
 | DELETE | delete something that exists          |
 
-| Response Code | Description                                      |
-|---------------|--------------------------------------------------|
-| 2xx           | Request is successful!                           |
-| 4xx           | Client error. You may have done something wrong! |
-| 5xx           | Server error.                                    |
+## Response Code
+
+|     | Description                                      |
+|-----|--------------------------------------------------|
+| 2xx | Request is successful!                           |
+| 4xx | Client error. You may have done something wrong! |
+| 5xx | Server error.                                    |
 
 ## Anatomy of an API
 
@@ -137,6 +157,8 @@ Illustration by Alex Gold www.do4ds.com
     -   Examples include auth credentials, type of data returned
 
 ::: notes
+You can think of an API as a “function as a service”. That is, an API is just one or more functions,
+
 application programming interface clients to communicate with a server. Rest API is a kind of web-service which stores and retrieves necessary data. It provides great flexibility to developers since it does not need any dependent code libraries to access the web-services. Amongst the many protocols supported by REST, the most common one is HTTP. When a request is sent from the client using a HTTPRequest, a corresponding response is sent from the server using HTTPResponse.
 :::
 
@@ -156,7 +178,7 @@ def say_hello(name):
     return {"Hello from Seattle": name}
 ```
 
-Instructions here
+[Instructions here](https://pub.current.posit.team/devops-worksheet/exercise_instructions.html#activity-8-apis)
 :::
 
 ## Where to deploy our app?
@@ -164,10 +186,30 @@ Instructions here
 ![](assets/images/03/slides.png)
 
 -   cloud container deployment + registry
+
 -   build your own
+
 -   platform as a service
 
-## ![](assets/images/03/Posit%20Team%20Concept%20Map.jpg)Posit Connect
+-   Cloud platform all in one
+
+## Things to consider when choosing a deployment framework
+
+-   cost
+
+-   how many apps to deploy? what kinds of apps?
+
+-   who are users? do they need to login?
+
+-   how secure does the data need to be? (and the server it resides in)
+
+-   compute resources
+
+-   integration with git and ci/cd
+
+## Posit Connect
+
+![](assets/images/03/Posit%20Team%20Concept%20Map.jpg)
 
 ## Your turn {.smaller transition="slide-in"}
 
@@ -176,7 +218,7 @@ Instructions here
 
 ![](assets/images/03/modelserver.jpg)
 
-Instructions here
+[Instructions here](https://pub.current.posit.team/devops-worksheet/exercise_instructions.html#activity-9-use-api-to-server-model)
 :::
 
 ## Making Requests to your API
@@ -258,7 +300,7 @@ print(response.json())
 
 -   Try to write your request code with curl, R, or Python
 
-Instructions here
+[Instructions here](https://pub.current.posit.team/devops-worksheet/exercise_instructions.html#activity-10-testing-the-api)
 :::
 
 ## 🔍 Deploy API in Docker
@@ -365,7 +407,7 @@ jobs:
 -   Have the shiny app call our python API
 -   Push-button deploy Shiny app to Posit Connect
 
-Instructions here
+[Instructions here](https://pub.current.posit.team/devops-worksheet/exercise_instructions.html#activity-11-create-a-shiny-ui-for-the-prediction-api)
 :::
 
 ## Let's Take a Break!
